@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { AppComponent } from './app.component';
-import { APP_BASE_HREF, ROUTER_PRIMARY_COMPONENT, ROUTER_PROVIDERS } from 'angular2/router';
+import { APP_BASE_HREF} from 'angular2/platform/common';
+import { ROUTER_PRIMARY_COMPONENT, ROUTER_PROVIDERS } from 'angular2/router';
 import { MockApplicationRef } from 'angular2/src/mock/mock_application_ref';
 import { ApplicationRef } from 'angular2/core';
 

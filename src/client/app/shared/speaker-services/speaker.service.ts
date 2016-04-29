@@ -21,45 +21,47 @@ export class SpeakerService {
   addSpeaker(speaker: Speaker) {
     let body = JSON.stringify(speaker);
     this.spinnerService.show();
-    return this.http
+    return <Observable<Speaker>>this.http
       .post(`${speakersUrl}`, body)
       .map(res => res.json().data)
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 
   deleteSpeaker(speaker: Speaker) {
     this.spinnerService.show();
-    return this.http
+    return <Observable<Speaker>>this.http
       .delete(`${speakersUrl}/${speaker.id}`)
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 
   getSpeakers() {
     this.spinnerService.show();
-    return this.http.get(speakersUrl)
+    return <Observable<Speaker[]>>this.http
+      .get(speakersUrl)
       .map(res => this.extractData<Speaker[]>(res))
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 
   getSpeaker(id: number) {
     this.spinnerService.show();
-    return this.http.get(`${speakersUrl}/${id}`)
+    return <Observable<Speaker>>this.http
+      .get(`${speakersUrl}/${id}`)
       .map(res => this.extractData<Speaker>(res))
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 
   updateSpeaker(speaker: Speaker) {
     let body = JSON.stringify(speaker);
     this.spinnerService.show();
 
-    return this.http
+    return <Observable<Speaker>>this.http
       .put(`${speakersUrl}/${speaker.id}`, body)
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 
   private extractData<T>(res: Response) {

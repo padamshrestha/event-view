@@ -30,7 +30,7 @@ export class SessionListComponent implements OnDestroy, OnInit {
   getSessions() {
     this.sessions = [];
     this.sessionService.getSessions()
-      .subscribe((sessions: Session[]) => {
+      .subscribe(sessions => {
         this.sessions = this.filteredSessions = sessions;
         this.filterComponent.clear();
       },

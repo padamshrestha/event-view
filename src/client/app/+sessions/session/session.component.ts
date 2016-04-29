@@ -78,7 +78,7 @@ export class SessionComponent implements CanDeactivate, OnDestroy, OnInit {
     let session = this.session = this.entityService.merge(this.session, this.editSession);
     if (session.id == null) {
       this.sessionService.addSession(session)
-        .subscribe((s: Session) => {
+        .subscribe(s => {
           this.setEditSession(s);
           this.toastService.activate(`Successfully added ${s.name}`);
           this.gotoSessions();

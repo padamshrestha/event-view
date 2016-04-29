@@ -21,27 +21,28 @@ export class SessionService {
   addSession(session: Session) {
     let body = JSON.stringify(session);
     this.spinnerService.show();
-    return this.http
+    return <Observable<Session>>this.http
       .post(`${sessionsUrl}`, body)
       .map(res => <Session>res.json().data)
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 
   deleteSession(session: Session) {
     this.spinnerService.show();
-    return this.http
+    return <Observable<Session>>this.http
       .delete(`${sessionsUrl}/${session.id}`)
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 
   getSessions() {
     this.spinnerService.show();
-    return this.http.get(sessionsUrl)
+    return <Observable<Session[]>>this.http
+      .get(sessionsUrl)
       .map(res => this.extractData<Session[]>(res))
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 
   private extractData<T>(res: Response) {
@@ -54,19 +55,20 @@ export class SessionService {
 
   getSession(id: number) {
     this.spinnerService.show();
-    return this.http.get(`${sessionsUrl}/${id}`)
+    return <Observable<Session>>this.http
+      .get(`${sessionsUrl}/${id}`)
       .map(res => this.extractData<Session>(res))
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 
   updateSession(session: Session) {
     let body = JSON.stringify(session);
     this.spinnerService.show();
 
-    return this.http
+    return <Observable<Session>>this.http
       .put(`${sessionsUrl}/${session.id}`, body)
-      .catch(this.exceptionService.catchBadResponse);
-      // .finally(() => this.spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse)
+      .finally(() => this.spinnerService.hide());
   }
 }

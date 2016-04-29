@@ -1,6 +1,6 @@
 import { Injectable } from 'angular2/core';
 import { Http } from 'angular2/http';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Rx';
 
 import { CONFIG } from './config';
 import { ToastService } from './toast';
@@ -11,9 +11,9 @@ export interface IResetMessage {
 
 @Injectable()
 export class MessageService {
-  private _subject = new Subject();
+  private subject = new Subject<IResetMessage>();
 
-  state = <Observable<IResetMessage>>this._subject;
+  state = this.subject;
 
   constructor(private _http: Http,
     private _toastService: ToastService) {
@@ -23,7 +23,7 @@ export class MessageService {
     let msg = 'Reset the Data Successfully';
     this._http.post(CONFIG.baseUrls.resetDb, null)
       .subscribe(() => {
-        this._subject.next({ message: msg });
+        this.subject.next({ message: msg });
         this._toastService.activate(msg);
       });
   }

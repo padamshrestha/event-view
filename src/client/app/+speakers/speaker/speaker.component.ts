@@ -18,105 +18,105 @@ import {
   directives: [ROUTER_DIRECTIVES]
 })
 export class SpeakerComponent implements CanDeactivate, OnDestroy, OnInit {
-  private _dbResetSubscription: Subscription;
+  private dbResetSubscription: Subscription;
 
   @Input() speaker: Speaker;
   editSpeaker: Speaker = <Speaker>{};
 
   constructor(
-    private _speakerService: SpeakerService,
-    private _entityService: EntityService,
-    private _modalService: ModalService,
-    private _routeParams: RouteParams,
-    private _router: Router,
-    private _toastService: ToastService) { }
+    private speakerService: SpeakerService,
+    private entityService: EntityService,
+    private modalService: ModalService,
+    private routeParams: RouteParams,
+    private router: Router,
+    private toastService: ToastService) { }
 
   cancel(showToast = true) {
-    this.editSpeaker = this._entityService.clone(this.speaker);
+    this.editSpeaker = this.entityService.clone(this.speaker);
     if (showToast) {
-      this._toastService.activate(`Cancelled changes to ${this.speaker.name}`);
+      this.toastService.activate(`Cancelled changes to ${this.speaker.name}`);
     }
   }
 
   delete() {
     let msg = `Do you want to delete ${this.speaker.name}?`;
-    this._modalService.activate(msg).then(responseOK => {
+    this.modalService.activate(msg).then(responseOK => {
       if (responseOK) {
         this.cancel(false);
-        this._speakerService.deleteSpeaker(this.speaker)
+        this.speakerService.deleteSpeaker(this.speaker)
           .subscribe(() => {
-            this._toastService.activate(`Deleted ${this.speaker.name}`);
-            this._gotoSpeakers();
+            this.toastService.activate(`Deleted ${this.speaker.name}`);
+            this.gotoSpeakers();
           });
       }
     });
   }
 
   isAddMode() {
-    let id = +this._routeParams.get('id');
+    let id = +this.routeParams.get('id');
     return isNaN(id);
   }
 
   ngOnDestroy() {
-    this._dbResetSubscription.unsubscribe();
+    this.dbResetSubscription.unsubscribe();
   }
 
   ngOnInit() {
     componentHandler.upgradeDom();
-    this._getSpeaker();
-    this._dbResetSubscription = this._speakerService.onDbReset
-      .subscribe(() => this._getSpeaker());
+    this.getSpeaker();
+    this.dbResetSubscription = this.speakerService.onDbReset
+      .subscribe(() => this.getSpeaker());
   }
 
   routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction) {
     return !this.speaker ||
-      !this._isDirty() ||
-      this._modalService.activate();
+      !this.isDirty() ||
+      this.modalService.activate();
   }
 
   save() {
-    let speaker = this.speaker = this._entityService.merge(this.speaker, this.editSpeaker);
+    let speaker = this.speaker = this.entityService.merge(this.speaker, this.editSpeaker);
     if (speaker.id == null) {
-      this._speakerService.addSpeaker(speaker)
+      this.speakerService.addSpeaker(speaker)
         .subscribe(s => {
-          this._setEditSpeaker(s);
-          this._toastService.activate(`Successfully added ${s.name}`);
-          this._gotoSpeakers();
+          this.setEditSpeaker(s);
+          this.toastService.activate(`Successfully added ${s.name}`);
+          this.gotoSpeakers();
         });
       return;
     }
-    this._speakerService.updateSpeaker(speaker)
-      .subscribe(() => this._toastService.activate(`Successfully saved ${speaker.name}`));
+    this.speakerService.updateSpeaker(speaker)
+      .subscribe(() => this.toastService.activate(`Successfully saved ${speaker.name}`));
   }
 
-  private _getSpeaker() {
-    let id = +this._routeParams.get('id');
+  private getSpeaker() {
+    let id = +this.routeParams.get('id');
     if (id === 0) { return; };
     if (this.isAddMode()) {
       this.speaker = <Speaker>{ name: '', twitter: '' };
-      this.editSpeaker = this._entityService.clone(this.speaker);
+      this.editSpeaker = this.entityService.clone(this.speaker);
       return;
     }
-    this._speakerService.getSpeaker(id)
-      .subscribe(speaker => this._setEditSpeaker(speaker));
+    this.speakerService.getSpeaker(id)
+      .subscribe(speaker => this.setEditSpeaker(speaker));
   }
 
-  private _gotoSpeakers() {
+  private gotoSpeakers() {
     let id = this.speaker ? this.speaker.id : null;
     let route = ['Speakers', { id: id }];
-    this._router.navigate(route);
+    this.router.navigate(route);
   }
 
-  private _isDirty() {
-    return this._entityService.propertiesDiffer(this.speaker, this.editSpeaker);
+  private isDirty() {
+    return this.entityService.propertiesDiffer(this.speaker, this.editSpeaker);
   }
 
-  private _setEditSpeaker(speaker: Speaker) {
+  private setEditSpeaker(speaker: Speaker) {
     if (speaker) {
       this.speaker = speaker;
-      this.editSpeaker = this._entityService.clone(this.speaker);
+      this.editSpeaker = this.entityService.clone(this.speaker);
     } else {
-      this._gotoSpeakers();
+      this.gotoSpeakers();
     }
   }
 }

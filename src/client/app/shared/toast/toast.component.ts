@@ -9,11 +9,11 @@ import { ToastService } from './toast.service';
   styleUrls: ['toast.component.css']
 })
 export class ToastComponent implements OnInit {
-  private _defaults = {
+  private defaults = {
     title: '',
     message: 'May the Force be with You'
   };
-  private _toastElement: any;
+  private toastElement: any;
 
   title: string;
   message: string;
@@ -22,26 +22,26 @@ export class ToastComponent implements OnInit {
     toastService.activate = this.activate.bind(this);
   }
 
-  activate(message = this._defaults.message, title = this._defaults.title) {
+  activate(message = this.defaults.message, title = this.defaults.title) {
     this.title = title;
     this.message = message;
-    this._show();
+    this.show();
   }
 
   ngOnInit() {
-    this._toastElement = document.getElementById('toast');
+    this.toastElement = document.getElementById('toast');
   }
 
-  private _show() {
+  private show() {
     console.log(this.message);
-    this._toastElement.style.opacity = 1;
-    this._toastElement.style.zIndex = 9999;
+    this.toastElement.style.opacity = 1;
+    this.toastElement.style.zIndex = 9999;
 
-    window.setTimeout(() => this._hide(), 2500);
+    window.setTimeout(() => this.hide(), 2500);
   }
 
-  private _hide() {
-    this._toastElement.style.opacity = 0;
-    window.setTimeout(() => this._toastElement.style.zIndex = 0, 400);
+  private hide() {
+    this.toastElement.style.opacity = 0;
+    window.setTimeout(() => this.toastElement.style.zIndex = 0, 400);
   }
 }

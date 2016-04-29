@@ -13,24 +13,24 @@ import { Session, SessionService, SessionButtonComponent } from '../shared';
   styleUrls: ['session-list.component.css']
 })
 export class SessionListComponent implements OnDestroy, OnInit {
-  private _dbResetSubscription: Subscription;
+  private dbResetSubscription: Subscription;
 
   sessions: Session[];
   filteredSessions = this.sessions;
   @ViewChild(FilterTextComponent) filterComponent: FilterTextComponent;
 
   constructor(
-    private _filterService: FilterService,
-    private _sessionService: SessionService) { }
+    private filterService: FilterService,
+    private sessionService: SessionService) { }
 
   filterChanged(searchText: string) {
-    this.filteredSessions = this._filterService.filter(searchText, ['id', 'name', 'type'], this.sessions);
+    this.filteredSessions = this.filterService.filter(searchText, ['id', 'name', 'type'], this.sessions);
   }
 
   getSessions() {
     this.sessions = [];
-    this._sessionService.getSessions()
-      .subscribe(sessions => {
+    this.sessionService.getSessions()
+      .subscribe((sessions: Session[]) => {
         this.sessions = this.filteredSessions = sessions;
         this.filterComponent.clear();
       },
@@ -44,13 +44,13 @@ export class SessionListComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy() {
-    this._dbResetSubscription.unsubscribe();
+    this.dbResetSubscription.unsubscribe();
   }
 
   ngOnInit() {
     componentHandler.upgradeDom();
     this.getSessions();
-    this._dbResetSubscription = this._sessionService.onDbReset
+    this.dbResetSubscription = this.sessionService.onDbReset
       .subscribe(() => this.getSessions());
   }
 

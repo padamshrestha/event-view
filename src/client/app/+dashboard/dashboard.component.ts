@@ -13,35 +13,35 @@ import { Speaker, SpeakerService, ToastService } from '../../app/shared';
   directives: [DashboardButtonComponent]
 })
 export class DashboardComponent implements OnDestroy, OnInit {
-  private _dbResetSubscription: Subscription;
+  private dbResetSubscription: Subscription;
 
   speakers: Observable<Speaker[]>;
 
   constructor(
-    private _speakerService: SpeakerService,
-    private _router: Router,
-    private _toastService: ToastService) { }
+    private speakerService: SpeakerService,
+    private router: Router,
+    private toastService: ToastService) { }
 
   getSpeakers() {
-    this.speakers = this._speakerService.getSpeakers()
+    this.speakers = this.speakerService.getSpeakers()
       .catch(e => {
-        this._toastService.activate(`${e}`);
-        return Observable.of();
+        this.toastService.activate(`${e}`);
+        return Observable.of([]);
       });
   }
 
   gotoDetail(speaker: Speaker) {
     let link = ['Speakers', 'Speaker', { id: speaker.id }];
-    this._router.navigate(link);
+    this.router.navigate(link);
   }
 
   ngOnDestroy() {
-    this._dbResetSubscription.unsubscribe();
+    this.dbResetSubscription.unsubscribe();
   }
 
   ngOnInit() {
     this.getSpeakers();
-    this._dbResetSubscription = this._speakerService.onDbReset
+    this.dbResetSubscription = this.speakerService.onDbReset
       .subscribe(() => this.getSpeakers());
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from 'angular2/core';
 import { Http, Response } from 'angular2/http';
+import { Observable } from 'rxjs/Rx';
 
 import { Session } from './session.model';
 import { CONFIG, ExceptionService, MessageService, SpinnerService } from '../../../app/shared';
@@ -8,64 +9,64 @@ let sessionsUrl = CONFIG.baseUrls.sessions;
 
 @Injectable()
 export class SessionService {
-  onDbReset = this._messageService.state;
+  onDbReset = this.messageService.state;
 
-  constructor(private _http: Http,
-    private _exceptionService: ExceptionService,
-    private _messageService: MessageService,
-    private _spinnerService: SpinnerService) {
-    this._messageService.state.subscribe(state => this.getSessions());
+  constructor(private http: Http,
+    private exceptionService: ExceptionService,
+    private messageService: MessageService,
+    private spinnerService: SpinnerService) {
+    this.messageService.state.subscribe(state => this.getSessions());
   }
 
   addSession(session: Session) {
     let body = JSON.stringify(session);
-    this._spinnerService.show();
-    return this._http
+    this.spinnerService.show();
+    return this.http
       .post(`${sessionsUrl}`, body)
-      .map(res => res.json().data)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+      .map(res => <Session>res.json().data)
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
   }
 
   deleteSession(session: Session) {
-    this._spinnerService.show();
-    return this._http
+    this.spinnerService.show();
+    return this.http
       .delete(`${sessionsUrl}/${session.id}`)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
   }
 
   getSessions() {
-    this._spinnerService.show();
-    return this._http.get(sessionsUrl)
-      .map(this._extractData)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+    this.spinnerService.show();
+    return this.http.get(sessionsUrl)
+      .map(res => this.extractData<Session[]>(res))
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
   }
 
-  private _extractData(res: Response) {
+  private extractData<T>(res: Response) {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
     let body = res.json();
-    return body.data || { };
+    return <T>(body.data || {});
   }
 
   getSession(id: number) {
-    this._spinnerService.show();
-    return this._http.get(`${sessionsUrl}/${id}`)
-      .map(this._extractData)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+    this.spinnerService.show();
+    return this.http.get(`${sessionsUrl}/${id}`)
+      .map(res => this.extractData<Session>(res))
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
   }
 
   updateSession(session: Session) {
     let body = JSON.stringify(session);
-    this._spinnerService.show();
+    this.spinnerService.show();
 
-    return this._http
+    return this.http
       .put(`${sessionsUrl}/${session.id}`, body)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
   }
 }

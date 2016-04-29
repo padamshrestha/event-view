@@ -1,5 +1,6 @@
 import { Injectable } from 'angular2/core';
 import { Http, Response } from 'angular2/http';
+import { Observable } from 'rxjs/Rx';
 
 import { Speaker } from './';
 import { CONFIG, ExceptionService, MessageService, SpinnerService } from '../';
@@ -8,56 +9,64 @@ let speakersUrl = CONFIG.baseUrls.speakers;
 
 @Injectable()
 export class SpeakerService {
-  onDbReset = this._messageService.state;
+  onDbReset = this.messageService.state;
 
-  constructor(private _http: Http,
-    private _exceptionService: ExceptionService,
-    private _messageService: MessageService,
-    private _spinnerService: SpinnerService) {
-    this._messageService.state.subscribe(state => this.getSpeakers());
+  constructor(private http: Http,
+    private exceptionService: ExceptionService,
+    private messageService: MessageService,
+    private spinnerService: SpinnerService) {
+    this.messageService.state.subscribe(state => this.getSpeakers());
   }
 
   addSpeaker(speaker: Speaker) {
     let body = JSON.stringify(speaker);
-    this._spinnerService.show();
-    return this._http
+    this.spinnerService.show();
+    return this.http
       .post(`${speakersUrl}`, body)
       .map(res => res.json().data)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
   }
 
   deleteSpeaker(speaker: Speaker) {
-    this._spinnerService.show();
-    return this._http
+    this.spinnerService.show();
+    return this.http
       .delete(`${speakersUrl}/${speaker.id}`)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
   }
 
   getSpeakers() {
-    this._spinnerService.show();
-    return this._http.get(speakersUrl)
-      .map((response: Response) => <Speaker[]>response.json().data)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+    this.spinnerService.show();
+    return this.http.get(speakersUrl)
+      .map(res => this.extractData<Speaker[]>(res))
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
   }
 
   getSpeaker(id: number) {
-    this._spinnerService.show();
-    return this._http.get(`${speakersUrl}/${id}`)
-      .map((response: Response) => response.json().data)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+    this.spinnerService.show();
+    return this.http.get(`${speakersUrl}/${id}`)
+      .map(res => this.extractData<Speaker>(res))
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
   }
 
   updateSpeaker(speaker: Speaker) {
     let body = JSON.stringify(speaker);
-    this._spinnerService.show();
+    this.spinnerService.show();
 
-    return this._http
+    return this.http
       .put(`${speakersUrl}/${speaker.id}`, body)
-      .catch(this._exceptionService.catchBadResponse)
-      .finally(() => this._spinnerService.hide());
+      .catch(this.exceptionService.catchBadResponse);
+      // .finally(() => this.spinnerService.hide());
+  }
+
+  private extractData<T>(res: Response) {
+    if (res.status < 200 || res.status >= 300) {
+      throw new Error('Bad response status: ' + res.status);
+    }
+    let body = res.json();
+    return <T>(body.data || {});
   }
 }

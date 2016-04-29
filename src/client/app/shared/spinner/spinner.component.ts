@@ -16,17 +16,17 @@ import { ISpinnerState, SpinnerService } from './spinner.service';
 export class SpinnerComponent implements OnDestroy, OnInit {
   visible = false;
 
-  private _spinnerStateChanged: Subscription;
+  private spinnerStateChanged: Subscription;
 
-  constructor(private _spinnerService: SpinnerService) { }
+  constructor(private spinnerService: SpinnerService) { }
 
   ngOnInit() {
     componentHandler.upgradeDom();
-    this._spinnerStateChanged = this._spinnerService.spinnerState
+    this.spinnerStateChanged = this.spinnerService.spinnerState
       .subscribe((state: ISpinnerState) => this.visible = state.show);
   }
 
   ngOnDestroy() {
-    this._spinnerStateChanged.unsubscribe();
+    this.spinnerStateChanged.unsubscribe();
   }
 }

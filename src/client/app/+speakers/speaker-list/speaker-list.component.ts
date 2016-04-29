@@ -14,23 +14,23 @@ import { SortSpeakersPipe, SpeakerButtonComponent } from '../shared';
   pipes: [SortSpeakersPipe]
 })
 export class SpeakerListComponent implements OnDestroy, OnInit {
-  private _dbResetSubscription: Subscription;
+  private dbResetSubscription: Subscription;
 
-  speakers: Speaker[];
+  speakers: Speaker[] = [];
   filteredSpeakers = this.speakers;
   @ViewChild(FilterTextComponent) filterComponent: FilterTextComponent;
 
-  constructor(private _speakerService: SpeakerService,
-    private _filterService: FilterService) { }
+  constructor(private speakerService: SpeakerService,
+    private filterService: FilterService) { }
 
   filterChanged(searchText: string) {
-    this.filteredSpeakers = this._filterService.filter(searchText, ['id', 'name', 'twitter'], this.speakers);
+    this.filteredSpeakers = this.filterService.filter(searchText, ['id', 'name', 'twitter'], this.speakers);
   }
 
   getSpeakers() {
     this.speakers = [];
 
-    this._speakerService.getSpeakers()
+    this.speakerService.getSpeakers()
       .subscribe(speakers => {
         this.speakers = this.filteredSpeakers = speakers;
         this.filterComponent.clear();
@@ -38,13 +38,13 @@ export class SpeakerListComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy() {
-    this._dbResetSubscription.unsubscribe();
+    this.dbResetSubscription.unsubscribe();
   }
 
   ngOnInit() {
     componentHandler.upgradeDom();
     this.getSpeakers();
-    this._dbResetSubscription = this._speakerService.onDbReset
+    this.dbResetSubscription = this.speakerService.onDbReset
       .subscribe(() => this.getSpeakers());
   }
 

@@ -26,15 +26,15 @@ export class NavComponent implements OnInit {
   }
 
   constructor(
-    private _messageService: MessageService,
-    private _modalService: ModalService) {
+    private messageService: MessageService,
+    private modalService: ModalService) {
   }
 
   resetDb() {
     let msg = 'Are you sure you want to reset the database?';
-    this._modalService.activate(msg).then(responseOK => {
+    this.modalService.activate(msg).then(responseOK => {
       if (responseOK) {
-        this._messageService.resetDb();
+        this.messageService.resetDb();
       }
     });
   }

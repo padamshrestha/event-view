@@ -1,5 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from 'angular2/core';
-import { CanDeactivate, ComponentInstruction, RouteParams, Router, ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { CanDeactivate, ComponentInstruction, RouteParams, Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 import { EntityService, ModalService, ToastService } from '../../../app/shared';

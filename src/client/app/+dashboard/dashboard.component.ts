@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from 'angular2/core';
-import { Router } from 'angular2/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 import { DashboardButtonComponent } from './dashboard-button';

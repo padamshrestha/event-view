@@ -1,13 +1,13 @@
-import { Component, provide } from 'angular2/core';
-import { HTTP_PROVIDERS, XHRBackend } from 'angular2/http';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { Component, provide } from '@angular/core';
+import { HTTP_PROVIDERS, XHRBackend } from '@angular/http';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import 'rxjs/Rx'; // load the full rxjs
 
 import {
   InMemoryBackendConfig,
   InMemoryBackendService,
   SEED_DATA
-} from 'a2-in-memory-web-api/core';
+} from 'angular2-in-memory-web-api/core';
 import { InMemoryStoryService } from '../api/in-memory-story.service';
 import {
   BLOCK_PROVIDERS,

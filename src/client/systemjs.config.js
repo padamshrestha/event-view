@@ -12,8 +12,9 @@
     '@angular/router',
     '@angular/testing',
     '@angular/upgrade',
-    'rxjs',
-    'angular2-in-memory-web-api',
+
+    // 'rxjs',
+    // 'angular2-in-memory-web-api',
 
     // custom stuff
     // 'app',
@@ -39,15 +40,16 @@
     'app/speakers',
   ].reduce(function (barrelConfig, barrelName) {
     barrelConfig[barrelName] = {
-      format: 'register',
       defaultExtension: 'js',
       main: 'index'
     };
     return barrelConfig;
   }, {});
 
-  packages.app = { format: 'register', defaultExtension: 'js', main: 'main' };
-  packages.api = { format: 'register', defaultExtension: 'js' };
+  packages['angular2-in-memory-web-api'] = { defaultExtension: 'js' };
+  packages['api'] = { defaultExtension: 'js' };
+  packages['app'] = { defaultExtension: 'js', main: 'main' };
+  packages['rxjs'] = { defaultExtension: 'js' };
 
   var config = {
     //map tells the System loader where to look for things

@@ -7,6 +7,6 @@ import { environment } from './app/environment';
 if (environment.production) {
   enableProdMode();
 }
-bootstrap(AppComponent, [])
+bootstrap(AppComponent)
   .then(success => console.log(`Bootstrap success`))
   .catch(error => console.log(error));

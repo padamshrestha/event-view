@@ -1,5 +1,19 @@
-const barrels: string[] = [
-  // 'app',
+const packages = {
+  // Add your custom SystemJS packages here.
+  'angular2-in-memory-web-api': { defaultExtension: 'js' },
+  'api': { defaultExtension: 'js' },
+  'app': { defaultExtension: 'js' },
+  'rxjs': { defaultExtension: 'js' }
+};
+
+const map = {
+  'app': 'app', // 'dist',
+  'rxjs': 'node_modules/rxjs',
+  '@angular': 'node_modules/@angular',
+  'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api'
+};
+
+const packageNames = [
   '@angular/common',
   '@angular/compiler',
   '@angular/core',
@@ -9,9 +23,6 @@ const barrels: string[] = [
   '@angular/router',
   '@angular/testing',
   '@angular/upgrade',
-
-  // 'rxjs',
-  // 'angular2-in-memory-web-api',
 
   // custom stuff
   'app',
@@ -33,39 +44,15 @@ const barrels: string[] = [
   'app/shared/nav',
   'app/shared/speaker-services',
   'app/shared/spinner',
-  'app/shared/toast',
-  /** @cli-barrel */
+  'app/shared/toast'
 ];
 
-function createPackageConfig(barrelList: string[]): any {
-  let result = barrelList.reduce((barrelConfig: any, barrelName: string) => {
-    barrelConfig[barrelName] = {
-      // format: 'register',
-      defaultExtension: 'js',
-      main: 'index'
-    };
-    return barrelConfig;
-  }, {});
-  return result;
-}
+// add package entries for angular packages in the form '@angular/common': { main: 'index.js', defaultExtension: 'js' }
+packageNames.forEach(function (pkgName) {
+  packages[pkgName] = { main: 'index.js', defaultExtension: 'js' };
+});
 
-// Add your custom SystemJS configuration here.
-export const config: any = {
-  packages: Object.assign({
-    // Add your custom SystemJS packages here.
-    'angular2-in-memory-web-api': { defaultExtension: 'js' },
-    'api': { defaultExtension: 'js' },
-    'app': { defaultExtension: 'js' },
-    'rxjs': { defaultExtension: 'js' },
-  }, createPackageConfig(barrels)),
-
-  map: {
-    'app': 'app', // 'dist',
-    'rxjs': 'node_modules/rxjs',
-    '@angular': 'node_modules/@angular',
-    'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api'
-  }
+export const config = {
+  map: map,
+  packages: packages
 };
-
-// declare var System: any;
-// System.config(config);

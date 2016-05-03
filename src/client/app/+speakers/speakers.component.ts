@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router';
+import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { SpeakerComponent } from './speaker';
 import { SpeakerListComponent } from './speaker-list';
@@ -11,20 +11,9 @@ import { SpeakerListComponent } from './speaker-list';
   `,
   directives: [ROUTER_DIRECTIVES]
 })
-@RouteConfig([
-  {
-    path: '/',
-    name: 'Speakers',
-    component: SpeakerListComponent,
-    useAsDefault: true
-  }, {
-    path: '/list/:id',
-    name: 'Speakers',
-    component: SpeakerListComponent
-  }, {
-    path: '/:id',
-    name: 'Speaker',
-    component: SpeakerComponent
-  }
+@Routes([
+  { path: '/', component: SpeakerListComponent, /* , useAsDefault: true */ },
+  { path: '/list/:id', component: SpeakerListComponent },
+  { path: '/:id', component: SpeakerComponent }
 ])
 export class SpeakersComponent { }

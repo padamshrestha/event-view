@@ -31,7 +31,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
   }
 
   gotoDetail(speaker: Speaker) {
-    let link = ['Speakers', 'Speaker', { id: speaker.id }];
+    let link = ['/speakers', 'speaker', speaker.id];
     this.router.navigate(link);
   }
 

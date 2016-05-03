@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router';
+import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { SessionComponent } from './session';
 import { SessionListComponent } from './session-list';
@@ -11,22 +11,9 @@ import { SessionService } from './shared';
   directives: [ROUTER_DIRECTIVES],
   providers: [SessionService]
 })
-@RouteConfig([
-  {
-    path: '/',
-    name: 'Sessions',
-    component: SessionListComponent,
-    useAsDefault: true
-  },
-  {
-    path: '/list/:id',
-    name: 'Sessions',
-    component: SessionListComponent,
-  },
-  {
-    path: '/:id',
-    name: 'Session',
-    component: SessionComponent
-   }
+@Routes([
+  { path: '/', component: SessionListComponent /* , useAsDefault: true */ },
+  { path: '/list/:id', component: SessionListComponent },
+  { path: '/:id', component: SessionComponent }
 ])
 export class SessionsComponent { }

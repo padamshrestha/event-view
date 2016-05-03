@@ -1,7 +1,11 @@
 import { Component, provide } from '@angular/core';
 import { HTTP_PROVIDERS, XHRBackend } from '@angular/http';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
+import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import 'rxjs/Rx'; // load the full rxjs
+
+import { DashboardComponent } from './+dashboard/dashboard.component';
+import { SessionsComponent } from './+sessions/sessions.component';
+import { SpeakersComponent } from './+speakers/speakers.component';
 
 import {
   InMemoryBackendConfig,
@@ -40,23 +44,13 @@ import {
     BLOCK_PROVIDERS
   ]
 })
-@RouteConfig([
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    loader: () => window['System'].import('app/+dashboard')
-      .then((module: any) => module.DashboardComponent),
-    useAsDefault: true
-  }, {
-    path: '/sessions/...',
-    name: 'Sessions',
-    loader: () => window['System'].import('app/+sessions')
-      .then((module: any) => module.SessionsComponent)
-  }, {
-    path: '/speakers/...',
-    name: 'Speakers',
-    loader: () => window['System'].import('app/+speakers')
-      .then((module: any) => module.SpeakersComponent)
-  }
+@Routes([
+  { path: '/', /* '/dashboard',*/ component: DashboardComponent },
+  { path: '/sessions', component: SessionsComponent },
+  { path: '/speakers', component: SpeakersComponent }
 ])
 export class AppComponent { }
+
+// loader: () => window['System'].import('app/+dashboard')
+//   .then((module: any) => module.DashboardComponent),
+// useAsDefault: true

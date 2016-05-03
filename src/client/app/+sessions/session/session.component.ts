@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { CanDeactivate, ComponentInstruction, RouteParams, Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { CanDeactivate, OnActivate, Router, RouteSegment, RouteTree } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 import { EntityService, ModalService, ToastService } from '../../../app/shared';
@@ -9,19 +9,18 @@ import { Session, SessionService } from '../shared';
   moduleId: __moduleName,
   selector: 'ev-session',
   templateUrl: 'session.component.html',
-  styles: ['.mdl-textfield__label {top: 0;}'],
-  directives: [ROUTER_DIRECTIVES]
+  styles: ['.mdl-textfield__label {top: 0;}']
 })
-export class SessionComponent implements CanDeactivate, OnDestroy, OnInit {
-  private dbResetSubscription: Subscription;
-
+export class SessionComponent implements CanDeactivate, OnActivate, OnDestroy, OnInit {
   @Input() session: Session;
   editSession: Session = <Session>{};
+
+  private dbResetSubscription: Subscription;
+  private id: any;
 
   constructor(
     private entityService: EntityService,
     private modalService: ModalService,
-    private routeParams: RouteParams,
     private router: Router,
     private toastService: ToastService,
     private sessionService: SessionService) { }
@@ -51,8 +50,7 @@ export class SessionComponent implements CanDeactivate, OnDestroy, OnInit {
   }
 
   isAddMode() {
-    let id = +this.routeParams.get('id');
-    return isNaN(id);
+    return isNaN(this.id);
   }
 
   ngOnDestroy() {
@@ -63,15 +61,24 @@ export class SessionComponent implements CanDeactivate, OnDestroy, OnInit {
     componentHandler.upgradeDom();
     this.getSession();
     this.dbResetSubscription = this.sessionService.onDbReset
-      .subscribe(() => {
-        this.getSession();
-      });
+      .subscribe(() => this.getSession());
   }
 
-  routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction) {
-    return !this.session ||
+  routerOnActivate(
+    current: RouteSegment,
+    prev?: RouteSegment,
+    currTree?: RouteTree,
+    prevTree?: RouteTree
+  ) {
+    let id = +current.getParam('id');
+    this.id = id;
+  }
+
+  routerCanDeactivate(currTree?: RouteTree, futureTree?: RouteTree) {
+    let deactivate = !this.session ||
       !this.isDirty() ||
       this.modalService.activate();
+    return <Promise<boolean>>deactivate;
   }
 
   save() {
@@ -90,20 +97,19 @@ export class SessionComponent implements CanDeactivate, OnDestroy, OnInit {
   }
 
   private getSession() {
-    let id = +this.routeParams.get('id');
-    if (id === 0) { return; };
+    if (this.id === 0) { return; };
     if (this.isAddMode()) {
       this.session = <Session>{ name: '', level: '' };
       this.editSession = this.entityService.clone(this.session);
       return;
     }
-    this.sessionService.getSession(id)
+    this.sessionService.getSession(this.id)
       .subscribe((session: Session) => this.setEditSession(session));
   }
 
   private gotoSessions() {
     let id = this.session ? this.session.id : null;
-    let route = ['Sessions', { id: id }];
+    let route = ['/sessions', id];
     this.router.navigate(route);
   }
 

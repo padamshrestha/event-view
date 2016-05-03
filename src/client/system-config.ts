@@ -1,19 +1,26 @@
-const packages = {
+/** Only use System in this file. */
+declare var System: any;
+
+/** Map relative paths to URLs. */
+const map: any = {
+  'app': 'app', // 'dist',
+  'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api'
+};
+
+const packages: any = {
   // Add your custom SystemJS packages here.
   'angular2-in-memory-web-api': { defaultExtension: 'js' },
   'api': { defaultExtension: 'js' },
   'app': { defaultExtension: 'js' },
-  'rxjs': { defaultExtension: 'js' }
+  // 'rxjs': { defaultExtension: 'js' }
 };
 
-const map = {
-  'app': 'app', // 'dist',
-  'rxjs': 'node_modules/rxjs',
-  '@angular': 'node_modules/@angular',
-  'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api'
-};
-
-const packageNames = [
+////////////////////////////////////////////////////////////////////////////////////////////////
+/***********************************************************************************************
+ * Everything underneath this line is managed by the CLI.
+ **********************************************************************************************/
+const barrels = [
+  // Angular specific barrels.
   '@angular/common',
   '@angular/compiler',
   '@angular/core',
@@ -21,10 +28,13 @@ const packageNames = [
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
   '@angular/router',
-  '@angular/testing',
-  '@angular/upgrade',
+  // '@angular/testing',
+  // '@angular/upgrade',
 
-  // custom stuff
+  // Thirdparty barrels.
+  'rxjs',
+
+  // App specific barrels.
   'app',
   'app/+dashboard',
   'app/+dashboard/dashboard-button',
@@ -45,14 +55,25 @@ const packageNames = [
   'app/shared/speaker-services',
   'app/shared/spinner',
   'app/shared/toast'
+  /** @cli-barrel */
 ];
 
-// add package entries for angular packages in the form '@angular/common': { main: 'index.js', defaultExtension: 'js' }
-packageNames.forEach(function (pkgName) {
-  packages[pkgName] = { main: 'index.js', defaultExtension: 'js' };
+const _cliSystemConfig = {};
+barrels.forEach((barrelName: string) => {
+  _cliSystemConfig[barrelName] = { main: 'index' };
 });
 
-export const config = {
-  map: map,
-  packages: packages
-};
+// Apply the CLI SystemJS configuration.
+System.config({
+  map: {
+    // '@angular': 'vendor/@angular',
+    // 'rxjs': 'vendor/rxjs',
+    '@angular': 'node_modules/@angular',
+    'rxjs': 'node_modules/rxjs',
+    'main': 'main.js'
+  },
+  packages: _cliSystemConfig
+});
+
+// Apply the user's configuration.
+System.config({ map, packages });

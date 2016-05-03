@@ -23,8 +23,7 @@
 
   <script>
     System.import('system-config.js')
-      .then(function(systemConfig) { System.config(systemConfig.config); })
-      .then(function () { System.import('main.js') })
+      .then(function () { System.import('main') })
       .catch(console.error.bind(console));
   </script>
 

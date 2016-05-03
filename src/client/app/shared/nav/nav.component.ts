@@ -8,7 +8,7 @@ class MenuItem {
 }
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-nav',
   templateUrl: 'nav.component.html',
   styleUrls: ['nav.component.css'],

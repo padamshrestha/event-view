@@ -6,7 +6,7 @@ import { EntityService, ModalService, ToastService } from '../../../app/shared';
 import { Session, SessionService } from '../shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-session',
   templateUrl: 'session.component.html',
   styles: ['.mdl-textfield__label {top: 0;}']

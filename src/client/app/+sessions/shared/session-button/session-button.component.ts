@@ -5,7 +5,7 @@ import { InitCapsPipe } from '../../../../app/shared';
 import { Session } from '../';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-session-button',
   templateUrl: 'session-button.component.html',
   styles: [`

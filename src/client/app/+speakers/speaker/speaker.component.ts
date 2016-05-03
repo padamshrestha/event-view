@@ -11,7 +11,7 @@ import {
 } from '../../../app/shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-speaker',
   templateUrl: 'speaker.component.html',
   styles: ['.mdl-textfield__label {top: 0;}']

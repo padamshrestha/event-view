@@ -4,7 +4,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Speaker } from '../../../../app/shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-speaker-button',
   templateUrl: 'speaker-button.component.html',
   styles: [`

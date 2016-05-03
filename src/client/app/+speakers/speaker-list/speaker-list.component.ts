@@ -6,7 +6,7 @@ import { FilterService, FilterTextComponent, Speaker, SpeakerService } from '../
 import { SortSpeakersPipe, SpeakerButtonComponent } from '../shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-speakers',
   templateUrl: 'speaker-list.component.html',
   directives: [SpeakerButtonComponent, FilterTextComponent, ROUTER_DIRECTIVES],

@@ -6,7 +6,7 @@ import { DashboardButtonComponent } from './dashboard-button';
 import { Speaker, SpeakerService, ToastService } from '../../app/shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'my-dashboard',
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],

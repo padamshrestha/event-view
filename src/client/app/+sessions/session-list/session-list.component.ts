@@ -6,7 +6,7 @@ import { FilterTextComponent, FilterService } from '../../../app/shared';
 import { Session, SessionService, SessionButtonComponent } from '../shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-sessions',
   templateUrl: 'session-list.component.html',
   directives: [FilterTextComponent, SessionButtonComponent, ROUTER_DIRECTIVES],

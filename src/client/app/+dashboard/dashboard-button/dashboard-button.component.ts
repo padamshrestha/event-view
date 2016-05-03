@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Speaker } from '../../../app/shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'my-dashboard-button',
   template: `
   <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">{{speaker.name}}</button>

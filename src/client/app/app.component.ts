@@ -23,7 +23,7 @@ import {
 } from '../app/shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],

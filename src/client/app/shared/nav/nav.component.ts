@@ -1,5 +1,5 @@
-import { Component, OnInit } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component, OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MessageService, ModalService } from '../';
 
@@ -8,7 +8,7 @@ class MenuItem {
 }
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-nav',
   templateUrl: 'nav.component.html',
   styleUrls: ['nav.component.css'],
@@ -19,9 +19,9 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = [
-      { caption: 'Dashboard', link: ['Dashboard'] },
-      { caption: 'Speakers', link: ['Speakers'] },
-      { caption: 'Sessions', link: ['Sessions'] }
+      { caption: 'Dashboard', link: ['/dashboard'] },
+      { caption: 'Speakers', link: ['/speakers'] },
+      { caption: 'Sessions', link: ['/sessions'] }
     ];
   }
 

@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Output } from 'angular2/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'filter-text',
   templateUrl: 'filter-text.component.html'
 })

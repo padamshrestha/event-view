@@ -1,10 +1,10 @@
-import { Component, Input } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component, Input } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { Speaker } from '../../../../app/shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-speaker-button',
   templateUrl: 'speaker-button.component.html',
   styles: [`

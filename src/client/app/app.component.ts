@@ -1,13 +1,17 @@
-import { Component, provide } from 'angular2/core';
-import { HTTP_PROVIDERS, XHRBackend } from 'angular2/http';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { Component, provide } from '@angular/core';
+import { HTTP_PROVIDERS, XHRBackend } from '@angular/http';
+import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import 'rxjs/Rx'; // load the full rxjs
+
+import { DashboardComponent } from './+dashboard/dashboard.component';
+import { SessionsComponent } from './+sessions/sessions.component';
+import { SpeakersComponent } from './+speakers/speakers.component';
 
 import {
   InMemoryBackendConfig,
   InMemoryBackendService,
   SEED_DATA
-} from 'a2-in-memory-web-api/core';
+} from 'angular2-in-memory-web-api/core';
 import { InMemoryStoryService } from '../api/in-memory-story.service';
 import {
   BLOCK_PROVIDERS,
@@ -19,7 +23,7 @@ import {
 } from '../app/shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
@@ -40,23 +44,14 @@ import {
     BLOCK_PROVIDERS
   ]
 })
-@RouteConfig([
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    loader: () => window['System'].import('app/+dashboard')
-      .then((module: any) => module.DashboardComponent),
-    useAsDefault: true
-  }, {
-    path: '/sessions/...',
-    name: 'Sessions',
-    loader: () => window['System'].import('app/+sessions')
-      .then((module: any) => module.SessionsComponent)
-  }, {
-    path: '/speakers/...',
-    name: 'Speakers',
-    loader: () => window['System'].import('app/+speakers')
-      .then((module: any) => module.SpeakersComponent)
-  }
+@Routes([
+  { path: '/', /* '/dashboard',*/ component: DashboardComponent },
+  { path: '/dashboard', /* '/dashboard',*/ component: DashboardComponent },
+  { path: '/sessions', component: SessionsComponent },
+  { path: '/speakers', component: SpeakersComponent }
 ])
 export class AppComponent { }
+
+// loader: () => window['System'].import('app/+dashboard')
+//   .then((module: any) => module.DashboardComponent),
+// useAsDefault: true

@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit, ViewChild } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 import { FilterService, FilterTextComponent, Speaker, SpeakerService } from '../../../app/shared';
 import { SortSpeakersPipe, SpeakerButtonComponent } from '../shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-speakers',
   templateUrl: 'speaker-list.component.html',
   directives: [SpeakerButtonComponent, FilterTextComponent, ROUTER_DIRECTIVES],

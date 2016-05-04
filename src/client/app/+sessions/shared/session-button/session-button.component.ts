@@ -1,11 +1,11 @@
-import { Component, Input } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component, Input } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { InitCapsPipe } from '../../../../app/shared';
 import { Session } from '../';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-session-button',
   templateUrl: 'session-button.component.html',
   styles: [`

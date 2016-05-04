@@ -1,11 +1,11 @@
-import { Component, OnInit } from 'angular2/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ModalService } from './modal.service';
 
 const KEY_ESC = 27;
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'modal-confirm',
   templateUrl: 'modal.component.html',
   styleUrls: ['modal.component.css']

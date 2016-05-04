@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit } from 'angular2/core';
-import { Router } from 'angular2/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 import { DashboardButtonComponent } from './dashboard-button';
 import { Speaker, SpeakerService, ToastService } from '../../app/shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'my-dashboard',
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
   }
 
   gotoDetail(speaker: Speaker) {
-    let link = ['Speakers', 'Speaker', { id: speaker.id }];
+    let link = ['/speakers', speaker.id];
     this.router.navigate(link);
   }
 

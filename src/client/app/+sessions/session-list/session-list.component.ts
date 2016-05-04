@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit, ViewChild } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 import { FilterTextComponent, FilterService } from '../../../app/shared';
 import { Session, SessionService, SessionButtonComponent } from '../shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-sessions',
   templateUrl: 'session-list.component.html',
   directives: [FilterTextComponent, SessionButtonComponent, ROUTER_DIRECTIVES],

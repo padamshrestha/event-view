@@ -1,5 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from 'angular2/core';
-import { CanDeactivate, ComponentInstruction, RouteParams, Router, ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { CanDeactivate, OnActivate, Router, RouteSegment, RouteTree } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 import {
@@ -11,23 +11,22 @@ import {
 } from '../../../app/shared';
 
 @Component({
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'ev-speaker',
   templateUrl: 'speaker.component.html',
-  styles: ['.mdl-textfield__label {top: 0;}'],
-  directives: [ROUTER_DIRECTIVES]
+  styles: ['.mdl-textfield__label {top: 0;}']
 })
-export class SpeakerComponent implements CanDeactivate, OnDestroy, OnInit {
-  private dbResetSubscription: Subscription;
-
+export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, OnInit {
   @Input() speaker: Speaker;
   editSpeaker: Speaker = <Speaker>{};
+
+  private dbResetSubscription: Subscription;
+  private id: any;
 
   constructor(
     private speakerService: SpeakerService,
     private entityService: EntityService,
     private modalService: ModalService,
-    private routeParams: RouteParams,
     private router: Router,
     private toastService: ToastService) { }
 
@@ -53,8 +52,7 @@ export class SpeakerComponent implements CanDeactivate, OnDestroy, OnInit {
   }
 
   isAddMode() {
-    let id = +this.routeParams.get('id');
-    return isNaN(id);
+    return isNaN(this.id);
   }
 
   ngOnDestroy() {
@@ -68,10 +66,21 @@ export class SpeakerComponent implements CanDeactivate, OnDestroy, OnInit {
       .subscribe(() => this.getSpeaker());
   }
 
-  routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction) {
-    return !this.speaker ||
+  routerOnActivate(
+    current: RouteSegment,
+    prev?: RouteSegment,
+    currTree?: RouteTree,
+    prevTree?: RouteTree
+  ) {
+    let id = +current.getParam('id');
+    this.id = id;
+  }
+
+  routerCanDeactivate(currTree?: RouteTree, futureTree?: RouteTree) {
+    let deactivate = !this.speaker ||
       !this.isDirty() ||
       this.modalService.activate();
+    return <Promise<boolean>>deactivate;
   }
 
   save() {
@@ -90,21 +99,18 @@ export class SpeakerComponent implements CanDeactivate, OnDestroy, OnInit {
   }
 
   private getSpeaker() {
-    let id = +this.routeParams.get('id');
-    if (id === 0) { return; };
+    if (this.id === 0) { return; };
     if (this.isAddMode()) {
       this.speaker = <Speaker>{ name: '', twitter: '' };
       this.editSpeaker = this.entityService.clone(this.speaker);
       return;
     }
-    this.speakerService.getSpeaker(id)
+    this.speakerService.getSpeaker(this.id)
       .subscribe(speaker => this.setEditSpeaker(speaker));
   }
 
   private gotoSpeakers() {
-    let id = this.speaker ? this.speaker.id : null;
-    let route = ['Speakers', { id: id }];
-    this.router.navigate(route);
+    this.router.navigate(['/speakers']);
   }
 
   private isDirty() {

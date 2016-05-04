@@ -110,9 +110,7 @@ export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, O
   }
 
   private gotoSpeakers() {
-    let id = this.speaker ? this.speaker.id : null;
-    let route = ['/speakers', id];
-    this.router.navigate(route);
+    this.router.navigate(['/speakers']);
   }
 
   private isDirty() {

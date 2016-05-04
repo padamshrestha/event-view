@@ -108,9 +108,7 @@ export class SessionComponent implements CanDeactivate, OnActivate, OnDestroy, O
   }
 
   private gotoSessions() {
-    let id = this.session ? this.session.id : null;
-    let route = ['/sessions', id];
-    this.router.navigate(route);
+    this.router.navigate(['/sessions']);
   }
 
   private handleServiceError(op: string, err: any) {

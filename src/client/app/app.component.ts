@@ -46,6 +46,7 @@ import {
 })
 @Routes([
   { path: '/', /* '/dashboard',*/ component: DashboardComponent },
+  { path: '/dashboard', /* '/dashboard',*/ component: DashboardComponent },
   { path: '/sessions', component: SessionsComponent },
   { path: '/speakers', component: SpeakersComponent }
 ])

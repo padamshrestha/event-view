@@ -46,7 +46,10 @@ export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, O
           .subscribe(() => {
             this.toastService.activate(`Deleted ${this.speaker.name}`);
             this.gotoSpeakers();
-          });
+          },
+          (err) => this.handleServiceError('Delete', err), // Failure path
+          () => console.log('Delete Completed') // Completed actions
+          );
       }
     });
   }
@@ -111,6 +114,10 @@ export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, O
 
   private gotoSpeakers() {
     this.router.navigate(['/speakers']);
+  }
+
+  private handleServiceError(op: string, err: any) {
+    console.error(`${op} error: ${err.message || err}`);
   }
 
   private isDirty() {

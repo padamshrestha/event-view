@@ -1,6 +1,6 @@
-/** Only use System in this file. */
-declare var System: any;
-
+/***********************************************************************************************
+ * User Configuration.
+ **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
   'app': 'app', // 'dist',
@@ -62,6 +62,9 @@ const _cliSystemConfig = {};
 barrels.forEach((barrelName: string) => {
   _cliSystemConfig[barrelName] = { main: 'index' };
 });
+
+/** Type declaration for ambient System. */
+declare var System: any;
 
 // Apply the CLI SystemJS configuration.
 System.config({

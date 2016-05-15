@@ -13,8 +13,11 @@
   <link rel="stylesheet" href="app/assets/sprite-av-white.css">
   <link rel="stylesheet" href="app/assets/animate.css">
   <link rel="stylesheet" href="app/assets/app.css">
+</head>
 
-  <!-- Polyfill(s) for older browsers -->
+<body>
+  <ev-app>Loading Event View ...</ev-app>
+
   <script src="node_modules/es6-shim/es6-shim.min.js"></script>
 
   <script src="node_modules/zone.js/dist/zone.js"></script>
@@ -26,11 +29,6 @@
       .then(function () { System.import('main') })
       .catch(console.error.bind(console));
   </script>
-
-</head>
-
-<body>
-  <ev-app>Loading Event View ...</ev-app>
 </body>
 
 </html>

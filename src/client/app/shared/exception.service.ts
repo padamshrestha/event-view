@@ -6,7 +6,6 @@ import { ToastService } from './toast';
 
 @Injectable()
 export class ExceptionService {
-
   constructor(private toastService: ToastService) { }
 
   catchBadResponse: (errorResponse: any) => Observable<any> = (errorResponse: any) => {

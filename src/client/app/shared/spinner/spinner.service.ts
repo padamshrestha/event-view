@@ -7,9 +7,9 @@ export interface ISpinnerState {
 
 @Injectable()
 export class SpinnerService {
-  private spinnerSubject = new Subject<ISpinnerState>();
-
   spinnerState = this.spinnerSubject;
+
+  private spinnerSubject = new Subject<ISpinnerState>();
 
   show() {
     this.spinnerSubject.next(<ISpinnerState>{ show: true });

@@ -11,20 +11,18 @@ export interface IResetMessage {
 
 @Injectable()
 export class MessageService {
-  private subject = new Subject<IResetMessage>();
-
   state = this.subject;
 
-  constructor(private _http: Http,
-    private _toastService: ToastService) {
-  }
+  private subject = new Subject<IResetMessage>();
+
+  constructor(private http: Http, private toastService: ToastService) { }
 
   resetDb() {
     let msg = 'Reset the Data Successfully';
-    this._http.post(CONFIG.baseUrls.resetDb, null)
+    this.http.post(CONFIG.baseUrls.resetDb, null)
       .subscribe(() => {
         this.subject.next({ message: msg });
-        this._toastService.activate(msg);
+        this.toastService.activate(msg);
       });
   }
 }

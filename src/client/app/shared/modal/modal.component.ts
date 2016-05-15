@@ -11,12 +11,6 @@ const KEY_ESC = 27;
   styleUrls: ['modal.component.css']
 })
 export class ModalComponent implements OnInit {
-  private defaults = {
-    title: 'Confirmation',
-    message: 'Do you want to cancel your changes?',
-    cancelText: 'Cancel',
-    okText: 'OK'
-  };
   title: string;
   message: string;
   okText: string;
@@ -24,6 +18,12 @@ export class ModalComponent implements OnInit {
   negativeOnClick: (e: any) => void;
   positiveOnClick: (e: any) => void;
 
+  private defaults = {
+    title: 'Confirmation',
+    message: 'Do you want to cancel your changes?',
+    cancelText: 'Cancel',
+    okText: 'OK'
+  };
   private modalElement: any;
   private cancelButton: any;
   private okButton: any;

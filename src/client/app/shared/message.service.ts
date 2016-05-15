@@ -11,9 +11,9 @@ export interface IResetMessage {
 
 @Injectable()
 export class MessageService {
-  state = this.subject;
-
   private subject = new Subject<IResetMessage>();
+
+  state = this.subject;
 
   constructor(private http: Http, private toastService: ToastService) { }
 

@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 
-export interface ISpinnerState {
+export interface SpinnerState {
   show: boolean;
 }
 
 @Injectable()
 export class SpinnerService {
+  private spinnerSubject = new Subject<SpinnerState>();
+
   spinnerState = this.spinnerSubject;
 
-  private spinnerSubject = new Subject<ISpinnerState>();
-
   show() {
-    this.spinnerSubject.next(<ISpinnerState>{ show: true });
+    this.spinnerSubject.next(<SpinnerState>{ show: true });
   }
 
   hide() {
-    this.spinnerSubject.next(<ISpinnerState>{ show: false });
+    this.spinnerSubject.next(<SpinnerState>{ show: false });
   }
 }

@@ -5,13 +5,13 @@ import { Subject } from 'rxjs/Rx';
 import { CONFIG } from './config';
 import { ToastService } from './toast';
 
-export interface IResetMessage {
+export interface ResetMessage {
   message: string;
 }
 
 @Injectable()
 export class MessageService {
-  private subject = new Subject<IResetMessage>();
+  private subject = new Subject<ResetMessage>();
 
   state = this.subject;
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
+import '../../app/shared/rx-operators';
 
 import { SpeakerComponent } from './speaker';
 import { SpeakerListComponent } from './speaker-list';

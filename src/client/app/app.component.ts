@@ -1,7 +1,6 @@
 import { Component, provide } from '@angular/core';
 import { HTTP_PROVIDERS, XHRBackend } from '@angular/http';
 import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
-import 'rxjs/Rx'; // load the full rxjs
 
 import { DashboardComponent } from './+dashboard/dashboard.component';
 import { SessionsComponent } from './+sessions/sessions.component';

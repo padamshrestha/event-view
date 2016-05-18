@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import '../../app/shared/rx-operators';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 import { DashboardButtonComponent } from './dashboard-button';

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
-import '../../app/shared/rx-operators';
 
 import { SessionComponent } from './session';
 import { SessionListComponent } from './session-list';

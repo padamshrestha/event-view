@@ -10,7 +10,7 @@ import { SpinnerState, SpinnerService } from './spinner.service';
       class="spinner mdl-spinner mdl-js-spinner mdl-spinner--single-color"
       [class.is-active]="visible"></div>
   `,
-  styles: [`.spinner {position: absolute;left: 46%;top: 12%`]
+  styles: [`.spinner {position: absolute;left: 46%;top: 12%}`]
 })
 
 export class SpinnerComponent implements OnDestroy, OnInit {

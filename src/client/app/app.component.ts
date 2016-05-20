@@ -3,9 +3,9 @@ import { HTTP_PROVIDERS, XHRBackend } from '@angular/http';
 import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import './shared/rxjs-operators';
 
-import { DashboardComponent } from './+dashboard/dashboard.component';
-import { SessionsComponent } from './+sessions/sessions.component';
-import { SpeakersComponent } from './+speakers/speakers.component';
+import { DashboardComponent } from './+dashboard';
+import { SessionsComponent } from './+sessions';
+import { SpeakersComponent } from './+speakers';
 
 import {
   InMemoryBackendConfig,

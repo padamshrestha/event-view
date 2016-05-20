@@ -1,8 +1,0 @@
-{
-  "description": "Event View",
-  "files":[
-    "!**/*.d.ts",
-    "!**/*.js"
-  ],
-  "tags": ["tutorial"]
-}

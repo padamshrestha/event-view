@@ -1,27 +1,60 @@
-**/*.map
-src/client/**/*.js
-#src/client/app/**/*.js
-!src/client/app/assets/*.js
-src/client/api/**/*.js
-#src/client/in-memory-backend/**/*.js
-dist
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-node_modules
-jspm_packages
-bower_components
-typings
+# compiled output
+/dist
+/tmp
 
-#tests
-!**/*.e2e.js
-_test-output
-_temp
-src/client/test-help/**/*.js
+# dependencies
+/node_modules
+/bower_components
 
-#!**/*e2e-spec.js
-#!karma*.js
-#!protractor*.js
+# IDEs and editors
+/.idea
 
-plnkr.html
-#plnkr.no-link.html
-
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
 npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db
+
+
+#
+#**/*.map
+#src/client/**/*.js
+##src/client/app/**/*.js
+#!src/client/app/assets/*.js
+#src/client/api/**/*.js
+##src/client/in-memory-backend/**/*.js
+#dist
+#
+#node_modules
+#jspm_packages
+#bower_components
+#typings
+#
+##tests
+#!**/*.e2e.js
+#_test-output
+#_temp
+#src/client/test-help/**/*.js
+#
+##!**/*e2e-spec.js
+##!karma*.js
+##!protractor*.js
+#
+#plnkr.html
+##plnkr.no-link.html
+#
+#npm-debug.log
+#

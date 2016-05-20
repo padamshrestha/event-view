@@ -1,9 +1,0 @@
-{
-  "server": {
-    "baseDir": [
-      "./src/client",
-      "./",
-      "./src/server"
-    ]
-  }
-}

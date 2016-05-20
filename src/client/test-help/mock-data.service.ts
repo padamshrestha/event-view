@@ -1,5 +1,5 @@
 // import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/observable';
 
 import { SPEAKERS } from './mock-speakers';
 import { Speaker, SpeakerService } from '../app/shared';

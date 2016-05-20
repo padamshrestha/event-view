@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/subscription';
 
 import { FilterTextComponent, FilterService } from '../../../app/shared';
 import { Session, SessionService, SessionButtonComponent } from '../shared';

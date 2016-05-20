@@ -3,7 +3,7 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  'app': 'app', // 'dist',
+  // 'app': 'app', // 'dist',
   'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api'
 };
 

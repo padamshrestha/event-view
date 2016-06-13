@@ -3,7 +3,7 @@ import {
   describe,
   expect,
   it,
-  inject
+  inject,
 } from '@angular/core/testing';
 import {EventViewAppComponent} from '../app/event-view.component';
 

@@ -36,9 +36,9 @@ import {
   ],
   providers: [
     HTTP_PROVIDERS,
-    provide(XHRBackend, { useClass: InMemoryBackendService }),
-    provide(SEED_DATA, { useClass: InMemoryStoreService }),
-    provide(InMemoryBackendConfig, { useValue: { delay: 600 } }),
+    provide(XHRBackend, {useClass: InMemoryBackendService}),
+    provide(SEED_DATA, {useClass: InMemoryStoreService}),
+    provide(InMemoryBackendConfig, {useValue: {delay: 600}}),
     ROUTER_PROVIDERS,
     SpeakerService,
     APP_SHARED_PROVIDERS,

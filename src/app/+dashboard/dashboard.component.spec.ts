@@ -39,7 +39,7 @@ describe('Component: Dashboard', () => {
   template: `
     <ev-dashboard></ev-dashboard>
   `,
-  directives: [DashboardComponent]
+  directives: [DashboardComponent],
 })
 class DashboardComponentTestController {
 }

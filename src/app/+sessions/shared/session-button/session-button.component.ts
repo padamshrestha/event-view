@@ -10,7 +10,7 @@ import {Session} from '../';
   templateUrl: 'session-button.component.html',
   styleUrls: ['session-button.component.css'],
   directives: [ROUTER_DIRECTIVES],
-  pipes: [InitCapsPipe]
+  pipes: [InitCapsPipe],
 })
 export class SessionButtonComponent implements OnInit {
   @Input() session: Session;

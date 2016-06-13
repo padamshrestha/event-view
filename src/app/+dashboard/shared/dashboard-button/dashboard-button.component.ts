@@ -6,7 +6,7 @@ import {Speaker} from '../../../../app/shared';
   moduleId: module.id,
   selector: 'ev-dashboard-button',
   templateUrl: 'dashboard-button.component.html',
-  styleUrls: ['dashboard-button.component.css']
+  styleUrls: ['dashboard-button.component.css'],
 })
 export class DashboardButtonComponent implements OnInit {
   @Input() speaker: Speaker;

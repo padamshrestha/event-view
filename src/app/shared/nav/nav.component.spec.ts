@@ -39,7 +39,7 @@ describe('Component: Nav', () => {
   template: `
     <ev-nav></ev-nav>
   `,
-  directives: [NavComponent]
+  directives: [NavComponent],
 })
 class NavComponentTestController {
 }

@@ -39,7 +39,7 @@ describe('Component: Toast', () => {
   template: `
     <ev-toast></ev-toast>
   `,
-  directives: [ToastComponent]
+  directives: [ToastComponent],
 })
 class ToastComponentTestController {
 }

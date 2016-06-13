@@ -14,7 +14,7 @@ import {
   moduleId: module.id,
   selector: 'ev-speaker',
   templateUrl: 'speaker.component.html',
-  styleUrls: ['speaker.component.css']
+  styleUrls: ['speaker.component.css'],
 })
 export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, OnInit {
   @Input() speaker: Speaker;

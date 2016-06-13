@@ -8,7 +8,7 @@ import {Speaker} from '../../../../app/shared';
   selector: 'ev-speaker-button',
   templateUrl: 'speaker-button.component.html',
   styleUrls: ['speaker-button.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES],
 })
 export class SpeakerButtonComponent implements OnInit {
   @Input() speaker: Speaker;

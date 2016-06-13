@@ -39,7 +39,7 @@ describe('Component: Modal', () => {
   template: `
     <ev-modal></ev-modal>
   `,
-  directives: [ModalComponent]
+  directives: [ModalComponent],
 })
 class ModalComponentTestController {
 }

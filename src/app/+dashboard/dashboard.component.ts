@@ -12,7 +12,7 @@ import {Speaker, SpeakerService, ToastService} from '../../app/shared';
   selector: 'ev-dashboard',
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
-  directives: [DashboardButtonComponent]
+  directives: [DashboardButtonComponent],
 })
 export class DashboardComponent implements OnDestroy, OnInit {
   private dbResetSubscription: Subscription;

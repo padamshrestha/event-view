@@ -9,7 +9,7 @@ import {Session, SessionService} from '../shared';
   moduleId: module.id,
   selector: 'ev-session',
   templateUrl: 'session.component.html',
-  styleUrls: ['session.component.css']
+  styleUrls: ['session.component.css'],
 })
 export class SessionComponent implements CanDeactivate, OnActivate, OnDestroy, OnInit {
   @Input() session: Session;

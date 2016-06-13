@@ -42,13 +42,13 @@ import {
     ROUTER_PROVIDERS,
     SpeakerService,
     APP_SHARED_PROVIDERS,
-  ]
+  ],
 })
 @Routes([
   {path: '/', component: DashboardComponent},
   {path: '/dashboard', component: DashboardComponent},
   {path: '/sessions', component: SessionsComponent},
-  {path: '/speakers', component: SpeakersComponent}
+  {path: '/speakers', component: SpeakersComponent},
 ])
 export class EventViewAppComponent {
   constructor(private router: Router) {

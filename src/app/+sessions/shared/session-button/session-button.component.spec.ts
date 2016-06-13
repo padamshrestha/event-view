@@ -39,7 +39,7 @@ describe('Component: SessionButton', () => {
   template: `
     <ev-session-button></ev-session-button>
   `,
-  directives: [SessionButtonComponent]
+  directives: [SessionButtonComponent],
 })
 class SessionButtonComponentTestController {
 }

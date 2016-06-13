@@ -5,7 +5,7 @@ import {ToastService} from './toast.service';
   moduleId: module.id,
   selector: 'ev-toast',
   templateUrl: 'toast.component.html',
-  styleUrls: ['toast.component.css']
+  styleUrls: ['toast.component.css'],
 })
 export class ToastComponent implements OnInit {
   private defaults = {

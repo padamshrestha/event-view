@@ -11,11 +11,11 @@ import {SessionService} from './shared';
   templateUrl: 'sessions.component.html',
   styleUrls: ['sessions.component.css'],
   directives: [ROUTER_DIRECTIVES],
-  providers: [SessionService]
+  providers: [SessionService],
 })
 @Routes([
   {path: '/', component: SessionListComponent},
-  {path: '/:id', component: SessionComponent}
+  {path: '/:id', component: SessionComponent},
 ])
 export class SessionsComponent implements OnInit {
 

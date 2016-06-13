@@ -39,7 +39,7 @@ describe('Component: SessionList', () => {
   template: `
     <ev-session-list></ev-session-list>
   `,
-  directives: [SessionListComponent]
+  directives: [SessionListComponent],
 })
 class SessionListComponentTestController {
 }

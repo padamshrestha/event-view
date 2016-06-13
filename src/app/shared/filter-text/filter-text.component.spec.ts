@@ -39,7 +39,7 @@ describe('Component: FilterText', () => {
   template: `
     <ev-filter-text></ev-filter-text>
   `,
-  directives: [FilterTextComponent]
+  directives: [FilterTextComponent],
 })
 class FilterTextComponentTestController {
 }

@@ -12,16 +12,16 @@ class MenuItem {
   selector: 'ev-nav',
   templateUrl: 'nav.component.html',
   styleUrls: ['nav.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES],
 })
 export class NavComponent implements OnInit {
   menuItems: MenuItem[];
 
   ngOnInit() {
     this.menuItems = [
-      { caption: 'Dashboard', link: ['/dashboard'] },
-      { caption: 'Speakers', link: ['/speakers'] },
-      { caption: 'Sessions', link: ['/sessions'] }
+      {caption: 'Dashboard', link: ['/dashboard']},
+      {caption: 'Speakers', link: ['/speakers']},
+      {caption: 'Sessions', link: ['/sessions']},
     ];
   }
 

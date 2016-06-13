@@ -10,7 +10,7 @@ import {Session, SessionService, SessionButtonComponent} from '../shared';
   selector: 'ev-session-list',
   templateUrl: 'session-list.component.html',
   directives: [FilterTextComponent, SessionButtonComponent, ROUTER_DIRECTIVES],
-  styleUrls: ['session-list.component.css']
+  styleUrls: ['session-list.component.css'],
 })
 export class SessionListComponent implements OnDestroy, OnInit {
   private dbResetSubscription: Subscription;

@@ -11,7 +11,7 @@ import {SortSpeakersPipe, SpeakerButtonComponent} from '../shared';
   templateUrl: 'speaker-list.component.html',
   directives: [SpeakerButtonComponent, FilterTextComponent, ROUTER_DIRECTIVES],
   styleUrls: ['speaker-list.component.css'],
-  pipes: [SortSpeakersPipe]
+  pipes: [SortSpeakersPipe],
 })
 export class SpeakerListComponent implements OnDestroy, OnInit {
   private dbResetSubscription: Subscription;

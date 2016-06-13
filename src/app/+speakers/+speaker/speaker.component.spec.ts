@@ -39,7 +39,7 @@ describe('Component: Speaker', () => {
   template: `
     <ev-speaker></ev-speaker>
   `,
-  directives: [SpeakerComponent]
+  directives: [SpeakerComponent],
 })
 class SpeakerComponentTestController {
 }

@@ -39,7 +39,7 @@ describe('Component: Spinner', () => {
   template: `
     <ev-spinner></ev-spinner>
   `,
-  directives: [SpinnerComponent]
+  directives: [SpinnerComponent],
 })
 class SpinnerComponentTestController {
 }

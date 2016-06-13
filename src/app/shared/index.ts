@@ -33,5 +33,5 @@ export const APP_SHARED_PROVIDERS = [
   MessageService,
   ModalService,
   SpinnerService,
-  ToastService
+  ToastService,
 ];

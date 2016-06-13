@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Routes , ROUTER_DIRECTIVES} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Routes , ROUTER_DIRECTIVES} from '@angular/router';
 
-import { SessionComponent } from './+session';
-import { SessionListComponent } from './+session-list';
-import { SessionService } from './shared';
+import {SessionComponent} from './+session';
+import {SessionListComponent} from './+session-list';
+import {SessionService} from './shared';
 
 @Component({
   moduleId: module.id,

@@ -5,7 +5,7 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { EntityService } from './entity.service';
+import {EntityService} from './entity.service';
 
 describe('Entity Service', () => {
   beforeEachProviders(() => [EntityService]);

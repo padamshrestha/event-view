@@ -5,7 +5,7 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { ExceptionService } from './exception.service';
+import {ExceptionService} from './exception.service';
 
 describe('Exception Service', () => {
   beforeEachProviders(() => [ExceptionService]);

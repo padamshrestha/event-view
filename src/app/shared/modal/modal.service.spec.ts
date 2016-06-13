@@ -5,7 +5,7 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { ModalService } from './modal.service';
+import {ModalService} from './modal.service';
 
 describe('Modal Service', () => {
   beforeEachProviders(() => [ModalService]);

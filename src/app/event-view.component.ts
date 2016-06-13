@@ -1,25 +1,25 @@
-import { Component, provide } from '@angular/core';
-import { HTTP_PROVIDERS, XHRBackend } from '@angular/http';
-import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
-import { Router } from '@angular/router';
+import {Component, provide} from '@angular/core';
+import {HTTP_PROVIDERS, XHRBackend} from '@angular/http';
+import {Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
+import {Router} from '@angular/router';
 import {
   InMemoryBackendConfig,
   InMemoryBackendService,
-  SEED_DATA
+  SEED_DATA,
 } from 'angular2-in-memory-web-api/core';
 
 import './shared/rxjs-operators';
-import { DashboardComponent } from './+dashboard';
-import { SessionsComponent } from './+sessions';
-import { SpeakersComponent } from './+speakers';
-import { InMemoryStoreService } from '../api/in-memory-store.service';
+import {DashboardComponent} from './+dashboard';
+import {SessionsComponent} from './+sessions';
+import {SpeakersComponent} from './+speakers';
+import {InMemoryStoreService} from '../api/in-memory-store.service';
 import {
   APP_SHARED_PROVIDERS,
   ModalComponent,
   NavComponent,
   SpeakerService,
   SpinnerComponent,
-  ToastComponent
+  ToastComponent,
 } from '../app/shared';
 
 @Component({
@@ -32,7 +32,7 @@ import {
     ModalComponent,
     NavComponent,
     SpinnerComponent,
-    ToastComponent
+    ToastComponent,
   ],
   providers: [
     HTTP_PROVIDERS,
@@ -41,7 +41,7 @@ import {
     provide(InMemoryBackendConfig, { useValue: { delay: 600 } }),
     ROUTER_PROVIDERS,
     SpeakerService,
-    APP_SHARED_PROVIDERS
+    APP_SHARED_PROVIDERS,
   ]
 })
 @Routes([

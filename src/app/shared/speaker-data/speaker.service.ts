@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/observable';
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/observable';
 
-import { Speaker } from './speaker.model';
-import { CONFIG, ExceptionService, MessageService, SpinnerService } from '../';
+import {Speaker} from './speaker.model';
+import {CONFIG, ExceptionService, MessageService, SpinnerService} from '../';
 
 let speakersUrl = CONFIG.baseUrls.speakers;
 

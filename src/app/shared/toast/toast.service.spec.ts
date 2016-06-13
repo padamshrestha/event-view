@@ -5,7 +5,7 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { ToastService } from './toast.service';
+import {ToastService} from './toast.service';
 
 describe('Toast Service', () => {
   beforeEachProviders(() => [ToastService]);

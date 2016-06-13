@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Subject } from 'rxjs/subject';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
+import {Subject} from 'rxjs/subject';
 
-import { CONFIG } from './config';
-import { ToastService } from './toast';
+import {CONFIG} from './config';
+import {ToastService} from './toast';
 
 export interface ResetMessage {
   message: string;

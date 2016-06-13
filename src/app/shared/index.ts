@@ -16,14 +16,14 @@ export * from './speaker-data/speaker.model';
 export * from './toast';
 export * from './toast/toast.service';
 
-import { EntityService } from './entity.service';
-import { ExceptionService } from './exception.service';
-import { FilterTextService } from './filter-text';
-import { InitCapsPipe } from './init-caps.pipe';
-import { MessageService } from './message.service';
-import { ModalService } from './modal';
-import { SpinnerService } from './spinner';
-import { ToastService } from './toast';
+import {EntityService} from './entity.service';
+import {ExceptionService} from './exception.service';
+import {FilterTextService} from './filter-text';
+import {InitCapsPipe} from './init-caps.pipe';
+import {MessageService} from './message.service';
+import {ModalService} from './modal';
+import {SpinnerService} from './spinner';
+import {ToastService} from './toast';
 
 export const APP_SHARED_PROVIDERS = [
   EntityService,

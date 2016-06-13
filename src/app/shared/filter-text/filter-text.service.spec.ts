@@ -5,7 +5,7 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { FilterTextService } from './filter-text.service';
+import {FilterTextService} from './filter-text.service';
 
 describe('FilterText Service', () => {
   beforeEachProviders(() => [FilterTextService]);

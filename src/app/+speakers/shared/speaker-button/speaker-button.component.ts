@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
-import { Speaker } from '../../../../app/shared';
+import {Speaker} from '../../../../app/shared';
 
 @Component({
   moduleId: module.id,

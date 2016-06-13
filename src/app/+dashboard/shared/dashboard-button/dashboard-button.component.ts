@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import { Speaker } from '../../../../app/shared';
+import {Speaker} from '../../../../app/shared';
 
 @Component({
   moduleId: module.id,

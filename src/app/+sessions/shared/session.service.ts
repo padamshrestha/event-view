@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/observable';
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/observable';
 
-import { Session } from './session.model';
-import { CONFIG, ExceptionService, MessageService, SpinnerService } from '../../../app/shared';
+import {Session} from './session.model';
+import {CONFIG, ExceptionService, MessageService, SpinnerService} from '../../../app/shared';
 
 let sessionsUrl = CONFIG.baseUrls.sessions;
 

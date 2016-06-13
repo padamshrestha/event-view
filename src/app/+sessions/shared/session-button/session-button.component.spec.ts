@@ -6,10 +6,10 @@ import {
   it,
   inject,
 } from '@angular/core/testing';
-import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
-import { Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { SessionButtonComponent } from './session-button.component';
+import {ComponentFixture, TestComponentBuilder} from '@angular/compiler/testing';
+import {Component} from '@angular/core';
+import {By} from '@angular/platform-browser';
+import {SessionButtonComponent} from './session-button.component';
 
 describe('Component: SessionButton', () => {
   let builder: TestComponentBuilder;

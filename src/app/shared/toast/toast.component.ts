@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ToastService } from './toast.service';
+import {Component, OnInit} from '@angular/core';
+import {ToastService} from './toast.service';
 
 @Component({
   moduleId: module.id,

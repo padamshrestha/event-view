@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { SpeakerListComponent } from './+speaker-list';
-import { Routes , ROUTER_DIRECTIVES} from '@angular/router';
-import { SpeakerComponent } from './+speaker';
+import {Component, OnInit} from '@angular/core';
+import {SpeakerListComponent} from './+speaker-list';
+import {Routes , ROUTER_DIRECTIVES} from '@angular/router';
+import {SpeakerComponent} from './+speaker';
 
 @Component({
   moduleId: module.id,

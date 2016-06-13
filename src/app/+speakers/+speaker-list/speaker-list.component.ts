@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import { Subscription } from 'rxjs/subscription';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ROUTER_DIRECTIVES} from '@angular/router';
+import {Subscription} from 'rxjs/subscription';
 
-import { FilterTextService, FilterTextComponent, Speaker, SpeakerService } from '../../../app/shared';
-import { SortSpeakersPipe, SpeakerButtonComponent } from '../shared';
+import {FilterTextService, FilterTextComponent, Speaker, SpeakerService} from '../../../app/shared';
+import {SortSpeakersPipe, SpeakerButtonComponent} from '../shared';
 
 @Component({
   moduleId: module.id,

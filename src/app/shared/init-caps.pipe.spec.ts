@@ -5,7 +5,7 @@ import {
   inject,
   beforeEachProviders
 } from '@angular/core/testing';
-import { InitCapsPipe } from './init-caps.pipe';
+import {InitCapsPipe} from './init-caps.pipe';
 
 describe('InitCaps Pipe', () => {
   beforeEachProviders(() => [InitCapsPipe]);

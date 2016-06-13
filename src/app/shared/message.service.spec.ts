@@ -5,7 +5,7 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { MessageService } from './message.service';
+import {MessageService} from './message.service';
 
 describe('Message Service', () => {
   beforeEachProviders(() => [MessageService]);

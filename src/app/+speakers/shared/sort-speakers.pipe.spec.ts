@@ -5,7 +5,7 @@ import {
   inject,
   beforeEachProviders
 } from '@angular/core/testing';
-import { SortSpeakersPipe } from './sort-speakers.pipe';
+import {SortSpeakersPipe} from './sort-speakers.pipe';
 
 describe('SortSpeakers Pipe', () => {
   beforeEachProviders(() => [SortSpeakersPipe]);

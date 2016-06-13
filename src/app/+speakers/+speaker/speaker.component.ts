@@ -1,6 +1,6 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { CanDeactivate, OnActivate, Router, RouteSegment, RouteTree } from '@angular/router';
-import { Subscription } from 'rxjs/subscription';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {CanDeactivate, OnActivate, Router, RouteSegment, RouteTree} from '@angular/router';
+import {Subscription} from 'rxjs/subscription';
 
 import {
   EntityService,

@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
-import { Observable } from 'rxjs/observable';
+import {Injectable} from '@angular/core';
+import {Response} from '@angular/http';
+import {Observable} from 'rxjs/observable';
 import 'rxjs/add/observable/of';
 
-import { ToastService } from './toast';
+import {ToastService} from './toast';
 
 @Injectable()
 export class ExceptionService {

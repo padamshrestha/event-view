@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
-import { MessageService, ModalService } from '../';
+import {MessageService, ModalService} from '../';
 
 class MenuItem {
   constructor(public caption: string, public link: any[]) { }

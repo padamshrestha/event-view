@@ -5,7 +5,7 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { SpinnerService } from './spinner.service';
+import {SpinnerService} from './spinner.service';
 
 describe('Spinner Service', () => {
   beforeEachProviders(() => [SpinnerService]);

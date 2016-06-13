@@ -6,10 +6,10 @@ import {
   it,
   inject,
 } from '@angular/core/testing';
-import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
-import { Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { ModalComponent } from './modal.component';
+import {ComponentFixture, TestComponentBuilder} from '@angular/compiler/testing';
+import {Component} from '@angular/core';
+import {By} from '@angular/platform-browser';
+import {ModalComponent} from './modal.component';
 
 describe('Component: Modal', () => {
   let builder: TestComponentBuilder;

@@ -1,4 +1,4 @@
-import { EventViewPage } from './app.po';
+import {EventViewPage} from './app.po';
 
 describe('event-view App', function() {
   let page: EventViewPage;

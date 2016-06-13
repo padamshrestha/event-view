@@ -5,7 +5,7 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { SpeakerService } from './speaker.service';
+import {SpeakerService} from './speaker.service';
 
 describe('Speaker Service', () => {
   beforeEachProviders(() => [SpeakerService]);

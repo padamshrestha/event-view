@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/subscription';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/subscription';
 
-import { SpinnerState, SpinnerService } from './spinner.service';
+import {SpinnerState, SpinnerService} from './spinner.service';
 
 @Component({
   moduleId: module.id,

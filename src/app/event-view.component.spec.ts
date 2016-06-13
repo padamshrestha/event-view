@@ -5,7 +5,7 @@ import {
   it,
   inject
 } from '@angular/core/testing';
-import { EventViewAppComponent } from '../app/event-view.component';
+import {EventViewAppComponent} from '../app/event-view.component';
 
 beforeEachProviders(() => [EventViewAppComponent]);
 

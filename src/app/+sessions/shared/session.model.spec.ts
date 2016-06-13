@@ -1,14 +1,14 @@
 import {
+  beforeEach,
+  beforeEachProviders,
   describe,
-  ddescribe,
   expect,
-  iit,
-  it
+  it,
+  inject
 } from '@angular/core/testing';
+
 import {Session} from './session.model';
 
 describe('Session', () => {
-  it('should create an instance', () => {
-    expect(new Session()).toBeTruthy();
-  });
+  it('should create an instance', () => { expect(new Session()).toBeTruthy(); });
 });

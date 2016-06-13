@@ -1,11 +1,13 @@
+import 'rxjs/add/observable/of';
+
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/observable';
-import 'rxjs/add/observable/of';
 import {Subscription} from 'rxjs/subscription';
 
-import {DashboardButtonComponent} from './shared';
 import {Speaker, SpeakerService, ToastService} from '../../app/shared';
+
+import {DashboardButtonComponent} from './shared';
 
 @Component({
   moduleId: module.id,
@@ -20,16 +22,15 @@ export class DashboardComponent implements OnDestroy, OnInit {
   speakers: Observable<Speaker[]>;
 
   constructor(
-    private speakerService: SpeakerService,
-    private router: Router,
-    private toastService: ToastService) { }
+      private speakerService: SpeakerService,
+      private router: Router,
+      private toastService: ToastService) {}
 
   getSpeakers() {
-    this.speakers = this.speakerService.getSpeakers()
-      .catch(e => {
-        this.toastService.activate(`${e}`);
-        return Observable.of([]);
-      });
+    this.speakers = this.speakerService.getSpeakers().catch(e => {
+      this.toastService.activate(`${e}`);
+      return Observable.of([]);
+    });
   }
 
   gotoDetail(speaker: Speaker) {
@@ -37,17 +38,12 @@ export class DashboardComponent implements OnDestroy, OnInit {
     this.router.navigate(link);
   }
 
-  ngOnDestroy() {
-    this.dbResetSubscription.unsubscribe();
-  }
+  ngOnDestroy() { this.dbResetSubscription.unsubscribe(); }
 
   ngOnInit() {
     this.getSpeakers();
-    this.dbResetSubscription = this.speakerService.onDbReset
-      .subscribe(() => this.getSpeakers());
+    this.dbResetSubscription = this.speakerService.onDbReset.subscribe(() => this.getSpeakers());
   }
 
-  trackBySpeakers(index: number, speaker: Speaker) {
-    return speaker.id;
-  }
+  trackBySpeakers(index: number, speaker: Speaker) { return speaker.id; }
 }

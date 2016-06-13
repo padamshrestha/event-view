@@ -13,6 +13,5 @@ export class DashboardButtonComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

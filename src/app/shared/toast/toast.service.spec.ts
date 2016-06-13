@@ -1,17 +1,17 @@
 import {
+  beforeEach,
   beforeEachProviders,
-  it,
   describe,
   expect,
+  it,
   inject
 } from '@angular/core/testing';
+
 import {ToastService} from './toast.service';
 
 describe('Toast Service', () => {
   beforeEachProviders(() => [ToastService]);
 
   it('should ...',
-      inject([ToastService], (service: ToastService) => {
-    expect(service).toBeTruthy();
-  }));
+     inject([ToastService], (service: ToastService) => { expect(service).toBeTruthy(); }));
 });

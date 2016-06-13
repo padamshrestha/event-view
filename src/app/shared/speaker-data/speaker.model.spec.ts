@@ -1,14 +1,14 @@
 import {
+  beforeEach,
+  beforeEachProviders,
   describe,
-  ddescribe,
   expect,
-  iit,
-  it
+  it,
+  inject
 } from '@angular/core/testing';
+
 import {Speaker} from './speaker.model';
 
 describe('Speaker', () => {
-  it('should create an instance', () => {
-    expect(new Speaker()).toBeTruthy();
-  });
+  it('should create an instance', () => { expect(new Speaker()).toBeTruthy(); });
 });

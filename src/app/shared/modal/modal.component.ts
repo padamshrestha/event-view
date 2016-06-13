@@ -22,7 +22,7 @@ export class ModalComponent implements OnInit {
     title: 'Confirmation',
     message: 'Do you want to cancel your changes?',
     cancelText: 'Cancel',
-    okText: 'OK'
+    okText: 'OK',
   };
   private modalElement: any;
   private cancelButton: any;

@@ -2,7 +2,7 @@ import {
   it,
   describe,
   expect,
-  inject,
+  inject
   beforeEachProviders
 } from '@angular/core/testing';
 import {SortSpeakersPipe} from './sort-speakers.pipe';

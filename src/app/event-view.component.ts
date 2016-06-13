@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {
   InMemoryBackendConfig,
   InMemoryBackendService,
-  SEED_DATA,
+  SEED_DATA
 } from 'angular2-in-memory-web-api/core';
 
 import './shared/rxjs-operators';
@@ -19,7 +19,7 @@ import {
   NavComponent,
   SpeakerService,
   SpinnerComponent,
-  ToastComponent,
+  ToastComponent
 } from '../app/shared';
 
 @Component({

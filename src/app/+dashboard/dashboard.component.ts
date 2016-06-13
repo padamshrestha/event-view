@@ -4,8 +4,8 @@ import {Observable} from 'rxjs/observable';
 import 'rxjs/add/observable/of';
 import {Subscription} from 'rxjs/subscription';
 
-import {DashboardButtonComponent } from './shared';
-import {Speaker, SpeakerService, ToastService } from '../../app/shared';
+import {DashboardButtonComponent} from './shared';
+import {Speaker, SpeakerService, ToastService} from '../../app/shared';
 
 @Component({
   moduleId: module.id,

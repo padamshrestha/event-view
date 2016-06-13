@@ -1,1 +1,1 @@
-export { SessionButtonComponent } from './session-button.component';
+export {SessionButtonComponent} from './session-button.component';

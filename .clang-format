@@ -5,10 +5,12 @@ BasedOnStyle:    Google
 # My preferences
 ############################
 ColumnLimit:     100
-AllowShortFunctionsOnASingleLine: true
+#AllowShortFunctionsOnASingleLine: true
 
 # False allows function parameters to be on their own line
 BinPackParameters: false
 
 # max 1 empty line
 MaxEmptyLinesToKeep: 1
+
+#WrapJavaScriptImports: false

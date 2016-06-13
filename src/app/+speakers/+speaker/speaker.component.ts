@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {CanDeactivate, OnActivate, Router, RouteSegment, RouteTree} from '@angular/router';
+import {CanDeactivate, OnActivate, RouteSegment, RouteTree, Router} from '@angular/router';
 import {Subscription} from 'rxjs/subscription';
 
 import {
@@ -9,7 +9,6 @@ import {
   SpeakerService,
   ToastService
 } from '../../../app/shared';
-
 @Component({
   moduleId: module.id,
   selector: 'ev-speaker',
@@ -24,11 +23,11 @@ export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, O
   private id: any;
 
   constructor(
-    private speakerService: SpeakerService,
-    private entityService: EntityService,
-    private modalService: ModalService,
-    private router: Router,
-    private toastService: ToastService) { }
+      private speakerService: SpeakerService,
+      private entityService: EntityService,
+      private modalService: ModalService,
+      private router: Router,
+      private toastService: ToastService) {}
 
   cancel(showToast = true) {
     this.editSpeaker = this.entityService.clone(this.speaker);
@@ -37,19 +36,20 @@ export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, O
     }
   }
 
-  delete() {
+  delete () {
     let msg = `Do you want to delete ${this.speaker.name}?`;
     this.modalService.activate(msg).then(responseOK => {
       if (responseOK) {
         this.cancel(false);
         this.speakerService.deleteSpeaker(this.speaker)
-          .subscribe(() => {
-            this.toastService.activate(`Deleted ${this.speaker.name}`);
-            this.gotoSpeakers();
-          },
-          (err) => this.handleServiceError('Delete', err), // Failure path
-          () => console.log('Delete Completed') // Completed actions
-          );
+            .subscribe(
+                () => {
+                  this.toastService.activate(`Deleted ${this.speaker.name}`);
+                  this.gotoSpeakers();
+                },
+                (err) => this.handleServiceError('Delete', err),  // Failure path
+                () => console.log('Delete Completed')             // Completed actions
+                );
       }
     });
   }
@@ -65,16 +65,14 @@ export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, O
   ngOnInit() {
     componentHandler.upgradeDom();
     this.getSpeaker();
-    this.dbResetSubscription = this.speakerService.onDbReset
-      .subscribe(() => this.getSpeaker());
+    this.dbResetSubscription = this.speakerService.onDbReset.subscribe(() => this.getSpeaker());
   }
 
   routerOnActivate(
     current: RouteSegment,
     prev?: RouteSegment,
     currTree?: RouteTree,
-    prevTree?: RouteTree
-  ) {
+    prevTree?: RouteTree) {
     let id = +current.getParam('id');
     this.id = id;
   }
@@ -102,9 +100,9 @@ export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, O
   }
 
   private getSpeaker() {
-    if (this.id === 0) { return; };
+    if (this.id === 0) {return;};
     if (this.isAddMode()) {
-      this.speaker = <Speaker>{ name: '', twitter: '' };
+      this.speaker = <Speaker>{name: '', twitter: ''};
       this.editSpeaker = this.entityService.clone(this.speaker);
       return;
     }

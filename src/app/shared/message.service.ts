@@ -15,13 +15,14 @@ export class MessageService {
 
   state = this.subject;
 
-  constructor(private http: Http, private toastService: ToastService) { }
+  constructor(private http: Http, private toastService: ToastService) {}
 
   resetDb() {
     let msg = 'Reset the Data Successfully';
-    this.http.post(CONFIG.baseUrls.resetDb, null)
+    this.http
+      .post(CONFIG.baseUrls.resetDb, null)
       .subscribe(() => {
-        this.subject.next({ message: msg });
+        this.subject.next({message: msg});
         this.toastService.activate(msg);
       });
   }

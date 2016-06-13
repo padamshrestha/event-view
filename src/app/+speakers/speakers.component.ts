@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {SpeakerListComponent} from './+speaker-list';
-import {Routes , ROUTER_DIRECTIVES} from '@angular/router';
+import {ROUTER_DIRECTIVES, Routes} from '@angular/router';
+
 import {SpeakerComponent} from './+speaker';
+import {SpeakerListComponent} from './+speaker-list';
 
 @Component({
   moduleId: module.id,
@@ -15,10 +16,7 @@ import {SpeakerComponent} from './+speaker';
   {path: '/:id', component: SpeakerComponent},
 ])
 export class SpeakersComponent implements OnInit {
-
   constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

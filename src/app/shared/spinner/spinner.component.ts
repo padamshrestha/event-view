@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/subscription';
 
-import {SpinnerState, SpinnerService} from './spinner.service';
+import {SpinnerService, SpinnerState} from './spinner.service';
 
 @Component({
   moduleId: module.id,
@@ -14,7 +14,7 @@ export class SpinnerComponent implements OnDestroy, OnInit {
 
   private spinnerStateChanged: Subscription;
 
-  constructor(private spinnerService: SpinnerService) { }
+  constructor(private spinnerService: SpinnerService) {}
 
   ngOnInit() {
     componentHandler.upgradeDom();

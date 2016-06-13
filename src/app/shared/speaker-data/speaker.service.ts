@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/observable';
 
-import {Speaker} from './speaker.model';
 import {CONFIG, ExceptionService, MessageService, SpinnerService} from '../';
+
+import {Speaker} from './speaker.model';
 
 let speakersUrl = CONFIG.baseUrls.speakers;
 
@@ -11,21 +12,21 @@ let speakersUrl = CONFIG.baseUrls.speakers;
 export class SpeakerService {
   onDbReset = this.messageService.state;
 
-  constructor(private http: Http,
-    private exceptionService: ExceptionService,
-    private messageService: MessageService,
-    private spinnerService: SpinnerService) {
+  constructor(
+      private http: Http,
+      private exceptionService: ExceptionService,
+      private messageService: MessageService,
+      private spinnerService: SpinnerService) {
     this.messageService.state.subscribe(state => this.getSpeakers());
   }
 
   addSpeaker(speaker: Speaker) {
     let body = JSON.stringify(speaker);
     this.spinnerService.show();
-    return <Observable<Speaker>>this.http
-      .post(`${speakersUrl}`, body)
-      .map(res => res.json().data)
-      .catch(this.exceptionService.catchBadResponse)
-      .finally(() => this.spinnerService.hide());
+    return <Observable<Speaker>>this.http.post(`${speakersUrl}`, body)
+        .map(res => res.json().data)
+        .catch(this.exceptionService.catchBadResponse)
+        .finally(() => this.spinnerService.hide());
   }
 
   deleteSpeaker(speaker: Speaker) {

@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Subscription} from 'rxjs/subscription';
 
-import {FilterTextService, FilterTextComponent, Speaker, SpeakerService} from '../../../app/shared';
+import {FilterTextComponent, FilterTextService, Speaker, SpeakerService} from '../../../app/shared';
 import {SortSpeakersPipe, SpeakerButtonComponent} from '../shared';
 
 @Component({
@@ -20,21 +20,20 @@ export class SpeakerListComponent implements OnDestroy, OnInit {
   filteredSpeakers = this.speakers;
   @ViewChild(FilterTextComponent) filterComponent: FilterTextComponent;
 
-  constructor(private speakerService: SpeakerService,
-    private filterService: FilterTextService) { }
+  constructor(private speakerService: SpeakerService, private filterService: FilterTextService) {}
 
   filterChanged(searchText: string) {
-    this.filteredSpeakers = this.filterService.filter(searchText, ['id', 'name', 'twitter'], this.speakers);
+    this.filteredSpeakers =
+        this.filterService.filter(searchText, ['id', 'name', 'twitter'], this.speakers);
   }
 
   getSpeakers() {
     this.speakers = [];
 
-    this.speakerService.getSpeakers()
-      .subscribe(speakers => {
-        this.speakers = this.filteredSpeakers = speakers;
-        this.filterComponent.clear();
-      });
+    this.speakerService.getSpeakers().subscribe(speakers => {
+      this.speakers = this.filteredSpeakers = speakers;
+      this.filterComponent.clear();
+    });
   }
 
   ngOnDestroy() {

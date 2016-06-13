@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 
-import {InitCapsPipe} from '../../../../app/shared';
 import {Session} from '../';
+import {InitCapsPipe} from '../../../../app/shared';
 
 @Component({
   moduleId: module.id,
@@ -17,7 +17,5 @@ export class SessionButtonComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

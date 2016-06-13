@@ -4,7 +4,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 import {MessageService, ModalService} from '../';
 
 class MenuItem {
-  constructor(public caption: string, public link: any[]) { }
+  constructor(public caption: string, public link: any[]) {}
 }
 
 @Component({
@@ -25,10 +25,7 @@ export class NavComponent implements OnInit {
     ];
   }
 
-  constructor(
-    private messageService: MessageService,
-    private modalService: ModalService) {
-  }
+  constructor(private messageService: MessageService, private modalService: ModalService) {}
 
   resetDb() {
     let msg = 'Are you sure you want to reset the database?';

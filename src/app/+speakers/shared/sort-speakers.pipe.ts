@@ -4,7 +4,9 @@ import {Speaker} from '../../../app/shared';
 @Pipe({name: 'sortSpeakers'})
 export class SortSpeakersPipe implements PipeTransform {
   transform(value: Speaker[], args?: any[]) {
-    if (!value || !value.sort) { return value; }
+    if (!value || !value.sort) {
+      return value;
+    }
 
     return value.sort((a: Speaker, b: Speaker) => {
       if (a.name < b.name) {return -1;}

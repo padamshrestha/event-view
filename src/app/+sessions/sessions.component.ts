@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Routes , ROUTER_DIRECTIVES} from '@angular/router';
+import {ROUTER_DIRECTIVES, Routes} from '@angular/router';
 
 import {SessionComponent} from './+session';
 import {SessionListComponent} from './+session-list';
@@ -18,10 +18,7 @@ import {SessionService} from './shared';
   {path: '/:id', component: SessionComponent},
 ])
 export class SessionsComponent implements OnInit {
-
   constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

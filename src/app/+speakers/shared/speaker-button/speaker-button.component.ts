@@ -15,7 +15,5 @@ export class SpeakerButtonComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

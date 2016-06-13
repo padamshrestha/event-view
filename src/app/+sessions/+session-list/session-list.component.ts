@@ -3,7 +3,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Subscription} from 'rxjs/subscription';
 
 import {FilterTextComponent, FilterTextService} from '../../../app/shared';
-import {Session, SessionService, SessionButtonComponent} from '../shared';
+import {Session, SessionButtonComponent, SessionService} from '../shared';
 
 @Component({
   moduleId: module.id,
@@ -19,28 +19,25 @@ export class SessionListComponent implements OnDestroy, OnInit {
   filteredSessions = this.sessions;
   @ViewChild(FilterTextComponent) filterComponent: FilterTextComponent;
 
-  constructor(
-    private filterService: FilterTextService,
-    private sessionService: SessionService) { }
+  constructor(private filterService: FilterTextService, private sessionService: SessionService) {}
 
   filterChanged(searchText: string) {
-    this.filteredSessions = this.filterService.filter(searchText, ['id', 'name', 'type'], this.sessions);
+    this.filteredSessions =
+        this.filterService.filter(searchText, ['id', 'name', 'type'], this.sessions);
   }
 
   getSessions() {
     this.sessions = [];
-    this.sessionService.getSessions()
-      .subscribe(sessions => {
-        this.sessions = this.filteredSessions = sessions;
-        this.filterComponent.clear();
-      },
-      error => {
-        console.log('error occurred here');
-        console.log(error);
-      },
-       () => {
-        console.log('completed');
-      });
+    this.sessionService.getSessions().subscribe(
+        sessions => {
+          this.sessions = this.filteredSessions = sessions;
+          this.filterComponent.clear();
+        },
+        error => {
+          console.log('error occurred here');
+          console.log(error);
+        },
+        () => { console.log('completed'); });
   }
 
   ngOnDestroy() {

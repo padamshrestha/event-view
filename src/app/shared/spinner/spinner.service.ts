@@ -12,10 +12,10 @@ export class SpinnerService {
   spinnerState = this.spinnerSubject;
 
   show() {
-    this.spinnerSubject.next(<SpinnerState>{ show: true });
+    this.spinnerSubject.next(<SpinnerState>{show: true});
   }
 
   hide() {
-    this.spinnerSubject.next(<SpinnerState>{ show: false });
+    this.spinnerSubject.next(<SpinnerState>{show: false});
   }
 }

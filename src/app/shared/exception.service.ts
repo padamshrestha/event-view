@@ -1,13 +1,14 @@
+import 'rxjs/add/observable/of';
+
 import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
 import {Observable} from 'rxjs/observable';
-import 'rxjs/add/observable/of';
 
 import {ToastService} from './toast';
 
 @Injectable()
 export class ExceptionService {
-  constructor(private toastService: ToastService) { }
+  constructor(private toastService: ToastService) {}
 
   catchBadResponse: (errorResponse: any) => Observable<any> = (errorResponse: any) => {
     let res = <Response>errorResponse;

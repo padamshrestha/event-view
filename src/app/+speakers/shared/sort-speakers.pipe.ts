@@ -9,8 +9,12 @@ export class SortSpeakersPipe implements PipeTransform {
     }
 
     return value.sort((a: Speaker, b: Speaker) => {
-      if (a.name < b.name) {return -1;}
-      if (a.name > b.name) {return 1;}
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
       return 0;
     });
   }

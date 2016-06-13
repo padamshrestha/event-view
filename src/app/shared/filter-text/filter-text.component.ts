@@ -16,9 +16,7 @@ export class FilterTextComponent {
     componentHandler.upgradeDom();
   }
 
-  clear() {
-    this.filter = '';
-  }
+  clear() { this.filter = ''; }
 
   filterChanged(event: any) {
     event.preventDefault();

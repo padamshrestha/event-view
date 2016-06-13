@@ -1,12 +1,4 @@
-import {
-  beforeEach,
-  beforeEachProviders,
-  describe,
-  expect,
-  it,
-  inject
-} from '@angular/core/testing';
-
+import {beforeEach, beforeEachProviders, describe, expect, inject, it} from '@angular/core/testing';
 
 import {ExceptionService} from './exception.service';
 

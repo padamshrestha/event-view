@@ -11,7 +11,8 @@ import {Session, SessionService} from '../shared';
   templateUrl: 'session.component.html',
   styleUrls: ['session.component.css'],
 })
-export class SessionComponent implements CanDeactivate, OnActivate, OnDestroy, OnInit {
+export class SessionComponent implements CanDeactivate,
+    OnActivate, OnDestroy, OnInit {
   @Input() session: Session;
   editSession: Session = <Session>{};
 
@@ -50,26 +51,18 @@ export class SessionComponent implements CanDeactivate, OnActivate, OnDestroy, O
     });
   }
 
-  isAddMode() {
-    return isNaN(this.id);
-  }
+  isAddMode() { return isNaN(this.id); }
 
-  ngOnDestroy() {
-    this.dbResetSubscription.unsubscribe();
-  }
+  ngOnDestroy() { this.dbResetSubscription.unsubscribe(); }
 
   ngOnInit() {
     componentHandler.upgradeDom();
     this.getSession();
-    this.dbResetSubscription = this.sessionService.onDbReset
-      .subscribe(() => this.getSession());
+    this.dbResetSubscription = this.sessionService.onDbReset.subscribe(() => this.getSession());
   }
 
   routerOnActivate(
-    current: RouteSegment,
-    prev?: RouteSegment,
-    currTree?: RouteTree,
-    prevTree?: RouteTree) {
+      current: RouteSegment, prev?: RouteSegment, currTree?: RouteTree, prevTree?: RouteTree) {
     let id = +current.getParam('id');
     this.id = id;
   }

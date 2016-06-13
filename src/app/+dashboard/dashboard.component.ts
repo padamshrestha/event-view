@@ -16,7 +16,8 @@ import {DashboardButtonComponent} from './shared';
   styleUrls: ['dashboard.component.css'],
   directives: [DashboardButtonComponent],
 })
-export class DashboardComponent implements OnDestroy, OnInit {
+export class DashboardComponent implements OnDestroy,
+    OnInit {
   private dbResetSubscription: Subscription;
 
   speakers: Observable<Speaker[]>;

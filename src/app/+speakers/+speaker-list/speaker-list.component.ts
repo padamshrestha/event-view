@@ -13,7 +13,8 @@ import {SortSpeakersPipe, SpeakerButtonComponent} from '../shared';
   styleUrls: ['speaker-list.component.css'],
   pipes: [SortSpeakersPipe],
 })
-export class SpeakerListComponent implements OnDestroy, OnInit {
+export class SpeakerListComponent implements OnDestroy,
+    OnInit {
   private dbResetSubscription: Subscription;
 
   speakers: Speaker[] = [];
@@ -36,18 +37,13 @@ export class SpeakerListComponent implements OnDestroy, OnInit {
     });
   }
 
-  ngOnDestroy() {
-    this.dbResetSubscription.unsubscribe();
-  }
+  ngOnDestroy() { this.dbResetSubscription.unsubscribe(); }
 
   ngOnInit() {
     componentHandler.upgradeDom();
     this.getSpeakers();
-    this.dbResetSubscription = this.speakerService.onDbReset
-      .subscribe(() => this.getSpeakers());
+    this.dbResetSubscription = this.speakerService.onDbReset.subscribe(() => this.getSpeakers());
   }
 
-  trackBySpeakers(index: number, speaker: Speaker) {
-    return speaker.id;
-  }
+  trackBySpeakers(index: number, speaker: Speaker) { return speaker.id; }
 }

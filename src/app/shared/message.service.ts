@@ -5,9 +5,7 @@ import {Subject} from 'rxjs/subject';
 import {CONFIG} from './config';
 import {ToastService} from './toast';
 
-export interface ResetMessage {
-  message: string;
-}
+export interface ResetMessage { message: string; }
 
 @Injectable()
 export class MessageService {
@@ -19,11 +17,9 @@ export class MessageService {
 
   resetDb() {
     let msg = 'Reset the Data Successfully';
-    this.http
-      .post(CONFIG.baseUrls.resetDb, null)
-      .subscribe(() => {
-        this.subject.next({message: msg});
-        this.toastService.activate(msg);
-      });
+    this.http.post(CONFIG.baseUrls.resetDb, null).subscribe(() => {
+      this.subject.next({message: msg});
+      this.toastService.activate(msg);
+    });
   }
 }

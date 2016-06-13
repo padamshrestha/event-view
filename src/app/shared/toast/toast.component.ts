@@ -17,9 +17,7 @@ export class ToastComponent implements OnInit {
   title: string;
   message: string;
 
-  constructor(toastService: ToastService) {
-    toastService.activate = this.activate.bind(this);
-  }
+  constructor(toastService: ToastService) { toastService.activate = this.activate.bind(this); }
 
   activate(message = this.defaults.message, title = this.defaults.title) {
     this.title = title;
@@ -27,9 +25,7 @@ export class ToastComponent implements OnInit {
     this.show();
   }
 
-  ngOnInit() {
-    this.toastElement = document.getElementById('toast');
-  }
+  ngOnInit() { this.toastElement = document.getElementById('toast'); }
 
   private show() {
     console.log(this.message);

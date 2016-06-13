@@ -9,7 +9,8 @@ import {SpinnerService, SpinnerState} from './spinner.service';
   templateUrl: 'spinner.component.html',
   styleUrls: ['spinner.component.css'],
 })
-export class SpinnerComponent implements OnDestroy, OnInit {
+export class SpinnerComponent implements OnDestroy,
+    OnInit {
   visible = false;
 
   private spinnerStateChanged: Subscription;
@@ -18,11 +19,9 @@ export class SpinnerComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     componentHandler.upgradeDom();
-    this.spinnerStateChanged = this.spinnerService.spinnerState
-      .subscribe((state: SpinnerState) => this.visible = state.show);
+    this.spinnerStateChanged = this.spinnerService.spinnerState.subscribe(
+        (state: SpinnerState) => this.visible = state.show);
   }
 
-  ngOnDestroy() {
-    this.spinnerStateChanged.unsubscribe();
-  }
+  ngOnDestroy() { this.spinnerStateChanged.unsubscribe(); }
 }

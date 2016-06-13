@@ -28,9 +28,7 @@ export class ModalComponent implements OnInit {
   private cancelButton: any;
   private okButton: any;
 
-  constructor(modalService: ModalService) {
-    modalService.activate = this.activate.bind(this);
-  }
+  constructor(modalService: ModalService) { modalService.activate = this.activate.bind(this); }
 
   activate(message = this.defaults.message, title = this.defaults.title) {
     this.title = title;

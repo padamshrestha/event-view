@@ -12,7 +12,8 @@ import {Session, SessionButtonComponent, SessionService} from '../shared';
   directives: [FilterTextComponent, SessionButtonComponent, ROUTER_DIRECTIVES],
   styleUrls: ['session-list.component.css'],
 })
-export class SessionListComponent implements OnDestroy, OnInit {
+export class SessionListComponent implements OnDestroy,
+    OnInit {
   private dbResetSubscription: Subscription;
 
   sessions: Session[];
@@ -40,18 +41,13 @@ export class SessionListComponent implements OnDestroy, OnInit {
         () => { console.log('completed'); });
   }
 
-  ngOnDestroy() {
-    this.dbResetSubscription.unsubscribe();
-  }
+  ngOnDestroy() { this.dbResetSubscription.unsubscribe(); }
 
   ngOnInit() {
     componentHandler.upgradeDom();
     this.getSessions();
-    this.dbResetSubscription = this.sessionService.onDbReset
-      .subscribe(() => this.getSessions());
+    this.dbResetSubscription = this.sessionService.onDbReset.subscribe(() => this.getSessions());
   }
 
-  trackBySessions(index: number, session: Session) {
-    return session.id;
-  }
+  trackBySessions(index: number, session: Session) { return session.id; }
 }

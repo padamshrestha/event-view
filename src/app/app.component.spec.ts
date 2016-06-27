@@ -5,18 +5,18 @@ import {
   it,
   inject
 } from '@angular/core/testing';
-import { EventViewAppComponent } from '../app/event-view.component';
+import { AppComponent } from '../app/app.component';
 
-beforeEachProviders(() => [EventViewAppComponent]);
+beforeEachProviders(() => [AppComponent]);
 
 describe('App: EventView', () => {
   it('should create the app',
-      inject([EventViewAppComponent], (app: EventViewAppComponent) => {
+      inject([AppComponent], (app: AppComponent) => {
     expect(app).toBeTruthy();
   }));
 
   // it('should have as title \'event-view works!\'',
-  //     inject([EventViewAppComponent], (app: EventViewAppComponent) => {
+  //     inject([AppComponent], (app: AppComponent) => {
   //   expect(app.title).toEqual('event-view works!');
   // }));
 });

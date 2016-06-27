@@ -3,36 +3,28 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  'angular2-in-memory-web-api': 'vendor/angular2-in-memory-web-api',
+  'app' : 'app',
+
+  'main': 'main.js',
+  '@angular' : 'node_modules/@angular',
+  'angular2-in-memory-web-api' : 'node_modules/angular2-in-memory-web-api',
+  'rxjs' : 'node_modules/rxjs'
 };
 
-/** User packages configuration. */
+// packages tells the System loader how to load when no filename and/or no
+// extension
 const packages: any = {
-  'angular2-in-memory-web-api': { defaultExtension: 'js', main: 'index' },
-  'api': { defaultExtension: 'js' },
-  'app': { defaultExtension: 'js' },
+  'app' : {main : 'main.js', defaultExtension : 'js'},
+  'api' : {defaultExtension : 'js'},
+  'rxjs' : {defaultExtension : 'js'},
+  'angular2-in-memory-web-api' : {main : 'index.js', defaultExtension : 'js'},
 };
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-/***********************************************************************************************
- * Everything underneath this line is managed by the CLI.
- **********************************************************************************************/
-const barrels: string[] = [
-  // Angular specific barrels.
-  '@angular/core',
-  '@angular/common',
-  '@angular/compiler',
-  '@angular/http',
-  '@angular/router',
-  '@angular/platform-browser',
-  '@angular/platform-browser-dynamic',
-
-  // Thirdparty barrels.
-  'rxjs',
-
+const barrels: any = [
   // App specific barrels.
-  'app',
+  // 'app',
   'app/shared',
+  'app/shared/auth',
   'app/shared/filter-text',
   'app/shared/modal',
   'app/shared/nav',
@@ -52,26 +44,82 @@ const barrels: string[] = [
   'app/+speakers/+speaker',
   'app/+speakers/shared',
   'app/+speakers/shared/speaker-button',
-  /** @cli-barrel */
 ];
 
-const cliSystemConfigPackages: any = {};
 barrels.forEach((barrelName: string) => {
-  cliSystemConfigPackages[barrelName] = { main: 'index' };
+  packages[barrelName] = { main: 'index' };
 });
 
-/** Type declaration for ambient System. */
+////////////////////////////////////////////////////////////////////////////////////////////////
+/***********************************************************************************************
+ * Everything underneath this line is managed by the CLI.
+ **********************************************************************************************/
+
+const ngPackageNames: string[] = [
+  'common',
+  'compiler',
+  'core',
+  'forms',
+  'http',
+  'platform-browser',
+  'platform-browser-dynamic',
+  'router',
+  'router-deprecated',
+  'upgrade',
+];
+
+// Individual files (~300 requests):
+function packIndex(pkgName) {
+  packages['@angular/' + pkgName] = {
+    main : 'index.js',
+    defaultExtension : 'js'
+  };
+}
+
+// Bundled (~40 requests):
+function packUmd(pkgName) {
+  packages['@angular/' + pkgName] = {
+    main : '/bundles/' + pkgName + '.umd.js',
+    defaultExtension : 'js'
+  };
+}
+
 declare var System: any;
 
-// Apply the CLI SystemJS configuration.
-System.config({
-  map: {
-    '@angular': 'vendor/@angular',
-    'rxjs': 'vendor/rxjs',
-    'main': 'main.js'
-  },
-  packages: cliSystemConfigPackages
-});
+// Most environments should use UMD; some (Karma) need the individual index
+// files
+var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
 
-// Apply the user's configuration.
-System.config({ map, packages });
+// Add package entries for angular packages
+ngPackageNames.forEach(setPackageConfig);
+
+// No umd for router yet
+packages['@angular/router'] = {
+  main : 'index.js',
+  defaultExtension : 'js'
+};
+
+var config = {map : map, packages : packages};
+
+System.config(config);
+
+// const cliSystemConfigPackages: any = {};
+// barrels.forEach((barrelName: string) => {
+//   cliSystemConfigPackages[barrelName] = { main: 'index' };
+// });
+
+// /** Type declaration for ambient System. */
+// declare var System: any;
+
+// // Apply the CLI SystemJS configuration.
+// System.config({
+//   map: {
+//     '@angular': 'vendor/@angular',
+//     'rxjs': 'vendor/rxjs',
+//     'main': 'main.js'
+//   },
+//   packages: cliSystemConfigPackages
+// });
+
+// // Apply the user's configuration.
+// System.config({ map, packages });

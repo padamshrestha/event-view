@@ -1,9 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { CanDeactivate, OnActivate, Router, RouteSegment, RouteTree } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/subscription';
 
 import {
   EntityService,
+  GuardService,
   ModalService,
   Speaker,
   SpeakerService,
@@ -16,18 +17,21 @@ import {
   templateUrl: 'speaker.component.html',
   styleUrls: ['speaker.component.css']
 })
-export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, OnInit {
+export class SpeakerComponent implements OnDestroy, OnInit {
   @Input() speaker: Speaker;
   editSpeaker: Speaker = <Speaker>{};
 
   private dbResetSubscription: Subscription;
   private id: any;
+  private routerSub: any;
 
   constructor(
-    private speakerService: SpeakerService,
     private entityService: EntityService,
+    private guardService: GuardService,
     private modalService: ModalService,
+    private route: ActivatedRoute,
     private router: Router,
+    private speakerService: SpeakerService,
     private toastService: ToastService) { }
 
   cancel(showToast = true) {
@@ -35,6 +39,13 @@ export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, O
     if (showToast) {
       this.toastService.activate(`Cancelled changes to ${this.speaker.name}`);
     }
+  }
+
+  canDeactivate() {
+    let deactivate = !this.speaker ||
+      !this.isDirty() ||
+      this.modalService.activate();
+    return this.guardService.canDeactivate(deactivate);
   }
 
   delete() {
@@ -60,30 +71,20 @@ export class SpeakerComponent implements CanDeactivate, OnActivate, OnDestroy, O
 
   ngOnDestroy() {
     this.dbResetSubscription.unsubscribe();
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
   }
 
   ngOnInit() {
     componentHandler.upgradeDom();
-    this.getSpeaker();
     this.dbResetSubscription = this.speakerService.onDbReset
       .subscribe(() => this.getSpeaker());
-  }
 
-  routerOnActivate(
-    current: RouteSegment,
-    prev?: RouteSegment,
-    currTree?: RouteTree,
-    prevTree?: RouteTree
-  ) {
-    let id = +current.getParam('id');
-    this.id = id;
-  }
-
-  routerCanDeactivate(currTree?: RouteTree, futureTree?: RouteTree) {
-    let deactivate = !this.speaker ||
-      !this.isDirty() ||
-      this.modalService.activate();
-    return <Promise<boolean>>deactivate;
+    this.routerSub = this.route.params.subscribe(params => {
+      this.id = +params['id'];
+      this.getSpeaker();
+    });
   }
 
   save() {

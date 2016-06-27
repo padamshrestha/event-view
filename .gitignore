@@ -29,13 +29,15 @@ testem.log
 Thumbs.db
 
 
-#
-#**/*.map
-#src/client/**/*.js
-##src/client/app/**/*.js
-#!src/client/app/assets/*.js
-#src/client/api/**/*.js
-##src/client/in-memory-backend/**/*.js
+# ignore js and map files
+**/*.map
+src/**/*.js
+src/app/**/*.js
+!src/app/assets/*.js
+src/api/**/*.js
+
+
+
 #dist
 #
 #node_modules

@@ -4,7 +4,7 @@ import 'rxjs/add/observable/fromPromise';
 
 @Injectable()
 export class GuardService {
-  canDeactivate(deactivate): Observable<boolean> | boolean {
+  canDeactivate(deactivate: Promise<boolean> | boolean ): Observable<boolean> | boolean {
     let p = Promise.resolve(deactivate);
     let o = Observable.fromPromise(p);
     return o;

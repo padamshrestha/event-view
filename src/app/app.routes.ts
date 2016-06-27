@@ -1,17 +1,17 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 
-import { DashboardRoutes } from './+dashboard/dashboard.routes';
-import { SessionsRoutes } from './+sessions/sessions.routes';
-import { SpeakersRoutes } from './+speakers/speakers.routes';
-
-import { AuthGuard, AUTH_PROVIDERS } from './shared';
+import { DashboardRoutes } from './+dashboard';
+import { LoginRoutes } from './+login';
+import { SessionsRoutes } from './+sessions';
+import { SpeakersRoutes } from './+speakers';
 import { CanDeactivateGuard } from './app.interfaces';
+import { AUTH_PROVIDERS } from './auth';
 
 export const routes: RouterConfig = [
-  // {path: '/', component: DashboardComponent},
   ...DashboardRoutes,
   ...SessionsRoutes,
   ...SpeakersRoutes,
+  ...LoginRoutes,
 ];
 
 export const APP_ROUTER_PROVIDERS = [

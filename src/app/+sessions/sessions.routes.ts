@@ -1,18 +1,13 @@
 import { RouterConfig }          from '@angular/router';
 
-import { SessionListComponent }     from './+session-list/session-list.component';
-import { SessionComponent }     from './+session/session.component';
-import { SessionsComponent }     from './sessions.component';
+import { SessionListComponent } from './+session-list/session-list.component';
+import { SessionComponent } from './+session/session.component';
+import { SessionsComponent } from './sessions.component';
 
-import { AuthGuard }    from '../shared';
-import { CanDeactivateGuard }    from '../app.interfaces';
+import { CanDeactivateGuard } from '../app.interfaces';
+import { AuthGuard } from '../auth';
 
 export const SessionsRoutes: RouterConfig = [
-  // {
-  //   path: '',
-  //   redirectTo: '/sessions',
-  //   terminal: true
-  // },
   {
     path: 'sessions',
     component: SessionsComponent,
@@ -25,6 +20,7 @@ export const SessionsRoutes: RouterConfig = [
       {
         path: ':id',
         component: SessionComponent,
+        canActivate: [AuthGuard],
         canDeactivate: [CanDeactivateGuard]
       },
     ]

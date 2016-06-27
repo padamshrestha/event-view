@@ -1,18 +1,13 @@
-import { RouterConfig }          from '@angular/router';
+import { RouterConfig } from '@angular/router';
 
-import { SpeakerListComponent }     from './+speaker-list/speaker-list.component';
-import { SpeakerComponent }     from './+speaker/speaker.component';
-import { SpeakersComponent }     from './speakers.component';
+import { SpeakerListComponent } from './+speaker-list/speaker-list.component';
+import { SpeakerComponent } from './+speaker/speaker.component';
+import { SpeakersComponent } from './speakers.component';
 
-import { AuthGuard }    from '../shared';
-import { CanDeactivateGuard }    from '../app.interfaces';
+import { CanDeactivateGuard } from '../app.interfaces';
+import { AuthGuard } from '../auth';
 
 export const SpeakersRoutes: RouterConfig = [
-  // {
-  //   path: '',
-  //   redirectTo: '/speakers',
-  //   terminal: true
-  // },
   {
     path: 'speakers',
     component: SpeakersComponent,
@@ -25,6 +20,7 @@ export const SpeakersRoutes: RouterConfig = [
       {
         path: ':id',
         component: SpeakerComponent,
+        canActivate: [AuthGuard],
         canDeactivate: [CanDeactivateGuard]
       },
     ]

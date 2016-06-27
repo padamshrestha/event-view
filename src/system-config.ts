@@ -22,9 +22,8 @@ const packages: any = {
 
 const barrels: any = [
   // App specific barrels.
-  // 'app',
+  'app/auth',
   'app/shared',
-  'app/shared/auth',
   'app/shared/filter-text',
   'app/shared/modal',
   'app/shared/nav',
@@ -34,6 +33,7 @@ const barrels: any = [
   'app/+dashboard',
   'app/+dashboard/shared',
   'app/+dashboard/shared/dashboard-button',
+  'app/+login',
   'app/+sessions',
   'app/+sessions/+session-list',
   'app/+sessions/+session',

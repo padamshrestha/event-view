@@ -3,8 +3,7 @@
   <div>
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--3-col"
-        *ngFor="let speaker of speakers | async"
-        *ngForTrackBy="trackBySpeakers"
+        *ngFor="let speaker of speakers | async;trackBy:trackBySpeakers"
         (click)="gotoDetail(speaker)">
         <ev-dashboard-button [speaker]="speaker"></ev-dashboard-button>
       </div>

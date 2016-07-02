@@ -6,7 +6,7 @@
   <ev-filter-text (changed)="filterChanged($event)"></ev-filter-text>
 
   <ul class="sessions">
-    <li *ngFor="let session of filteredSessions" *ngForTrackBy="trackBySessions">
+    <li *ngFor="let session of filteredSessions;trackBy:trackBySessions">
       <ev-session-button [session]="session"></ev-session-button>
     </li>
   </ul>

@@ -19,8 +19,8 @@ export const SessionsRoutes: RouterConfig = [
       {
         path: ':id',
         component: SessionComponent,
-        // canActivate: [CanActivateAuthGuard],
-        // canDeactivate: [CanDeactivateGuard]
+        canActivate: [CanActivateAuthGuard],
+        canDeactivate: [CanDeactivateGuard]
       },
     ]
   },

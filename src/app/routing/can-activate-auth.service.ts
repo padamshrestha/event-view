@@ -6,17 +6,17 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 
-import { AuthService } from './auth.service';
+import { UserProfileService } from '../shared';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+export class CanActivateAuthGuard implements CanActivate {
+  constructor(private userProfileService: UserProfileService, private router: Router) { }
 
   canActivate(
-    next:  ActivatedRouteSnapshot,
+    next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) {
-    if (this.authService.isLoggedIn) {
+    if (this.userProfileService.isLoggedIn) {
       return true;
     }
     this.router.navigate(['/login']);

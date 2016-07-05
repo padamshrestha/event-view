@@ -22,7 +22,7 @@ const packages: any = {
 
 const barrels: any = [
   // App specific barrels.
-  'app/auth',
+  'app/routing',
   'app/shared',
   'app/shared/filter-text',
   'app/shared/modal',

@@ -2,8 +2,9 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { EntityService, GuardService, ModalService, ToastService } from '../../../app/shared';
+import { EntityService, ModalService, ToastService } from '../../../app/shared';
 import { Session, SessionService } from '../shared';
+import { CanComponentDeactivate } from '../../routing';
 
 @Component({
   moduleId : module.id,
@@ -11,7 +12,7 @@ import { Session, SessionService } from '../shared';
   templateUrl : 'session.component.html',
   styleUrls : [ 'session.component.css' ]
 })
-export class SessionComponent implements OnDestroy, OnInit {
+export class SessionComponent implements OnDestroy, OnInit, CanComponentDeactivate {
   @Input() session: Session;
   editSession: Session = <Session>{};
 
@@ -20,7 +21,6 @@ export class SessionComponent implements OnDestroy, OnInit {
   private routerSub: any;
 
   constructor(private entityService: EntityService,
-    private guardService: GuardService,
     private modalService: ModalService,
     private route: ActivatedRoute,
     private router: Router,
@@ -35,10 +35,9 @@ export class SessionComponent implements OnDestroy, OnInit {
   }
 
   canDeactivate() {
-    let deactivate = !this.session ||
+    return !this.session ||
       !this.isDirty() ||
       this.modalService.activate();
-    return this.guardService.canDeactivate(deactivate);
   }
 
   delete () {

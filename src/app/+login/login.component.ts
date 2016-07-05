@@ -1,31 +1,36 @@
-import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component } from '@angular/core';
+import { Router  } from '@angular/router';
 
-import {AuthService} from '../auth';
-import {SpinnerService} from '../shared';
+import { LoginService } from './login.service';
+import { SpinnerService, UserProfileService } from '../shared';
 
-@Component({moduleId : module.id, templateUrl : 'login.component.html'})
+@Component({
+  moduleId: module.id,
+  templateUrl: 'login.component.html',
+  providers: [LoginService]
+})
 export class LoginComponent {
   message: string;
 
-  constructor(private authService: AuthService,
+  constructor(
+    private loginService: LoginService,
     private router: Router,
-    private spinnerService: SpinnerService) {
+    private spinnerService: SpinnerService,
+    private userProfileService: UserProfileService) {
     this.setMessage();
   }
 
-  setMessage() {
-    this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-    this.spinnerService.hide();
+  public get isLoggedIn() : boolean {
+    return this.userProfileService.isLoggedIn;
   }
 
   login() {
     this.spinnerService.show();
     this.message = 'Trying to log in ...';
 
-    this.authService.login().subscribe(() => {
+    this.loginService.login().subscribe(() => {
       this.setMessage();
-      if (this.authService.isLoggedIn) {
+      if (this.userProfileService.isLoggedIn) {
         // Todo: capture where the user was going and nav there.
         // Meanwhile redirect the user to the dashboard
         this.router.navigate([ '/dashboard' ]);
@@ -35,7 +40,12 @@ export class LoginComponent {
 
   logout() {
     this.spinnerService.show();
-    this.authService.logout();
+    this.loginService.logout();
     this.setMessage();
+  }
+
+  private setMessage() {
+    this.message = 'Logged ' + (this.userProfileService.isLoggedIn ? 'in' : 'out');
+    this.spinnerService.hide();
   }
 }

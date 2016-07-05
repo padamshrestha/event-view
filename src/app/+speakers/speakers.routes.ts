@@ -3,24 +3,23 @@ import { RouterConfig } from '@angular/router';
 import { SpeakerListComponent } from './+speaker-list/speaker-list.component';
 import { SpeakerComponent } from './+speaker/speaker.component';
 import { SpeakersComponent } from './speakers.component';
-
-import { CanDeactivateGuard } from '../app.interfaces';
-import { AuthGuard } from '../auth';
+import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
 
 export const SpeakersRoutes: RouterConfig = [
   {
     path: 'speakers',
     component: SpeakersComponent,
+    // canActivate: [CanActivateAuthGuard],
     children: [
       {
         path: '',
         component: SpeakerListComponent,
-        canActivate: [AuthGuard]
+        // canActivate: [CanActivateAuthGuard]
       },
       {
         path: ':id',
         component: SpeakerComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [CanActivateAuthGuard],
         canDeactivate: [CanDeactivateGuard]
       },
     ]

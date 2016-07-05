@@ -7,7 +7,7 @@ import {
   SEED_DATA
 } from 'angular2-in-memory-web-api';
 
-import './shared/rxjs-operators';
+import './shared/rxjs-extensions';
 import { InMemoryStoreService } from '../api/in-memory-store.service';
 import {
   APP_SHARED_PROVIDERS,

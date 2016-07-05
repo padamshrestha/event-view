@@ -39,7 +39,7 @@ export class SessionListComponent implements OnDestroy, OnInit {
         console.log(error);
       },
        () => {
-        console.log('completed');
+        console.log('session retrieval completed');
       });
   }
 

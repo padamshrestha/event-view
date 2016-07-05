@@ -2,9 +2,10 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
+import { CanComponentDeactivate } from '../../routing';
+
 import {
   EntityService,
-  GuardService,
   ModalService,
   Speaker,
   SpeakerService,
@@ -17,7 +18,7 @@ import {
   templateUrl: 'speaker.component.html',
   styleUrls: ['speaker.component.css']
 })
-export class SpeakerComponent implements OnDestroy, OnInit {
+export class SpeakerComponent implements OnDestroy, OnInit, CanComponentDeactivate {
   @Input() speaker: Speaker;
   editSpeaker: Speaker = <Speaker>{};
 
@@ -27,7 +28,6 @@ export class SpeakerComponent implements OnDestroy, OnInit {
 
   constructor(
     private entityService: EntityService,
-    private guardService: GuardService,
     private modalService: ModalService,
     private route: ActivatedRoute,
     private router: Router,
@@ -42,10 +42,9 @@ export class SpeakerComponent implements OnDestroy, OnInit {
   }
 
   canDeactivate() {
-    let deactivate = !this.speaker ||
+    return !this.speaker ||
       !this.isDirty() ||
       this.modalService.activate();
-    return this.guardService.canDeactivate(deactivate);
   }
 
   delete() {

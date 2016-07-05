@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 
 import { Session } from './session.model';
 import { CONFIG, ExceptionService, MessageService, SpinnerService } from '../../../app/shared';

@@ -8,7 +8,18 @@ export interface CanComponentDeactivate {
 export class CanDeactivateGuard implements CanDeactivate<CanComponentDeactivate> {
   canDeactivate(component: CanComponentDeactivate): Observable<boolean> | boolean {
     // run the function for canDeactivate and if its a promise or a boolean we handle it either way
-    return component.canDeactivate ? this.toObservable(component.canDeactivate()) : true;
+
+    // return true;
+
+    // if (component.canDeactivate) {
+    //   let deactivate = component.canDeactivate();
+    //   return this.toObservable(deactivate);
+    // } else {
+    //   return true;
+    // }
+
+    return component.canDeactivate ?
+      this.toObservable(component.canDeactivate()) : true;
   }
 
   private toObservable(deactivate: Promise<boolean> | boolean ): Observable<boolean> | boolean {

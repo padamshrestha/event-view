@@ -14,12 +14,12 @@ export const SpeakersRoutes: RouterConfig = [
       {
         path: '',
         component: SpeakerListComponent,
-        // canActivate: [CanActivateAuthGuard]
+        canActivate: [CanActivateAuthGuard]
       },
       {
         path: ':id',
         component: SpeakerComponent,
-        // canActivate: [CanActivateAuthGuard],
+        canActivate: [CanActivateAuthGuard],
         canDeactivate: [CanDeactivateGuard]
       },
     ]

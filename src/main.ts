@@ -2,7 +2,7 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 
 import { AppComponent } from './app/app.component';
-import { APP_ROUTER_PROVIDERS } from './app/routing';
+import { APP_ROUTER_PROVIDERS } from './app/routing/app.routes';
 import { environment } from './app/environment';
 
 if (environment.production) {

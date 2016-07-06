@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router  } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { LoginService } from './login.service';
 import { SpinnerService, UserProfileService } from '../shared';
@@ -9,11 +9,14 @@ import { SpinnerService, UserProfileService } from '../shared';
   templateUrl: 'login.component.html',
   providers: [LoginService]
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy, OnInit {
   message: string;
+
+  private redirectTo: any[];
 
   constructor(
     private loginService: LoginService,
+    private route: ActivatedRoute,
     private router: Router,
     private spinnerService: SpinnerService,
     private userProfileService: UserProfileService) {
@@ -31,9 +34,8 @@ export class LoginComponent {
     this.loginService.login().subscribe(() => {
       this.setMessage();
       if (this.userProfileService.isLoggedIn) {
-        // Todo: capture where the user was going and nav there.
-        // Meanwhile redirect the user to the dashboard
-        this.router.navigate([ '/dashboard' ]);
+        let url = this.redirectTo || [ '/dashboard' ];
+        this.router.navigate(url);
       }
     });
   }
@@ -42,6 +44,10 @@ export class LoginComponent {
     this.spinnerService.show();
     this.loginService.logout();
     this.setMessage();
+  }
+
+  ngOnInit() {
+    this.redirectTo = [this.router.routerState.snapshot.queryParams.redirectTo];
   }
 
   private setMessage() {

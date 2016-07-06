@@ -24,7 +24,6 @@ export class SpeakerComponent implements OnDestroy, OnInit, CanComponentDeactiva
 
   private dbResetSubscription: Subscription;
   private id: any;
-  private routerSub: any;
 
   constructor(
     private entityService: EntityService,
@@ -70,9 +69,6 @@ export class SpeakerComponent implements OnDestroy, OnInit, CanComponentDeactiva
 
   ngOnDestroy() {
     this.dbResetSubscription.unsubscribe();
-    if (this.routerSub) {
-      this.routerSub.unsubscribe();
-    }
   }
 
   ngOnInit() {
@@ -80,10 +76,8 @@ export class SpeakerComponent implements OnDestroy, OnInit, CanComponentDeactiva
     this.dbResetSubscription = this.speakerService.onDbReset
       .subscribe(() => this.getSpeaker());
 
-    this.routerSub = this.route.params.subscribe(params => {
-      this.id = +params['id'];
-      this.getSpeaker();
-    });
+    let id = +this.route.snapshot.params['id'];
+    this.getSpeaker();
   }
 
   save() {

@@ -5,7 +5,7 @@ import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
 export const DashboardRoutes: RouterConfig = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: 'dashboard', // could do /dashboard, but we are already at this level
     pathMatch: 'full'
   },
   {

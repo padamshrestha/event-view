@@ -76,7 +76,11 @@ export class SpeakerComponent implements OnDestroy, OnInit, CanComponentDeactiva
     this.dbResetSubscription = this.speakerService.onDbReset
       .subscribe(() => this.getSpeaker());
 
-    let id = +this.route.snapshot.params['id'];
+    // Could use a snapshot here, as long as the parameters do not change.
+    // This may happen when a component is re-used.
+    // this.id = +this.route.snapshot.params['id'];
+    this.route.params.subscribe(params => this.id = params['id']);
+
     this.getSpeaker();
   }
 

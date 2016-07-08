@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import { LoginService } from './login.service';
 import { SpinnerService, UserProfileService } from '../shared';
@@ -13,6 +14,7 @@ export class LoginComponent implements OnDestroy, OnInit {
   message: string;
 
   private redirectTo: any[];
+  private routerQueryParamSub: Subscription;
 
   constructor(
     private loginService: LoginService,
@@ -46,8 +48,16 @@ export class LoginComponent implements OnDestroy, OnInit {
     this.setMessage();
   }
 
+  ngOnDestroy() {
+    this.routerQueryParamSub.unsubscribe();
+  }
+
   ngOnInit() {
-    this.redirectTo = [this.router.routerState.snapshot.queryParams.redirectTo];
+    // Could use a snapshot here, as long as the parameters do not change.
+    // This may happen when a component is re-used.
+    // this.redirectTo = [this.router.routerState.snapshot.queryParams.redirectTo];
+    this.routerQueryParamSub = this.router.routerState.queryParams
+      .subscribe(qp => this.redirectTo = [qp['redirectTo']]);
   }
 
   private setMessage() {

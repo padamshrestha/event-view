@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -11,9 +11,10 @@ import { UserProfileService } from '../shared';
   templateUrl: 'login.component.html',
   providers: [LoginService]
 })
-export class LoginComponent implements OnDestroy, OnInit {
+export class LoginComponent implements OnDestroy {
   private redirectTo: any[];
-  private routerQueryParamSub: Subscription;
+  // private routerQueryParamSub: Subscription;
+  private loginSub: Subscription;
 
   constructor(
     private loginService: LoginService,
@@ -28,12 +29,16 @@ export class LoginComponent implements OnDestroy, OnInit {
   }
 
   login() {
-    this.loginService
+    let queryParams = this.router.routerState.queryParams;
+
+    this.loginSub = this.loginService
       .login()
-      .subscribe(() => {
+      .mergeMap(loginResult => queryParams)
+      .map(qp => [qp['redirectTo']])
+      .subscribe(redirectTo => {
+        this.toastService.activate(`Successfully logged in`);
         if (this.userProfileService.isLoggedIn) {
-          this.toastService.activate(`Successfully logged in`);
-          let url = this.redirectTo || [ '/dashboard' ];
+          let url = redirectTo || [ '/dashboard' ];
           this.router.navigate(url);
         }
       });
@@ -45,17 +50,6 @@ export class LoginComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy() {
-    this.routerQueryParamSub.unsubscribe();
-  }
-
-  ngOnInit() {
-    // Could use a snapshot here, as long as the parameters do not change.
-    // This may happen when a component is re-used.
-    // this.redirectTo = [this.router.routerState.snapshot.queryParams.redirectTo];
-    this.routerQueryParamSub = this.router.routerState
-      .queryParams
-      .map(qp => [qp['redirectTo']])
-      // .do(redirectTo => this.redirectTo = redirectTo)
-      .subscribe(redirectTo => this.redirectTo = redirectTo);
+    this.loginSub.unsubscribe();
   }
 }

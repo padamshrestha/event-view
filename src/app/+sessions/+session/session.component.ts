@@ -74,22 +74,8 @@ export class SessionComponent implements OnDestroy, OnInit, CanComponentDeactiva
     this.route
       .params
       .map(params => params['id'])
-      .subscribe(id => this.id = id);
-
-    this.getSession();
-
-    // this.sub = this.route
-    //   .params
-    //   .map(params => params['id'])
-    //   .mergeMap((id) => this.service.getCrisis(id))
-    //   .subscribe(crisis => {
-    //     if (crisis) {
-    //       this.editName = crisis.name;
-    //       this.crisis = crisis;
-    //     } else { // id not found
-    //       this.gotoCrises();
-    //     }
-    //   });
+      .do(id => this.id = id)
+      .subscribe(id => this.getSession());
   }
 
   save() {

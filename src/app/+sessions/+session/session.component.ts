@@ -71,9 +71,25 @@ export class SessionComponent implements OnDestroy, OnInit, CanComponentDeactiva
     // Could use a snapshot here, as long as the parameters do not change.
     // This may happen when a component is re-used.
     // this.id = +this.route.snapshot.params['id'];
-    this.route.params.subscribe(params => this.id = params['id']);
+    this.route
+      .params
+      .map(params => params['id'])
+      .subscribe(id => this.id = id);
 
     this.getSession();
+
+    // this.sub = this.route
+    //   .params
+    //   .map(params => params['id'])
+    //   .mergeMap((id) => this.service.getCrisis(id))
+    //   .subscribe(crisis => {
+    //     if (crisis) {
+    //       this.editName = crisis.name;
+    //       this.crisis = crisis;
+    //     } else { // id not found
+    //       this.gotoCrises();
+    //     }
+    //   });
   }
 
   save() {

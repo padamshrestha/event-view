@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { LoginService } from './login.service';
-import { SpinnerService, UserProfileService } from '../shared';
+import { ToastService } from '../../app/shared';
+import { UserProfileService } from '../shared';
 
 @Component({
   moduleId: module.id,
@@ -11,8 +12,6 @@ import { SpinnerService, UserProfileService } from '../shared';
   providers: [LoginService]
 })
 export class LoginComponent implements OnDestroy, OnInit {
-  message: string;
-
   private redirectTo: any[];
   private routerQueryParamSub: Subscription;
 
@@ -20,9 +19,8 @@ export class LoginComponent implements OnDestroy, OnInit {
     private loginService: LoginService,
     private route: ActivatedRoute,
     private router: Router,
-    private spinnerService: SpinnerService,
+    private toastService: ToastService,
     private userProfileService: UserProfileService) {
-    this.setMessage();
   }
 
   public get isLoggedIn() : boolean {
@@ -30,22 +28,20 @@ export class LoginComponent implements OnDestroy, OnInit {
   }
 
   login() {
-    this.spinnerService.show();
-    this.message = 'Trying to log in ...';
-
-    this.loginService.login().subscribe(() => {
-      this.setMessage();
-      if (this.userProfileService.isLoggedIn) {
-        let url = this.redirectTo || [ '/dashboard' ];
-        this.router.navigate(url);
-      }
-    });
+    this.loginService
+      .login()
+      .subscribe(() => {
+        if (this.userProfileService.isLoggedIn) {
+          this.toastService.activate(`Successfully logged in`);
+          let url = this.redirectTo || [ '/dashboard' ];
+          this.router.navigate(url);
+        }
+      });
   }
 
   logout() {
-    this.spinnerService.show();
     this.loginService.logout();
-    this.setMessage();
+    this.toastService.activate(`Successfully logged out`);
   }
 
   ngOnDestroy() {
@@ -56,12 +52,10 @@ export class LoginComponent implements OnDestroy, OnInit {
     // Could use a snapshot here, as long as the parameters do not change.
     // This may happen when a component is re-used.
     // this.redirectTo = [this.router.routerState.snapshot.queryParams.redirectTo];
-    this.routerQueryParamSub = this.router.routerState.queryParams
-      .subscribe(qp => this.redirectTo = [qp['redirectTo']]);
-  }
-
-  private setMessage() {
-    this.message = 'Logged ' + (this.userProfileService.isLoggedIn ? 'in' : 'out');
-    this.spinnerService.hide();
+    this.routerQueryParamSub = this.router.routerState
+      .queryParams
+      .map(qp => [qp['redirectTo']])
+      // .do(redirectTo => this.redirectTo = redirectTo)
+      .subscribe(redirectTo => this.redirectTo = redirectTo);
   }
 }

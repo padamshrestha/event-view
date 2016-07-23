@@ -1,7 +1,7 @@
 import { RouterConfig }          from '@angular/router';
 
-import { SessionListComponent } from './+session-list/session-list.component';
-import { SessionComponent } from './+session/session.component';
+import { SessionListComponent } from './session-list/session-list.component';
+import { SessionComponent } from './session/session.component';
 import { SessionsComponent } from './sessions.component';
 import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
 

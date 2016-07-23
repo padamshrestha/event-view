@@ -1,7 +1,7 @@
 import { RouterConfig } from '@angular/router';
 
-import { SpeakerListComponent } from './+speaker-list/speaker-list.component';
-import { SpeakerComponent } from './+speaker/speaker.component';
+import { SpeakerListComponent } from './speaker-list/speaker-list.component';
+import { SpeakerComponent } from './speaker/speaker.component';
 import { SpeakersComponent } from './speakers.component';
 import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
 

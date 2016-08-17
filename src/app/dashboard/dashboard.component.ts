@@ -4,15 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { Subscription } from 'rxjs/Subscription';
 
-import { DashboardButtonComponent } from './shared';
 import { Speaker, SpeakerService, ToastService } from '../../app/shared';
 
 @Component({
   moduleId: module.id,
   selector: 'ev-dashboard',
   templateUrl: 'dashboard.component.html',
-  styleUrls: ['dashboard.component.css'],
-  directives: [DashboardButtonComponent]
+  styleUrls: ['dashboard.component.css']
 })
 export class DashboardComponent implements OnDestroy, OnInit {
   private dbResetSubscription: Subscription;

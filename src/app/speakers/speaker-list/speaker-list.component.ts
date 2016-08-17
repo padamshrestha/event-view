@@ -1,17 +1,13 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Subscription } from 'rxjs/subscription';
 
 import { FilterTextService, FilterTextComponent, Speaker, SpeakerService } from '../../../app/shared';
-import { SortSpeakersPipe, SpeakerButtonComponent } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'ev-speaker-list',
   templateUrl: 'speaker-list.component.html',
-  directives: [SpeakerButtonComponent, FilterTextComponent, ROUTER_DIRECTIVES],
   styleUrls: ['speaker-list.component.css'],
-  pipes: [SortSpeakersPipe]
 })
 export class SpeakerListComponent implements OnDestroy, OnInit {
   private dbResetSubscription: Subscription;

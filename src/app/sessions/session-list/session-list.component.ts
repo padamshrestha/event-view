@@ -1,15 +1,13 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { FilterTextComponent, FilterTextService } from '../../../app/shared';
-import { Session, SessionService, SessionButtonComponent } from '../shared';
+import { Session, SessionService } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'ev-session-list',
   templateUrl: 'session-list.component.html',
-  directives: [FilterTextComponent, SessionButtonComponent, ROUTER_DIRECTIVES],
   styleUrls: ['session-list.component.css']
 })
 export class SessionListComponent implements OnDestroy, OnInit {

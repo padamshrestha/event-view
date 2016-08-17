@@ -1,4 +1,5 @@
-import { provideRouter, RouterConfig } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+// import { provideRouter, RouterConfig } from '@angular/router';
 
 import { CanActivateAuthGuard } from './can-activate-auth.service';
 import { CanDeactivateGuard } from './can-deactivate.service';
@@ -8,16 +9,25 @@ import { SessionsRoutes } from '../sessions';
 import { SpeakersRoutes } from '../speakers';
 import { UserProfileService } from '../shared';
 
-export const routes: RouterConfig = [
+export const routes: Routes = [
   ...DashboardRoutes,
   ...SessionsRoutes,
   ...SpeakersRoutes,
   ...LoginRoutes,
 ];
 
+export const routing = RouterModule.forRoot(routes);
+
 export const APP_ROUTER_PROVIDERS = [
-  provideRouter(routes),
   CanActivateAuthGuard,
   CanDeactivateGuard,
   UserProfileService
 ];
+///////
+// export const routing = RouterModule.forRoot(routes);
+
+// export const routes: Routes = [
+//   { path: '', redirectTo: 'contact', pathMatch: 'full'},
+//   { path: 'crisis', loadChildren: 'app/crisis/crisis.module' },
+//   { path: 'heroes', loadChildren: 'app/hero/hero.module' }
+// ];

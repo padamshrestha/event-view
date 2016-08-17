@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Speaker } from '../../../app/models';
 
 @Pipe({ name: 'sortSpeakers' })

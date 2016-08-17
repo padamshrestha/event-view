@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 
-export const dashboardRoutes: Routes = [
+const routes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard', // could do /dashboard, but we are already at this level
@@ -13,6 +13,6 @@ export const dashboardRoutes: Routes = [
   },
 ];
 
-export const routing = RouterModule.forRoot(dashboardRoutes);
+export const routing = RouterModule.forChild(routes);
 
-export const routedComponents = dashboardRoutes.filter(r => r.component != undefined).map(r => r.component)
+export const routedComponents = routes.filter(r => r.component != undefined).map(r => r.component)

@@ -3,9 +3,7 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend } from '@angular/http';
 
-// Import all components for this module
 import { AppComponent }   from './app.component';
-import { SpeakerComponent, SpeakerButtonComponent, SpeakersComponent, SpeakerListComponent } from './speakers';
 
 import './shared/rxjs-extensions';
 import {
@@ -16,12 +14,12 @@ import {
 import { InMemoryStoreService } from '../api/in-memory-store.service';
 import { routing } from './routing/app.routing';
 import { SpeakerService } from './models';
-import { SortSpeakersPipe } from './speakers/shared';
 
 /* Feature Modules */
 import { DashboardModule }  from './dashboard/dashboard.module';
 import { LoginModule }  from './login/login.module';
 import { SessionsModule }  from './sessions/sessions.module';
+import { SpeakersModule }  from './speakers/speakers.module';
 import { SharedModule }   from './shared/shared.module';
 
 @NgModule({
@@ -33,18 +31,10 @@ import { SharedModule }   from './shared/shared.module';
     LoginModule,
     routing,
     SessionsModule,
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
+    SpeakersModule,
   ],
-  declarations: [
-    AppComponent,
-
-    SpeakerComponent,
-    SpeakerButtonComponent,
-    SpeakersComponent,
-    SpeakerListComponent,
-
-    SortSpeakersPipe, //TODO: move to its own module later ?
-  ],
+  declarations: [AppComponent],
   providers: [
     { provide: InMemoryBackendConfig, useValue: { delay: 600 } },
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server

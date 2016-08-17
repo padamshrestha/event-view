@@ -7,11 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 
 const declarables = [SpeakerButtonComponent, SortSpeakersPipe, routedComponents]
 
-const providers = [];
-
 @NgModule({
   imports: [routing, SharedModule],
   declarations: [declarables],
-  providers: [providers]
 })
 export class SpeakersModule { }

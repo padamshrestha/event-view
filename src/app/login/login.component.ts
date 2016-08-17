@@ -13,7 +13,6 @@ import { UserProfileService } from '../shared';
 })
 export class LoginComponent implements OnDestroy {
   private redirectTo: any[];
-  // private routerQueryParamSub: Subscription;
   private loginSub: Subscription;
 
   constructor(

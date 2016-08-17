@@ -29,6 +29,3 @@ const routes: Routes = [
 export const routing = RouterModule.forChild(routes);
 
 export const routedComponents = [SpeakersComponent, SpeakerListComponent, SpeakerComponent]
-
-
-

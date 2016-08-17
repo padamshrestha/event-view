@@ -6,11 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 
 const declarables = [SessionButtonComponent, routedComponents]
 
-const providers = [];
-
 @NgModule({
   imports: [routing, SharedModule],
   declarations: [declarables],
-  providers: [providers]
 })
 export class SessionsModule { }

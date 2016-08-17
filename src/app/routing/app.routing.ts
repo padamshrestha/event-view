@@ -23,11 +23,3 @@ export const APP_ROUTER_PROVIDERS = [
   CanDeactivateGuard,
   UserProfileService
 ];
-///////
-// export const routing = RouterModule.forRoot(routes);
-
-// export const routes: Routes = [
-//   { path: '', redirectTo: 'contact', pathMatch: 'full'},
-//   { path: 'crisis', loadChildren: 'app/crisis/crisis.module' },
-//   { path: 'heroes', loadChildren: 'app/hero/hero.module' }
-// ];

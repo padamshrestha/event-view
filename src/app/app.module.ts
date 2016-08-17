@@ -3,11 +3,13 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend } from '@angular/http';
 
+// Import all components for this module
 import { AppComponent }   from './app.component';
 import { DashboardComponent, DashboardButtonComponent } from './dashboard';
 import { SessionComponent, SessionButtonComponent, SessionsComponent, SessionListComponent } from './sessions';
 import { SpeakerComponent, SpeakerButtonComponent, SpeakersComponent, SpeakerListComponent } from './speakers';
 import { LoginComponent } from './login';
+
 import './shared/rxjs-extensions';
 import {
   InMemoryBackendConfig,
@@ -25,13 +27,12 @@ import {
   SpinnerComponent,
   ToastComponent
 } from '../app/shared';
-
+import { routing, APP_ROUTER_PROVIDERS } from './routing/app.routing';
 import { SortSpeakersPipe } from './speakers/shared';
 
 /* Feature Modules */
 // import { ContactModule }  from './contact/contact.module';
 // import { SharedModule }   from './shared/shared.module';
-import { routing, APP_ROUTER_PROVIDERS }        from './routing/app.routes'; // move to app.routing.ts   //TODO ???
 
 @NgModule({
   imports: [
@@ -73,9 +74,7 @@ import { routing, APP_ROUTER_PROVIDERS }        from './routing/app.routes'; // 
     APP_SHARED_PROVIDERS,
     APP_ROUTER_PROVIDERS,
   ],
-  bootstrap: [
-    AppComponent
-  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
 

@@ -1,3 +1,3 @@
 export * from './login.component';
-export * from './login.routes';
+export * from './login.routing';
 export * from './login.service';

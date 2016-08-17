@@ -33,11 +33,11 @@ export class LoginComponent implements OnDestroy {
     this.loginSub = this.loginService
       .login()
       .mergeMap(loginResult => queryParams)
-      .map(qp => [qp['redirectTo']])
+      .map(qp => qp['redirectTo'])
       .subscribe(redirectTo => {
         this.toastService.activate(`Successfully logged in`);
         if (this.userProfileService.isLoggedIn) {
-          let url = redirectTo || [ '/dashboard' ];
+          let url = redirectTo ? [redirectTo] : [ '/dashboard' ];
           this.router.navigate(url);
         }
       });
@@ -49,6 +49,8 @@ export class LoginComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.loginSub.unsubscribe();
+    if (this.loginSub) {
+      this.loginSub.unsubscribe();
+    }
   }
 }

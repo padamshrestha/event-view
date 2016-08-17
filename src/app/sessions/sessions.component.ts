@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { SessionService } from './shared';
+import { SessionService } from './shared/session.service';
 
 @Component({
   // selector: 'ev-sessions',

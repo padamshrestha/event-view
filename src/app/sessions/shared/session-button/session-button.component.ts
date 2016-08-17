@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Session } from '../';
+import { Session } from '../session.model';
 
 @Component({
   moduleId: module.id,

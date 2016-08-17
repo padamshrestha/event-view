@@ -5,7 +5,6 @@ import { HttpModule, XHRBackend } from '@angular/http';
 
 // Import all components for this module
 import { AppComponent }   from './app.component';
-import { SessionComponent, SessionButtonComponent, SessionsComponent, SessionListComponent } from './sessions';
 import { SpeakerComponent, SpeakerButtonComponent, SpeakersComponent, SpeakerListComponent } from './speakers';
 
 import './shared/rxjs-extensions';
@@ -22,6 +21,7 @@ import { SortSpeakersPipe } from './speakers/shared';
 /* Feature Modules */
 import { DashboardModule }  from './dashboard/dashboard.module';
 import { LoginModule }  from './login/login.module';
+import { SessionsModule }  from './sessions/sessions.module';
 import { SharedModule }   from './shared/shared.module';
 
 @NgModule({
@@ -32,15 +32,12 @@ import { SharedModule }   from './shared/shared.module';
     DashboardModule,
     LoginModule,
     routing,
+    SessionsModule,
     SharedModule.forRoot()
   ],
   declarations: [
     AppComponent,
 
-    SessionComponent,
-    SessionButtonComponent,
-    SessionsComponent,
-    SessionListComponent,
     SpeakerComponent,
     SpeakerButtonComponent,
     SpeakersComponent,

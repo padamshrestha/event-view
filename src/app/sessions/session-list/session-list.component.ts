@@ -3,7 +3,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { FilterTextComponent } from '../../../app/shared/filter-text/filter-text.component';
 import { FilterTextService } from '../../../app/shared';
-import { Session, SessionService } from '../shared';
+import { Session } from '../shared/session.model';
+import { SessionService } from '../shared/session.service';
 
 @Component({
   moduleId: module.id,

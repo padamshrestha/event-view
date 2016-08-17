@@ -1,8 +1,13 @@
 import { NgModule, provide } from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend } from '@angular/http';
 
 import { AppComponent }   from './app.component';
+import { DashboardComponent, DashboardButtonComponent } from './dashboard';
+import { SessionComponent, SessionButtonComponent, SessionsComponent, SessionListComponent } from './sessions';
+import { SpeakerComponent, SpeakerButtonComponent, SpeakersComponent, SpeakerListComponent } from './speakers';
+import { LoginComponent } from './login';
 import './shared/rxjs-extensions';
 import {
   InMemoryBackendConfig,
@@ -12,6 +17,7 @@ import {
 import { InMemoryStoreService } from '../api/in-memory-store.service';
 import {
   APP_SHARED_PROVIDERS,
+  FilterTextComponent,
   InitCapsPipe,
   ModalComponent,
   NavComponent,
@@ -30,13 +36,28 @@ import { routing, APP_ROUTER_PROVIDERS }        from './routing/app.routes'; // 
 @NgModule({
   imports: [
     BrowserModule,
-    HttpModule
+    FormsModule,
+    HttpModule,
     // ContactModule,
-    // routing,
+    routing,
     // SharedModule.forRoot()
   ],
   declarations: [
     AppComponent,
+
+    DashboardComponent,
+    DashboardButtonComponent,
+    FilterTextComponent,
+    SessionComponent,
+    SessionButtonComponent,
+    SessionsComponent,
+    SessionListComponent,
+    SpeakerComponent,
+    SpeakerButtonComponent,
+    SpeakersComponent,
+    SpeakerListComponent,
+    LoginComponent,
+
     ModalComponent,
     NavComponent,
     SpinnerComponent,

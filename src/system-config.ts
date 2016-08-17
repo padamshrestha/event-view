@@ -20,35 +20,35 @@ const packages: any = {
   'angular2-in-memory-web-api' : {main : 'index.js', defaultExtension : 'js'},
 };
 
-// const barrels: any = [
-//   // App specific barrels.
-//   'app/routing',
-//   'app/shared',
-//   'app/shared/filter-text',
-//   'app/shared/modal',
-//   'app/shared/nav',
-//   'app/shared/speaker-data',
-//   'app/shared/spinner',
-//   'app/shared/toast',
-//   'app/dashboard',
-//   'app/dashboard/shared',
-//   'app/dashboard/shared/dashboard-button',
-//   'app/login',
-//   'app/sessions',
-//   'app/sessions/session-list',
-//   'app/sessions/session',
-//   'app/sessions/shared',
-//   'app/sessions/shared/session-button',
-//   'app/speakers',
-//   'app/speakers/speaker-list',
-//   'app/speakers/speaker',
-//   'app/speakers/shared',
-//   'app/speakers/shared/speaker-button',
-// ];
+const barrels: any = [
+  // App specific barrels.
+  'app/routing',
+  'app/shared',
+  'app/shared/filter-text',
+  'app/shared/modal',
+  'app/shared/nav',
+  'app/shared/speaker-data',
+  'app/shared/spinner',
+  'app/shared/toast',
+  'app/dashboard',
+  'app/dashboard/shared',
+  'app/dashboard/shared/dashboard-button',
+  'app/login',
+  'app/sessions',
+  'app/sessions/session-list',
+  'app/sessions/session',
+  'app/sessions/shared',
+  'app/sessions/shared/session-button',
+  'app/speakers',
+  'app/speakers/speaker-list',
+  'app/speakers/speaker',
+  'app/speakers/shared',
+  'app/speakers/shared/speaker-button',
+];
 
-// barrels.forEach((barrelName: string) => {
-//   packages[barrelName] = { main: 'index' };
-// });
+barrels.forEach((barrelName: string) => {
+  packages[barrelName] = { main: 'index' };
+});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************

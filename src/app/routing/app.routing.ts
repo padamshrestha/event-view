@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-// import { provideRouter, RouterConfig } from '@angular/router';
 
 import { CanActivateAuthGuard } from './can-activate-auth.service';
 import { CanDeactivateGuard } from './can-deactivate.service';
@@ -18,8 +17,14 @@ export const routes: Routes = [
 
 export const routing = RouterModule.forRoot(routes);
 
-export const APP_ROUTER_PROVIDERS = [
+routing.providers.push([
   CanActivateAuthGuard,
-  CanDeactivateGuard,
-  UserProfileService
-];
+  CanDeactivateGuard,
+  UserProfileService
+]);
+
+// export const APP_ROUTER_PROVIDERS = [
+//   CanActivateAuthGuard,
+//   CanDeactivateGuard,
+//   UserProfileService
+// ];

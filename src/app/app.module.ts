@@ -27,7 +27,7 @@ import {
   SpinnerComponent,
   ToastComponent
 } from '../app/shared';
-import { routing, APP_ROUTER_PROVIDERS } from './routing/app.routing';
+import { routing } from './routing/app.routing';
 import { SortSpeakersPipe } from './speakers/shared';
 
 /* Feature Modules */
@@ -72,7 +72,6 @@ import { SortSpeakersPipe } from './speakers/shared';
     { provide: SEED_DATA,  useClass: InMemoryStoreService },     // in-mem server data
     SpeakerService,
     APP_SHARED_PROVIDERS,
-    APP_ROUTER_PROVIDERS,
   ],
   bootstrap: [AppComponent],
 })

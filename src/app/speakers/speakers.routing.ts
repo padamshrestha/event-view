@@ -9,17 +9,14 @@ const routes: Routes = [
   {
     path: '',
     component: SpeakersComponent,
-    // canActivate: [CanActivateAuthGuard],
     children: [
       {
         path: '',
         component: SpeakerListComponent,
-        // canActivate: [CanActivateAuthGuard]
       },
       {
         path: ':id',
         component: SpeakerComponent,
-        // canActivate: [CanActivateAuthGuard],
         canDeactivate: [CanDeactivateGuard]
       },
     ]

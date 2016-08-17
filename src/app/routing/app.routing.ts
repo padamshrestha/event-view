@@ -24,7 +24,6 @@ export const routes: Routes = [
     loadChildren: 'app/sessions/sessions.module',
     canActivate: [CanActivateAuthGuard],
   },
-  // { path: '', redirectTo: 'contact', pathMatch: 'full'},
 ];
 
 export const routing = RouterModule.forRoot(routes);

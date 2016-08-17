@@ -9,17 +9,14 @@ const routes: Routes = [
   {
     path: '',
     component: SessionsComponent,
-    // canActivate: [CanActivateAuthGuard],
     children: [
       {
         path: '',
         component: SessionListComponent,
-        // canActivate: [CanActivateAuthGuard]
       },
       {
         path: ':id',
         component: SessionComponent,
-        // canActivate: [CanActivateAuthGuard],
         canDeactivate: [CanDeactivateGuard]
       },
     ]

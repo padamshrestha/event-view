@@ -4,13 +4,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { CanComponentDeactivate } from '../../routing';
 
-import {
-  EntityService,
-  ModalService,
-  Speaker,
-  SpeakerService,
-  ToastService
-} from '../../../app/shared';
+import { Speaker, SpeakerService } from '../../../app/models';
+import { EntityService, ModalService, ToastService } from '../../../app/shared';
 
 @Component({
   moduleId: module.id,

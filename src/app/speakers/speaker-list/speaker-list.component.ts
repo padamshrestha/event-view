@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/subscription';
 
-import { FilterTextService, FilterTextComponent, Speaker, SpeakerService } from '../../../app/shared';
+import { Speaker, SpeakerService } from '../../../app/models';
+import { FilterTextComponent } from '../../../app/shared/filter-text/filter-text.component';
+import { FilterTextService } from '../../../app/shared';
 
 @Component({
   moduleId: module.id,
@@ -29,7 +31,7 @@ export class SpeakerListComponent implements OnDestroy, OnInit {
     this.speakerService.getSpeakers()
       .subscribe(speakers => {
         this.speakers = this.filteredSpeakers = speakers;
-        this.filterComponent.clear();
+        // this.filterComponent.clear();
       });
   }
 

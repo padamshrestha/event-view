@@ -34,6 +34,7 @@ const barrels: any = [
   'app/dashboard/shared',
   'app/dashboard/shared/dashboard-button',
   'app/login',
+  'app/models',
   'app/sessions',
   'app/sessions/session-list',
   'app/sessions/session',

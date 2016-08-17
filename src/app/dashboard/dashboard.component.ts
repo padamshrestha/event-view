@@ -4,7 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Speaker, SpeakerService, ToastService } from '../../app/shared';
+import { Speaker, SpeakerService } from '../../app/models';
+import { ToastService } from '../../app/shared';
 
 @Component({
   moduleId: module.id,

@@ -1,8 +1,7 @@
-import { Routes }          from '@angular/router';
-import { DashboardComponent }     from './dashboard.component';
-import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
+import { Routes, RouterModule } from '@angular/router';
+import { DashboardComponent } from './dashboard.component';
 
-export const DashboardRoutes: Routes = [
+export const dashboardRoutes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard', // could do /dashboard, but we are already at this level
@@ -13,3 +12,7 @@ export const DashboardRoutes: Routes = [
     component: DashboardComponent
   },
 ];
+
+export const routing = RouterModule.forRoot(dashboardRoutes);
+
+export const routedComponents = dashboardRoutes.filter(r => r.component != undefined).map(r => r.component)

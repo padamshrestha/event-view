@@ -10,4 +10,4 @@ const declarables = [DashboardButtonComponent, routedComponents]
   imports: [routing, SharedModule],
   declarations: [declarables]
 })
-export class DashboardModule { }
+export default class DashboardModule { }

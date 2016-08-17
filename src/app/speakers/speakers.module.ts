@@ -11,4 +11,4 @@ const declarables = [SpeakerButtonComponent, SortSpeakersPipe, routedComponents]
   imports: [routing, SharedModule],
   declarations: [declarables],
 })
-export class SpeakersModule { }
+export default class SpeakersModule { }

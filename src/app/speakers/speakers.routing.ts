@@ -7,19 +7,19 @@ import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
 
 const routes: Routes = [
   {
-    path: 'speakers',
+    path: '',
     component: SpeakersComponent,
     // canActivate: [CanActivateAuthGuard],
     children: [
       {
         path: '',
         component: SpeakerListComponent,
-        canActivate: [CanActivateAuthGuard]
+        // canActivate: [CanActivateAuthGuard]
       },
       {
         path: ':id',
         component: SpeakerComponent,
-        canActivate: [CanActivateAuthGuard],
+        // canActivate: [CanActivateAuthGuard],
         canDeactivate: [CanDeactivateGuard]
       },
     ]

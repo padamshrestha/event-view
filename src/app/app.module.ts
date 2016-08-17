@@ -16,10 +16,7 @@ import { routing } from './routing/app.routing';
 import { SpeakerService } from './models';
 
 /* Feature Modules */
-import { DashboardModule }  from './dashboard/dashboard.module';
 import { LoginModule }  from './login/login.module';
-import { SessionsModule }  from './sessions/sessions.module';
-import { SpeakersModule }  from './speakers/speakers.module';
 import { SharedModule }   from './shared/shared.module';
 
 @NgModule({
@@ -27,12 +24,9 @@ import { SharedModule }   from './shared/shared.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    DashboardModule,
     LoginModule,
     routing,
-    SessionsModule,
     SharedModule.forRoot(),
-    SpeakersModule,
   ],
   declarations: [AppComponent],
   providers: [

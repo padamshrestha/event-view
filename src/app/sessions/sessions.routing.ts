@@ -7,19 +7,19 @@ import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
 
 const routes: Routes = [
   {
-    path: 'sessions',
+    path: '',
     component: SessionsComponent,
     // canActivate: [CanActivateAuthGuard],
     children: [
       {
         path: '',
         component: SessionListComponent,
-        canActivate: [CanActivateAuthGuard]
+        // canActivate: [CanActivateAuthGuard]
       },
       {
         path: ':id',
         component: SessionComponent,
-        canActivate: [CanActivateAuthGuard],
+        // canActivate: [CanActivateAuthGuard],
         canDeactivate: [CanDeactivateGuard]
       },
     ]

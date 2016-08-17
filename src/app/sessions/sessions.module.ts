@@ -10,4 +10,4 @@ const declarables = [SessionButtonComponent, routedComponents]
   imports: [routing, SharedModule],
   declarations: [declarables],
 })
-export class SessionsModule { }
+export default class SessionsModule { }

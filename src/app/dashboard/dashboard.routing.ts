@@ -5,13 +5,14 @@ import { DashboardComponent } from './dashboard.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard', // could do /dashboard, but we are already at this level
-    pathMatch: 'full'
-  },
-  {
-    path: 'dashboard',
+    // redirectTo: 'dashboard', // could do /dashboard, but we are already at this level
+    // pathMatch: 'full',
     component: DashboardComponent
   },
+  // {
+  //   path: 'dashboard',
+  //   component: DashboardComponent
+  // },
 ];
 
 export const routing = RouterModule.forChild(routes);

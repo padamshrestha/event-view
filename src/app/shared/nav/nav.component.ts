@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MessageService, ModalService } from '../';
 
@@ -12,7 +11,6 @@ class MenuItem {
   selector: 'ev-nav',
   templateUrl: 'nav.component.html',
   styleUrls: ['nav.component.css'],
-  directives: [ROUTER_DIRECTIVES]
 })
 export class NavComponent implements OnInit {
   menuItems: MenuItem[];

@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 
 import { CONFIG } from './config';
-import { ToastService } from './toast';
+import { ToastService } from './toast/toast.service';
 
 export interface ResetMessage {
   message: string;

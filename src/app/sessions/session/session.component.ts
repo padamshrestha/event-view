@@ -2,9 +2,10 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { EntityService, ModalService, ToastService } from '../../../app/shared';
-import { Session, SessionService } from '../shared';
 import { CanComponentDeactivate } from '../../routing';
+import { EntityService, ModalService, ToastService } from '../../../app/shared';
+import { Session } from '../shared/session.model';
+import { SessionService } from '../shared/session.service';
 
 @Component({
   moduleId : module.id,

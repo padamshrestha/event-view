@@ -3,7 +3,7 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-import { ToastService } from './toast';
+import { ToastService } from './toast/toast.service';
 
 @Injectable()
 export class ExceptionService {

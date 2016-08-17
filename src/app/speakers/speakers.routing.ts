@@ -1,11 +1,11 @@
-import { RouterConfig } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { SpeakerListComponent } from './speaker-list/speaker-list.component';
 import { SpeakerComponent } from './speaker/speaker.component';
 import { SpeakersComponent } from './speakers.component';
 import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
 
-export const SpeakersRoutes: RouterConfig = [
+const routes: Routes = [
   {
     path: 'speakers',
     component: SpeakersComponent,
@@ -26,3 +26,6 @@ export const SpeakersRoutes: RouterConfig = [
   },
 ];
 
+export const routing = RouterModule.forChild(routes);
+
+export const routedComponents = [SpeakersComponent, SpeakerListComponent, SpeakerComponent]

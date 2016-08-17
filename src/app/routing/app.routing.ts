@@ -22,9 +22,3 @@ routing.providers.push([
   CanDeactivateGuard,
   UserProfileService
 ]);
-
-// export const APP_ROUTER_PROVIDERS = [
-//   CanActivateAuthGuard,
-//   CanDeactivateGuard,
-//   UserProfileService
-// ];

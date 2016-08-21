@@ -17,8 +17,8 @@ export class ToastComponent implements OnInit {
   title: string;
   message: string;
 
-  constructor(toastService: ToastService) {
-    toastService.activate = this.activate.bind(this);
+  constructor(private toastService: ToastService) {
+    this.toastService.activate = this.activate.bind(this);
   }
 
   activate(message = this.defaults.message, title = this.defaults.title) {

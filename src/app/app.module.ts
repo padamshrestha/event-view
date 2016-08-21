@@ -3,7 +3,7 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend } from '@angular/http';
 
-import { AppComponent }   from './app.component';
+import { AppComponent } from './app.component';
 
 import './shared/rxjs-extensions';
 import {
@@ -16,8 +16,8 @@ import { routing } from './routing/app.routing';
 import { SpeakerService } from './models';
 
 /* Feature Modules */
-import { LoginModule }  from './login/login.module';
-import { SharedModule }   from './shared/shared.module';
+import { LoginModule } from './login/login.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
@@ -32,10 +32,9 @@ import { SharedModule }   from './shared/shared.module';
   providers: [
     { provide: InMemoryBackendConfig, useValue: { delay: 600 } },
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
-    { provide: SEED_DATA,  useClass: InMemoryStoreService },     // in-mem server data
+    { provide: SEED_DATA,  useClass: InMemoryStoreService },   // in-mem server data
     SpeakerService,
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
-

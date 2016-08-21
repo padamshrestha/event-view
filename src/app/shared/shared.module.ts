@@ -16,6 +16,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
 import { ToastComponent } from './toast/toast.component';
 import { ToastService } from './toast/toast.service';
+// import { ToastModule } from './toast/toast.module';
 
 const declarables = [
   FilterTextComponent,
@@ -38,8 +39,9 @@ const providers = [
 
 @NgModule({
   imports: [CommonModule, FormsModule, RouterModule],
-  exports: [CommonModule, FormsModule, declarables],
-  declarations: [declarables],
+  // imports: [CommonModule, FormsModule, RouterModule, ToastModule.forRoot()],
+  exports: [CommonModule, FormsModule, declarables],// ToastModule,
+  declarations: declarables
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

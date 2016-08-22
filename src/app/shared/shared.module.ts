@@ -14,8 +14,10 @@ import { ModalService } from './modal/modal.service';
 import { NavComponent } from './nav/nav.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
+
 import { ToastComponent } from './toast/toast.component';
 import { ToastService } from './toast/toast.service';
+
 // import { ToastModule } from './toast/toast.module';
 
 const declarables = [
@@ -38,16 +40,17 @@ const providers = [
 ];
 
 @NgModule({
+  // imports: [CommonModule, FormsModule, RouterModule, ModuleC.forRoot(), ToastModule.forRoot()],
+//   exports: [CommonModule, FormsModule, declarables, ModuleC, ToastModule],
   imports: [CommonModule, FormsModule, RouterModule],
-  // imports: [CommonModule, FormsModule, RouterModule, ToastModule.forRoot()],
-  exports: [CommonModule, FormsModule, declarables],// ToastModule,
+  exports: [CommonModule, FormsModule, declarables],
   declarations: declarables
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [providers]
+      providers: [providers] // , ToastModule.forRoot()]
     };
   }
 }

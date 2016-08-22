@@ -24,6 +24,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
   getSpeakers() {
     this.speakers = this.speakerService.getSpeakers()
+      .do(() => this.toastService.activate('Got speakers for the dashboard'))
       .catch(e => {
         this.toastService.activate(`${e}`);
         return Observable.of([]);

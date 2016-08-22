@@ -1,31 +1,22 @@
-// import { NgModule, ModuleWithProviders }  from '@angular/core';
-// // import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
+import { NgModule, ModuleWithProviders }  from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-// import { ToastComponent }   from './toast.component';
-// import { ToastService } from './toast.service';
+import { ToastComponent }   from './toast.component';
+import { ToastService } from './toast.service';
 
-// const declarables = [ToastComponent]
+const declarables = [ToastComponent]
+const providers = [ToastService];
 
-// const providers = [ToastService];
-
-// @NgModule({
-//   imports: [CommonModule],
-//   declarations: [declarables],
-//   exports: [CommonModule, declarables],
-//   // providers: [providers],
-// })
-// export class ToastModule {
-//   static forRoot(): ModuleWithProviders {
-//     return {
-//       ngModule: ToastModule,
-//       providers: providers
-//     };
-//   }
-// }
-
-// // @NgModule({
-// //   exports:   [ToastModule],
-// //   providers: providers
-// // })
-// // export class ToastRootModule { }
+@NgModule({
+  imports: [CommonModule],
+  declarations: [declarables],
+  exports: [ToastComponent],
+})
+export class ToastModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ToastModule,
+      providers: [providers]
+    };
+  }
+}

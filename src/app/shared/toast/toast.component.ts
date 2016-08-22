@@ -16,9 +16,15 @@ export class ToastComponent implements OnInit {
 
   title: string;
   message: string;
+  onToastActivate = this.toastService.toastState;
 
   constructor(private toastService: ToastService) {
-    this.toastService.activate = this.activate.bind(this);
+    // this.toastService.activate = this.activate.bind(this);
+
+    this.onToastActivate.subscribe((toastMessage) => {
+      console.log(`activiting toast: ${toastMessage.message}`)
+      this.activate(toastMessage.message);
+    });
   }
 
   activate(message = this.defaults.message, title = this.defaults.title) {

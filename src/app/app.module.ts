@@ -15,8 +15,6 @@ import { SpeakerService } from './models';
 import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
-// import { SpinnerModule } from './core/spinner/spinner.module';
-// import { ToastModule } from './core/toast/toast.module';
 
 @NgModule({
   imports: [
@@ -25,10 +23,8 @@ import { SharedModule } from './shared/shared.module';
     InMemoryWebApiModule.forRoot(InMemoryStoreService, { delay: 600 }),
     LoginModule,
     routing,
-    CoreModule, //.forRoot(), // Gets the module and the providers
+    CoreModule,
     SharedModule,
-    // SpinnerModule,
-    // ToastModule
   ],
   declarations: [AppComponent],
   providers: [SpeakerService],

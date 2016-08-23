@@ -12,9 +12,3 @@ import { FilterTextService } from './filter-text.service';
   providers: [FilterTextService]
 })
 export class FilterTextModule { }
-  // static forRoot(): ModuleWithProviders {
-  //   return {
-  //     ngModule: FilterTextModule,
-  //     providers: [FilterTextService]
-  //   }
-  // }

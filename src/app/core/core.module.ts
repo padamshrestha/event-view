@@ -42,26 +42,3 @@ export class CoreModule {
     }
   }
 }
-//   static forRoot() {
-//     return {
-//       ngModule: CoreModule,
-//       providers: [
-//         providers,
-//         SpinnerModule, //.forRoot().providers,
-//         ToastModule,   //.forRoot().providers
-//       ]
-//     }
-//   }
-// }
-// CoreModule can be imported by anyone, except the root AppModule
-// I use the forRoot() for the shared module only. Because I use .providers inside of here.
-
-// SharedRootModule should only be used once, by root AppModule
-// const SharedRootModule: ModuleWithProviders = {
-//   ngModule: CoreModule,
-//   providers: [
-//     providers,
-//     SpinnerModule.forRoot().providers,
-//     ToastModule.forRoot().providers
-//   ]
-// }

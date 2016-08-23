@@ -19,7 +19,7 @@ const declarables = [
   exports: [CommonModule, FilterTextModule, FormsModule, declarables],
   declarations: declarables,
 })
-export class SharedModule {
+export class SharedModule { }
   // static forRoot() {
   //   return {
   //     ngModule: SharedModule,
@@ -28,15 +28,3 @@ export class SharedModule {
   //     ]
   //   }
   // }
-}
-// SharedModule can be imported by anyone, except the root AppModule
-// I use the forRoot() for the shared module only. Because I use .providers inside of here.
-
-// SharedRootModule should only be used once, by root AppModule
-// const SharedRootModule: ModuleWithProviders = {
-//   ngModule: SharedModule,
-//   providers: [
-//     providers,
-//     FilterTextModule.forRoot().providers
-//   ]
-// }

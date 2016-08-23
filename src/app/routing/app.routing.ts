@@ -2,7 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CanActivateAuthGuard } from './can-activate-auth.service';
 import { CanDeactivateGuard } from './can-deactivate.service';
-import { UserProfileService } from '../shared';
+import { UserProfileService } from '../core';
 
 export const routes: Routes = [
   {
@@ -18,11 +18,13 @@ export const routes: Routes = [
     path: 'speakers',
     loadChildren: 'app/speakers/speakers.module',
     canActivate: [CanActivateAuthGuard],
+    // canLoad: [CanActivateAuthGuard],
   },
   {
     path: 'sessions',
     loadChildren: 'app/sessions/sessions.module',
     canActivate: [CanActivateAuthGuard],
+    // canLoad: [CanActivateAuthGuard],
   },
 ];
 

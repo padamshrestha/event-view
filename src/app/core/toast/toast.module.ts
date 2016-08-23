@@ -1,6 +1,7 @@
 import { BaseException, NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { throwIfAlreadyLoaded } from '../module-import-guard';
 import { ToastComponent } from './toast.component';
 import { ToastService } from './toast.service';
 
@@ -12,15 +13,6 @@ import { ToastService } from './toast.service';
 })
 export class ToastModule {
   constructor(@Optional() @SkipSelf() parentModule: ToastModule) {
-    if (parentModule) {
-      throw new BaseException('ToastModule has already been loaded. ');
-    }
+    throwIfAlreadyLoaded(parentModule, 'ToastModule')
   }
 }
-//   // static forRoot(): ModuleWithProviders {
-//   //   return {
-//   //     ngModule: ToastModule,
-//   //     providers: [ToastService]
-//   //   }
-//   // }
-// }

@@ -37,22 +37,29 @@ const providers = [
 @NgModule({
   imports: [CommonModule, FormsModule, RouterModule, SpinnerModule, ToastModule],
   exports: [CommonModule, FormsModule, RouterModule, SpinnerModule, ToastModule, declarables],
-  declarations: declarables
+  declarations: declarables,
 })
 export class SharedModule {
   static forRoot() {
-    return SharedRootModule;
+    return {
+      ngModule: SharedModule,
+      providers: [
+        providers,
+        SpinnerModule.forRoot().providers,
+        ToastModule.forRoot().providers
+      ]
+    }
   }
 }
 // SharedModule can be imported by anyone, except the root AppModule
 // I use the forRoot() for the shared module only. Because I use .providers inside of here.
 
 // SharedRootModule should only be used once, by root AppModule
-const SharedRootModule: ModuleWithProviders = {
-  ngModule: SharedModule,
-  providers: [
-    providers,
-    SpinnerModule.providers,
-    ToastModule.providers
-  ]
-}
+// const SharedRootModule: ModuleWithProviders = {
+//   ngModule: SharedModule,
+//   providers: [
+//     providers,
+//     SpinnerModule.forRoot().providers,
+//     ToastModule.forRoot().providers
+//   ]
+// }

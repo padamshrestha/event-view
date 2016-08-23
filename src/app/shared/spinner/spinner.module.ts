@@ -13,7 +13,12 @@ const providers = [SpinnerService];
   declarations: [declarables],
 })
 export class SpinnerModule {
-  static providers = providers;
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SpinnerModule,
+      providers: providers
+    };
+  }
 }
 
 // // If I wanted to use this directly, instead of through SharedModule

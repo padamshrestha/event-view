@@ -31,19 +31,23 @@ const providers = [
   ModalService
 ];
 
+// imports: imports the module's exports. which is usually declarables and providers
+// in our case the spinner has no providers.
+
 @NgModule({
-  imports: [
-    CommonModule, FormsModule, RouterModule,
-    SpinnerModule.forRoot(), ToastModule.forRoot()
-  ],
-  exports: [CommonModule, FormsModule, declarables, SpinnerModule, ToastModule],
+  imports: [CommonModule, FormsModule, RouterModule, SpinnerModule, ToastModule],
+  exports: [CommonModule, FormsModule, RouterModule, SpinnerModule, ToastModule, declarables],
   declarations: declarables
 })
-export class SharedModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SharedModule,
-      providers: [providers]
-    };
-  }
+export class SharedModule { }
+// SharedModule can be imported by anyone, except the root AppModule
+
+// SharedRootModule should only be used once, by root AppModule
+export const SharedRootModule: ModuleWithProviders = {
+  ngModule: SharedModule,
+  providers: [
+    providers,
+    SpinnerModule.providers,
+    ToastModule.providers
+  ]
 }

@@ -13,10 +13,5 @@ const providers = [ToastService];
   declarations: [declarables],
 })
 export class ToastModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: ToastModule,
-      providers: [providers]
-    };
-  }
+  static providers = providers;
 }

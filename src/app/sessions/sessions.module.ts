@@ -15,8 +15,9 @@ const declarables = [SessionButtonComponent, routedComponents]
   declarations: [declarables],
 
   // TODO: Remove this when bug is fixed in A2 RC5.
-  //We can put this in the component when it is fixed ... or we cna do it in the module.
+  // We can put this in the component when it is fixed ... or we can do it in the module.
   // In the module, everyone gets it everywhere tho.
   providers: [SessionService]
 })
 export default class SessionsModule { }
+// avoids having to lazy load with loadChildren: "app/sessions/session.module#SessionModule"

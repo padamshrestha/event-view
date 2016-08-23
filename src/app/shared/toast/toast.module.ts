@@ -1,7 +1,7 @@
-import { NgModule, ModuleWithProviders }  from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ToastComponent }   from './toast.component';
+import { ToastComponent } from './toast.component';
 import { ToastService } from './toast.service';
 
 const declarables = [ToastComponent]

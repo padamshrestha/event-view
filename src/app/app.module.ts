@@ -26,7 +26,7 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     LoginModule,
     routing,
-    SharedModule.forRoot(),
+    SharedModule.forRoot()
   ],
   declarations: [AppComponent],
   providers: [

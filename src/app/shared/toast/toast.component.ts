@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ToastService } from './toast.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { ToastService } from './toast.service';
   templateUrl: 'toast.component.html',
   styleUrls: ['toast.component.css']
 })
-export class ToastComponent implements OnInit {
+export class ToastComponent implements OnDestroy, OnInit {
   private defaults = {
     title: '',
     message: 'May the Force be with You'
@@ -19,8 +19,6 @@ export class ToastComponent implements OnInit {
   onToastActivate = this.toastService.toastState;
 
   constructor(private toastService: ToastService) {
-    // this.toastService.activate = this.activate.bind(this);
-
     this.onToastActivate.subscribe((toastMessage) => {
       console.log(`activiting toast: ${toastMessage.message}`)
       this.activate(toastMessage.message);
@@ -35,6 +33,10 @@ export class ToastComponent implements OnInit {
 
   ngOnInit() {
     this.toastElement = document.getElementById('toast');
+  }
+
+  ngOnDestroy() {
+    this.onToastActivate.unsubscribe();
   }
 
   private show() {

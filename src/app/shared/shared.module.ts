@@ -33,7 +33,6 @@ const providers = [
 
 // imports: imports the module's exports. which is usually declarables and providers
 // in our case the spinner has no providers.
-
 @NgModule({
   imports: [CommonModule, FormsModule, RouterModule, SpinnerModule, ToastModule],
   exports: [CommonModule, FormsModule, RouterModule, SpinnerModule, ToastModule, declarables],

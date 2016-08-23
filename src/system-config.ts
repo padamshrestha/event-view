@@ -22,9 +22,9 @@ const packages: any = {
 
 const barrels: any = [
   // App specific barrels.
+  'app/models',
   'app/routing',
   'app/shared',
-  'app/models',
 ];
 
 barrels.forEach((barrelName: string) => {

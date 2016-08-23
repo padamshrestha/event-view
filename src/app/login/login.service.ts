@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { SpinnerService } from '../../app/shared';
-import { UserProfileService } from '../shared';
+import { SpinnerService, UserProfileService } from '../../app/core';
 
 @Injectable()
 export class LoginService {

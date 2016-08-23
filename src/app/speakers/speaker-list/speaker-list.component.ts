@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/subscription';
 
 import { Speaker, SpeakerService } from '../../../app/models';
 import { FilterTextComponent } from '../../../app/shared/filter-text/filter-text.component';
-import { FilterTextService } from '../../../app/shared';
+import { FilterTextService } from '../../../app/shared/filter-text/filter-text.service';
 
 @Component({
   moduleId: module.id,

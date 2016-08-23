@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { FilterTextComponent } from '../../../app/shared/filter-text/filter-text.component';
-import { FilterTextService } from '../../../app/shared';
+import { FilterTextService } from '../../../app/shared/filter-text/filter-text.service';
 import { Session } from '../shared/session.model';
 import { SessionService } from '../shared/session.service';
 

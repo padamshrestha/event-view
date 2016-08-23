@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { CanComponentDeactivate } from '../../routing';
-import { EntityService, ModalService, ToastService } from '../../../app/shared';
+import { EntityService, ModalService, ToastService } from '../../../app/core';
 import { Session } from '../shared/session.model';
 import { SessionService } from '../shared/session.service';
 

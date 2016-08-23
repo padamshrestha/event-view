@@ -5,15 +5,18 @@ import { HttpModule, XHRBackend } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import './shared/rxjs-extensions';
+import './core/rxjs-extensions';
 import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
 import { InMemoryStoreService } from '../api/in-memory-store.service';
 import { routing } from './routing/app.routing';
 import { SpeakerService } from './models';
 
 /* Feature Modules */
+import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
+// import { SpinnerModule } from './core/spinner/spinner.module';
+// import { ToastModule } from './core/toast/toast.module';
 
 @NgModule({
   imports: [
@@ -22,7 +25,10 @@ import { SharedModule } from './shared/shared.module';
     InMemoryWebApiModule.forRoot(InMemoryStoreService, { delay: 600 }),
     LoginModule,
     routing,
-    SharedModule.forRoot() // Gets the module and the providers
+    CoreModule, //.forRoot(), // Gets the module and the providers
+    SharedModule,
+    // SpinnerModule,
+    // ToastModule
   ],
   declarations: [AppComponent],
   providers: [SpeakerService],

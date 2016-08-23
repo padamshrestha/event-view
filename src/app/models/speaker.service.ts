@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Speaker } from './speaker.model';
-import { CONFIG, ExceptionService, MessageService, SpinnerService } from '../shared';
+import { CONFIG, ExceptionService, MessageService, SpinnerService } from '../core';
 
 let speakersUrl = CONFIG.baseUrls.speakers;
 

@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ToastService } from './toast.service';
 
+import { Subscription } from 'rxjs/Subscription'
+
 @Component({
   moduleId: module.id,
   selector: 'ev-toast',
@@ -13,13 +15,13 @@ export class ToastComponent implements OnDestroy, OnInit {
     message: 'May the Force be with You'
   };
   private toastElement: any;
+  private toastSubscription: Subscription;
 
   title: string;
   message: string;
-  onToastActivate = this.toastService.toastState;
 
   constructor(private toastService: ToastService) {
-    this.onToastActivate.subscribe((toastMessage) => {
+    this.toastSubscription = this.toastService.toastState.subscribe((toastMessage) => {
       console.log(`activiting toast: ${toastMessage.message}`)
       this.activate(toastMessage.message);
     });
@@ -36,7 +38,7 @@ export class ToastComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy() {
-    this.onToastActivate.unsubscribe();
+    this.toastSubscription.unsubscribe();
   }
 
   private show() {

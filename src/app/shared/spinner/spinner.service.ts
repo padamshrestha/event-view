@@ -9,7 +9,7 @@ export interface SpinnerState {
 export class SpinnerService {
   private spinnerSubject = new Subject<SpinnerState>();
 
-  spinnerState = this.spinnerSubject;
+  spinnerState = this.spinnerSubject.asObservable();
 
   constructor(@Optional() @SkipSelf() prior: SpinnerService) {
     if (prior) { return prior; }

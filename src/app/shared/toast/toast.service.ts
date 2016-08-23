@@ -9,7 +9,7 @@ export interface ToastMessage {
 export class ToastService {
   private toastSubject = new Subject<ToastMessage>();
 
-  toastState = this.toastSubject;
+  toastState = this.toastSubject.asObservable();
 
   constructor(@Optional() @SkipSelf() prior: ToastService) {
     if (prior) { return prior; }

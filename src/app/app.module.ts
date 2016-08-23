@@ -13,7 +13,7 @@ import { SpeakerService } from './models';
 
 /* Feature Modules */
 import { LoginModule } from './login/login.module';
-import { SharedRootModule } from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { SharedRootModule } from './shared/shared.module';
     InMemoryWebApiModule.forRoot(InMemoryStoreService, { delay: 600 }),
     LoginModule,
     routing,
-    SharedRootModule // Gets the module and the providers
+    SharedModule.forRoot() // Gets the module and the providers
   ],
   declarations: [AppComponent],
   providers: [SpeakerService],

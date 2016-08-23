@@ -12,17 +12,15 @@ import { MessageService } from './message.service';
 import { ModalComponent } from './modal/modal.component';
 import { ModalService } from './modal/modal.service';
 import { NavComponent } from './nav/nav.component';
-import { SpinnerComponent } from './spinner/spinner.component';
-import { SpinnerService } from './spinner/spinner.service';
 
+import { SpinnerModule } from './spinner/spinner.module';
 import { ToastModule } from './toast/toast.module';
 
 const declarables = [
   FilterTextComponent,
   InitCapsPipe,
   ModalComponent,
-  NavComponent,
-  SpinnerComponent
+  NavComponent
 ];
 
 const providers = [
@@ -30,13 +28,15 @@ const providers = [
   ExceptionService,
   FilterTextService,
   MessageService,
-  ModalService,
-  SpinnerService
+  ModalService
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule, ToastModule.forRoot()],
-  exports: [CommonModule, FormsModule, declarables, ToastModule],
+  imports: [
+    CommonModule, FormsModule, RouterModule,
+    SpinnerModule.forRoot(), ToastModule.forRoot()
+  ],
+  exports: [CommonModule, FormsModule, declarables, SpinnerModule, ToastModule],
   declarations: declarables
 })
 export class SharedModule {

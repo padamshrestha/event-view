@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional, SkipSelf } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 export interface SpinnerState {
@@ -10,6 +10,11 @@ export class SpinnerService {
   private spinnerSubject = new Subject<SpinnerState>();
 
   spinnerState = this.spinnerSubject;
+
+  constructor(@Optional() @SkipSelf() prior: SpinnerService) {
+    if (prior) { return prior; }
+    console.log("created spinner service")
+  }
 
   show() {
     this.spinnerSubject.next(<SpinnerState>{ show: true });

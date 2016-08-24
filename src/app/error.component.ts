@@ -4,7 +4,10 @@ import { Component } from '@angular/core';
   moduleId: module.id,
   selector: 'ev-error',
   template: `
-    <h1>404:Bad Route</h1>
+    <article class="template animated slideInRight">
+      <h4>Inconceivable!</h4>
+      <div>I do not think this page is where you think it is.</div>
+    </article>
   `
 })
 export class ErrorComponent { }

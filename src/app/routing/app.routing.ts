@@ -16,11 +16,6 @@ export const routes: Routes = [
     loadChildren: 'app/dashboard/dashboard.module'
   },
   {
-    path: '**',
-    pathMatch: 'full',
-    component: ErrorComponent
-  },
-  {
     path: 'speakers',
     loadChildren: 'app/speakers/speakers.module',
     canActivate: [CanActivateAuthGuard],
@@ -31,6 +26,11 @@ export const routes: Routes = [
     loadChildren: 'app/sessions/sessions.module',
     canActivate: [CanActivateAuthGuard],
     // canLoad: [CanActivateAuthGuard],
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: ErrorComponent
   },
 ];
 

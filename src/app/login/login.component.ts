@@ -27,11 +27,9 @@ export class LoginComponent implements OnDestroy {
   }
 
   login() {
-    let queryParams = this.router.routerState.queryParams;
-
     this.loginSub = this.loginService
       .login()
-      .mergeMap(loginResult => queryParams)
+      .mergeMap(loginResult => this.route.queryParams)
       .map(qp => qp['redirectTo'])
       .subscribe(redirectTo => {
         this.toastService.activate(`Successfully logged in`);

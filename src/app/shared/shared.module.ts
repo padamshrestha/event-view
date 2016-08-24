@@ -10,10 +10,11 @@ const declarables = [
   InitCapsPipe,
 ];
 
-// imports: imports the module's exports. which is usually declarables and providers
-// in our case the filter-text has no providers.
+// imports: imports the module's exports. which are usually
+// declarables(components / directives / pipes) and providers.
+// in our case the FilterTextModule has a provider.
 //
-// exports: exports modules AND components/directives/pipes that other modules may want to use
+// exports: exports modules AND declarables (components/directives/pipes) that other modules may want to use
 @NgModule({
   imports: [CommonModule, FilterTextModule, FormsModule],
   exports: [CommonModule, FilterTextModule, FormsModule, declarables],

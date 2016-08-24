@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CanActivateAuthGuard } from './can-activate-auth.service';
 import { CanDeactivateGuard } from './can-deactivate.service';
 import { UserProfileService } from '../core';
-import { ErrorComponent } from '../error.component';
+import { PageNotFoundComponent } from '../page-not-found.component';
 
 export const routes: Routes = [
   {
@@ -30,7 +30,7 @@ export const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    component: ErrorComponent
+    component: PageNotFoundComponent
   },
 ];
 

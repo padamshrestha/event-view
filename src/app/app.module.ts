@@ -10,6 +10,7 @@ import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
 import { InMemoryStoreService } from '../api/in-memory-store.service';
 import { routing } from './routing/app.routing';
 import { SpeakerService } from './models';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 /* Feature Modules */
 import { CoreModule } from './core/core.module';
@@ -26,7 +27,7 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     SharedModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageNotFoundComponent],
   providers: [SpeakerService],
   bootstrap: [AppComponent],
 })

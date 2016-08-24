@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'ev-error',
+  selector: 'ev-404',
   template: `
     <article class="template animated slideInRight">
       <h4>Inconceivable!</h4>
@@ -10,4 +10,4 @@ import { Component } from '@angular/core';
     </article>
   `
 })
-export class ErrorComponent { }
+export class PageNotFoundComponent { }

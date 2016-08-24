@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class FilterTextService {
-  constructor() { }
+  constructor() {
+    console.log('Created an instance of FilterTextService');
+  }
 
   filter(data: string, props: Array<string>, originalList: Array<any>) {
     let filteredList: any[];

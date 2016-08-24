@@ -26,8 +26,6 @@ export class LoginService {
 
   private toggleLogState(val: boolean) {
     this.userProfileService.isLoggedIn = val;
-    // console.log(`login state is now ${this.userProfileService.isLoggedIn}`);
-    // this.toast.show('Logged ' + (this.userProfileService.isLoggedIn ? 'in' : 'out'));
     this.spinnerService.hide();
   }
 }

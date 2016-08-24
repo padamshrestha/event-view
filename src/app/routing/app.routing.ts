@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CanActivateAuthGuard } from './can-activate-auth.service';
 import { CanDeactivateGuard } from './can-deactivate.service';
 import { UserProfileService } from '../core';
+import { ErrorComponent } from '../error.component';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,11 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: 'app/dashboard/dashboard.module'
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: ErrorComponent
   },
   {
     path: 'speakers',

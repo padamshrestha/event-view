@@ -15,7 +15,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
 /* Feature Modules */
 import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
-import { SharedModule } from './shared/shared.module';
+// import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { SharedModule } from './shared/shared.module';
     LoginModule,
     routing,
     CoreModule,
-    SharedModule,
+    // SharedModule,
   ],
   declarations: [AppComponent, PageNotFoundComponent],
   providers: [SpeakerService],

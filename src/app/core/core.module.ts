@@ -13,16 +13,6 @@ import { ModalModule } from './modal/modal.module';
 import { SpinnerModule } from './spinner/spinner.module';
 import { ToastModule } from './toast/toast.module';
 
-const declarables = [
-  NavComponent
-];
-
-const providers = [
-  EntityService,
-  ExceptionService,
-  MessageService,
-];
-
 // imports: imports the module's exports. which is usually declarables and providers
 // in our case the spinner has no providers.
 //
@@ -34,13 +24,17 @@ const providers = [
   ],
   exports: [
     CommonModule, FormsModule, RouterModule,
-    ModalModule, SpinnerModule, ToastModule, declarables
+    ModalModule, SpinnerModule, ToastModule, [NavComponent]
   ],
-  declarations: declarables,
-  providers: providers
+  declarations: [NavComponent],
+  providers: [
+    EntityService,
+    ExceptionService,
+    MessageService,
+  ]
 })
 export class CoreModule {
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+  constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
     throwIfAlreadyLoaded(parentModule, 'CoreModule');
   }
 }

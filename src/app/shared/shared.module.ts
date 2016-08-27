@@ -6,10 +6,6 @@ import { FilterTextModule } from './filter-text/filter-text.module'
 
 import { InitCapsPipe } from './init-caps.pipe';
 
-const declarables = [
-  InitCapsPipe,
-];
-
 // imports: imports the module's exports. which are usually
 // declarables(components / directives / pipes) and providers.
 // in our case the FilterTextModule has a provider.
@@ -19,7 +15,7 @@ const declarables = [
 // Even so, we import/export both of these because most other modules will import SharedModule and will need them.
 @NgModule({
   imports: [CommonModule, FilterTextModule, FormsModule],
-  exports: [CommonModule, FilterTextModule, FormsModule, declarables],
-  declarations: declarables,
+  exports: [CommonModule, FilterTextModule, FormsModule, InitCapsPipe],
+  declarations: [InitCapsPipe],
 })
 export class SharedModule { }

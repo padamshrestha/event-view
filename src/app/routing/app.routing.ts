@@ -13,17 +13,17 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: 'app/dashboard/dashboard.module'
+    loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
   },
   {
     path: 'speakers',
-    loadChildren: 'app/speakers/speakers.module',
+    loadChildren: 'app/speakers/speakers.module#SpeakersModule',
     canActivate: [CanActivateAuthGuard],
     // canLoad: [CanActivateAuthGuard],
   },
   {
     path: 'sessions',
-    loadChildren: 'app/sessions/sessions.module',
+    loadChildren: 'app/sessions/sessions.module#SessionsModule',
     canActivate: [CanActivateAuthGuard],
     // canLoad: [CanActivateAuthGuard],
   },

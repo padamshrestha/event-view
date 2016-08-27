@@ -19,5 +19,5 @@ const declarables = [SessionButtonComponent, routedComponents]
   // In the module, everyone gets it everywhere tho.
   providers: [SessionService]
 })
-export default class SessionsModule { }
+export class SessionsModule { }
 // avoids having to lazy load with loadChildren: "app/sessions/session.module#SessionModule"

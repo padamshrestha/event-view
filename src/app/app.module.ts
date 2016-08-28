@@ -24,7 +24,6 @@ import { LoginModule } from './login/login.module';
     LoginModule,
     routing,
     CoreModule,
-    // SharedModule,
   ],
   declarations: [AppComponent, PageNotFoundComponent],
   providers: [SpeakerService],

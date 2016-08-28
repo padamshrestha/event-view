@@ -1,7 +1,7 @@
-import { NgModule, provide } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule, XHRBackend } from '@angular/http';
+// import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
@@ -15,7 +15,6 @@ import { PageNotFoundComponent } from './page-not-found.component';
 /* Feature Modules */
 import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
-// import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [

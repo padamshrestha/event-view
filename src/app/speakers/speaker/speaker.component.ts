@@ -77,7 +77,7 @@ export class SpeakerComponent implements OnDestroy, OnInit, CanComponentDeactiva
     this.route
       .params
       .map(params => params['id'])
-      .do(id => this.id = id)
+      .do(id => this.id = +id)
       .subscribe(id => this.getSpeaker());
   }
 

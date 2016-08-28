@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Speaker, SpeakerService } from '../../app/models';
-import { ToastService } from '../../app/core';
+import { Speaker, SpeakerService } from '../models';
+import { ToastService } from '../core';
 
 @Component({
   moduleId: module.id,

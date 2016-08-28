@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/subscription';
 
-import { Speaker, SpeakerService } from '../../../app/models';
-import { FilterTextComponent } from '../../../app/shared/filter-text/filter-text.component';
-import { FilterTextService } from '../../../app/shared/filter-text/filter-text.service';
+import { Speaker, SpeakerService } from '../../models';
+import { FilterTextComponent } from '../../shared/filter-text/filter-text.component';
+import { FilterTextService } from '../../shared/filter-text/filter-text.service';
 
 @Component({
   moduleId: module.id,

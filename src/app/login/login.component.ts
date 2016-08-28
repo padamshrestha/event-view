@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { LoginService } from './login.service';
-import { ToastService, UserProfileService } from '../../app/core';
+import { ToastService, UserProfileService } from '../core';
 
 @Component({
   moduleId: module.id,

@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Session } from './session.model';
-import { CONFIG, ExceptionService, MessageService, SpinnerService } from '../../../app/core';
+import { CONFIG, ExceptionService, MessageService, SpinnerService } from '../../core';
 
 let sessionsUrl = CONFIG.baseUrls.sessions;
 

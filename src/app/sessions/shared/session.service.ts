@@ -15,7 +15,6 @@ export class SessionService {
     private exceptionService: ExceptionService,
     private messageService: MessageService,
     private spinnerService: SpinnerService) {
-    console.log('********** created session service');
     this.messageService.state.subscribe(state => this.getSessions());
   }
 

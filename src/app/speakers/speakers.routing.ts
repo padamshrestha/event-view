@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SpeakerListComponent } from './speaker-list/speaker-list.component';
 import { SpeakerComponent } from './speaker/speaker.component';
 import { SpeakersComponent } from './speakers.component';
-import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
+import { CanDeactivateGuard } from '../core';
 
 const routes: Routes = [
   {
@@ -22,7 +22,6 @@ const routes: Routes = [
     ]
   },
 ]; RouterModule
-
 
 export const routing = RouterModule.forChild(routes);
 

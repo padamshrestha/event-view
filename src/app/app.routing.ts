@@ -1,9 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { CanActivateAuthGuard } from './can-activate-auth.service';
-import { CanDeactivateGuard } from './can-deactivate.service';
-import { UserProfileService } from '../core';
-import { PageNotFoundComponent } from '../page-not-found.component';
+import { CanActivateAuthGuard, CanDeactivateGuard, UserProfileService } from './core';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 /***************************************************************
 * Lazy Loading to Eager Loading

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SessionListComponent } from './session-list/session-list.component';
 import { SessionComponent } from './session/session.component';
 import { SessionsComponent } from './sessions.component';
-import { CanDeactivateGuard, CanActivateAuthGuard } from '../routing';
+import { CanDeactivateGuard } from '../core';
 
 const routes: Routes = [
   {

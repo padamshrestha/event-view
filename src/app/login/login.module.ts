@@ -4,7 +4,7 @@ import { routing, routedComponents } from './login.routing';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [SharedModule, routing],
+  imports: [routing, SharedModule],
   declarations: [routedComponents],
 })
 export class LoginModule { }

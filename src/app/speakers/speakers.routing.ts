@@ -21,8 +21,8 @@ const routes: Routes = [
       },
     ]
   },
-]; RouterModule
+];
 
-export const routing = RouterModule.forChild(routes);
+export const speakersRouterModule = RouterModule.forChild(routes);
 
 export const routedComponents = [SpeakersComponent, SpeakerListComponent, SpeakerComponent]

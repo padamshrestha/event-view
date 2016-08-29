@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { SessionButtonComponent } from './shared/session-button/Session-button.component';
 
 // routing = routingModuleWithProvidersAndRouteConfiguration
-import { routing, routedComponents } from './sessions.routing';
+import { routedComponents, sessionsRouterModule } from './sessions.routing';
 
 import { SharedModule } from '../shared/shared.module';
 import { SessionService } from './shared/session.service';  // TODO: Remove this when bug is fixed in A2 RC5
 
 @NgModule({
-  imports: [routing, SharedModule],
+  imports: [sessionsRouterModule, SharedModule],
   declarations: [SessionButtonComponent, routedComponents],
 
   // TODO: Remove this when bug is fixed in A2 RC5.

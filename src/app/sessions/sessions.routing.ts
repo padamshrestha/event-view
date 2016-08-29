@@ -23,6 +23,6 @@ const routes: Routes = [
   },
 ];
 
-export const routing = RouterModule.forChild(routes);
+export const sessionsRouterModule = RouterModule.forChild(routes);
 
 export const routedComponents = [SessionsComponent, SessionListComponent, SessionComponent]

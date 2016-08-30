@@ -21,14 +21,14 @@ const routes: Routes = [
   },
 ];
 
-// @NgModule({
-//   imports: [RouterModule.forChild(routes)],
-//   exports: [RouterModule],
-//   // providers: [] // only put providers here we want that aren't provided yet
-// })
-// export class SpeakersRoutingModule { }
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+  // providers: [] // only put providers here we want that aren't provided yet
+})
+export class SpeakersRoutingModule { }
 
 // This works too ... but let's be explicit, above
-export const SpeakersRoutingModule = RouterModule.forChild(routes);
+// export const SpeakersRoutingModule = RouterModule.forChild(routes);
 
 export const routedComponents = [SpeakersComponent, SpeakerListComponent, SpeakerComponent];

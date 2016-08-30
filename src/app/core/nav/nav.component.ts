@@ -20,6 +20,7 @@ export class NavComponent implements OnInit {
       { caption: 'Dashboard', link: ['/dashboard'] },
       { caption: 'Speakers', link: ['/speakers'] },
       { caption: 'Sessions', link: ['/sessions'] },
+      { caption: 'Admin', link: ['/admin'] },
       { caption: 'Login', link: ['/login'] },
     ];
   }

@@ -1,8 +1,10 @@
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SessionListComponent } from './session-list/session-list.component';
 import { SessionComponent } from './session/session.component';
 import { SessionsComponent } from './sessions.component';
+import { SessionResolver } from './shared/session-resolver.service';
 import { CanDeactivateGuard } from '../core';
 
 const routes: Routes = [
@@ -17,12 +19,20 @@ const routes: Routes = [
       {
         path: ':id',
         component: SessionComponent,
-        canDeactivate: [CanDeactivateGuard]
+        canDeactivate: [CanDeactivateGuard],
+        resolve: {
+          session: SessionResolver
+        }
       },
     ]
   },
 ];
 
-export const sessionsRouterModule = RouterModule.forChild(routes);
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+  providers: [SessionResolver]
+})
+export class SessionsRoutingModule { }
 
 export const routedComponents = [SessionsComponent, SessionListComponent, SessionComponent]

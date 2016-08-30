@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -13,11 +13,13 @@ import { ToastService } from '../core';
   styleUrls: ['dashboard.component.css']
 })
 export class DashboardComponent implements OnDestroy, OnInit {
+  speakers: Observable<Speaker[]>;
+  title: string;
+
   private dbResetSubscription: Subscription;
 
-  speakers: Observable<Speaker[]>;
-
   constructor(
+    private route: ActivatedRoute,
     private speakerService: SpeakerService,
     private router: Router,
     private toastService: ToastService) { }
@@ -41,6 +43,9 @@ export class DashboardComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
+    this.route.data.subscribe((data: { title: string }) => {
+      this.title = data.title;
+    });
     this.getSpeakers();
     this.dbResetSubscription = this.speakerService.onDbReset
       .subscribe(() => this.getSpeakers());

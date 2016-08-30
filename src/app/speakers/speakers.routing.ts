@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SpeakerListComponent } from './speaker-list/speaker-list.component';
@@ -10,10 +11,7 @@ const routes: Routes = [
     path: '',
     component: SpeakersComponent,
     children: [
-      {
-        path: '',
-        component: SpeakerListComponent,
-      },
+      { path: '', component: SpeakerListComponent },
       {
         path: ':id',
         component: SpeakerComponent,
@@ -23,6 +21,14 @@ const routes: Routes = [
   },
 ];
 
-export const speakersRouterModule = RouterModule.forChild(routes);
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+  // providers: [] // only put providers here we want that aren't provided yet
+})
+export class SpeakersRoutingModule { }
 
-export const routedComponents = [SpeakersComponent, SpeakerListComponent, SpeakerComponent]
+// This works too ... but let's be explicit, above
+// export const speakersRoutingModule = RouterModule.forChild(routes);
+
+export const routedComponents = [SpeakersComponent, SpeakerListComponent, SpeakerComponent];

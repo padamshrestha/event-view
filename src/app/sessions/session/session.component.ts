@@ -68,14 +68,23 @@ export class SessionComponent implements OnDestroy, OnInit, CanComponentDeactiva
     this.dbResetSubscription =
         this.sessionService.onDbReset.subscribe(() => this.getSession());
 
-    // Could use a snapshot here, as long as the parameters do not change.
-    // This may happen when a component is re-used.
+    // ** Could use a snapshot here, as long as the parameters do not change.
+    // ** This may happen when a component is re-used, such as fwd/back.
     // this.id = +this.route.snapshot.params['id'];
-    this.route
-      .params
-      .map(params => params['id'])
-      .do(id => this.id = +id)
-      .subscribe(id => this.getSession());
+    //
+    // ** We could use a subscription to get the parameter, too.
+    // ** The ActivatedRoute gets unsubscribed
+    // this.route
+    //   .params
+    //   .map(params => params['id'])
+    //   .do(id => this.id = +id)
+    //   .subscribe(id => this.getSession());
+    //
+    // ** Instead we will use a Resolve(r)
+    this.route.data.subscribe((data: { session: Session }) => {
+      this.setEditSession(data.session);
+      this.id = this.session.id;
+    });
   }
 
   save() {

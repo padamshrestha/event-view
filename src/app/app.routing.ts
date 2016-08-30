@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CanActivateAuthGuard, CanDeactivateGuard, UserProfileService } from './core';
@@ -26,13 +27,13 @@ const routes: Routes = [
     path: 'speakers',
     loadChildren: 'app/speakers/speakers.module#SpeakersModule',
     canActivate: [CanActivateAuthGuard],
-    // canLoad: [CanActivateAuthGuard],
+    canLoad: [CanActivateAuthGuard],
   },
   {
     path: 'sessions',
     loadChildren: 'app/sessions/sessions.module#SessionsModule',
     canActivate: [CanActivateAuthGuard],
-    // canLoad: [CanActivateAuthGuard],
+    canLoad: [CanActivateAuthGuard],
   },
   {
     path: '**',
@@ -41,10 +42,13 @@ const routes: Routes = [
   },
 ];
 
-export const routing = RouterModule.forRoot(routes);
-
-routing.providers.push([
-  CanActivateAuthGuard,
-  CanDeactivateGuard,
-  UserProfileService
-]);
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [
+    CanActivateAuthGuard,
+    CanDeactivateGuard,
+    UserProfileService
+  ]
+})
+export class AppRoutingModule { }

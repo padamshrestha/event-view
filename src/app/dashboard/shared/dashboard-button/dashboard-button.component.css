@@ -19,7 +19,7 @@ button {
   }
 }
 
-@media (max-width: 839px) and (min-width: 480px){
+@media (max-width: 839px) {
   button {
     width: 120px;
     line-height: 18px;

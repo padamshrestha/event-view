@@ -10,7 +10,7 @@
     "suppressImplicitAnyIndexErrors": true
   },
   "angularCompilerOptions": {
-    "genDir": "./app/ngfactory",
-    "debug": false
+    "genDir": "./ngfactory",
+    "debug": true
   }
 }

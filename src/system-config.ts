@@ -9,6 +9,8 @@ var paths = {
 var map = {
   // our app is within the app folder
   app: 'app',
+  'main': 'main.js',
+  'ngfactory': 'ngfactory',
 
   // angular bundles
   '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -36,17 +38,11 @@ var map = {
 };
 // packages tells the System loader how to load when no filename and/or no extension
 var packages = {
-  app: {
-    main: 'main.js',
-    defaultExtension: 'js'
-  },
-  rxjs: {
-    defaultExtension: 'js'
-  },
-  'angular2-in-memory-web-api': {
-    main: './index.js',
-    defaultExtension: 'js'
-  }
+  api: {defaultExtension: 'js'},
+  app: {main: 'main.js', defaultExtension: 'js'},
+  rxjs: {defaultExtension: 'js'},
+  'angular2-in-memory-web-api': {main: './index.js', defaultExtension: 'js'},
+  'ngfactory': {main : 'index.js', defaultExtension : 'js'},
 };
 
 const barrels: any = [

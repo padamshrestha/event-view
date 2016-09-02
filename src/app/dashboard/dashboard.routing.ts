@@ -13,4 +13,4 @@ const routes: Routes = [
 })
 export class DashboardRoutingModule { }
 
-export const routedComponents = routes.filter(r => r.component != undefined).map(r => r.component)
+export const routedComponents = [DashboardComponent];

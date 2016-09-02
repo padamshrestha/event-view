@@ -37,6 +37,7 @@ src/app/**/*.js
 src/api/**/*.js
 
 ngfactory
+*.metadata.json
 
 #dist
 #

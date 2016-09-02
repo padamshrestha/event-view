@@ -32,6 +32,7 @@ export class SessionService {
     this.spinnerService.show();
     return <Observable<Session>>this.http
       .delete(`${sessionsUrl}/${session.id}`)
+      .map(res => this.extractData<Session>(res))
       .catch(this.exceptionService.catchBadResponse)
       .finally(() => this.spinnerService.hide());
   }
@@ -49,8 +50,8 @@ export class SessionService {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
-    let body = res.json();
-    return <T>(body.data || {});
+    let body = res.json ? res.json() : null;
+    return <T>(body && body.data || {});
   }
 
   getSession(id: number) {
@@ -68,6 +69,7 @@ export class SessionService {
 
     return <Observable<Session>>this.http
       .put(`${sessionsUrl}/${session.id}`, body)
+      .map(res => this.extractData<Session>(res))
       .catch(this.exceptionService.catchBadResponse)
       .finally(() => this.spinnerService.hide());
   }

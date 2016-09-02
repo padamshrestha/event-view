@@ -32,6 +32,7 @@ export class SpeakerService {
     this.spinnerService.show();
     return <Observable<Speaker>>this.http
       .delete(`${speakersUrl}/${speaker.id}`)
+      .map(res => this.extractData<Speaker>(res))
       .catch(this.exceptionService.catchBadResponse)
       .finally(() => this.spinnerService.hide());
   }
@@ -60,6 +61,7 @@ export class SpeakerService {
 
     return <Observable<Speaker>>this.http
       .put(`${speakersUrl}/${speaker.id}`, body)
+      .map(res => this.extractData<Speaker>(res))
       .catch(this.exceptionService.catchBadResponse)
       .finally(() => this.spinnerService.hide());
   }
@@ -68,7 +70,6 @@ export class SpeakerService {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
-    let body = res.json();
-    return <T>(body.data || {});
-  }
+    let body = res.json ? res.json() : null;
+    return <T>(body && body.data || {});  }
 }

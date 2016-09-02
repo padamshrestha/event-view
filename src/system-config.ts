@@ -7,7 +7,8 @@ const map: any = {
   'main': 'main.js',
   '@angular' : 'node_modules/@angular',
   'angular2-in-memory-web-api' : 'node_modules/angular2-in-memory-web-api',
-  'rxjs' : 'node_modules/rxjs'
+  'rxjs' : 'node_modules/rxjs',
+  'ngfactory': 'ngfactory',
 };
 
 // packages tells the System loader how to load when no filename and/or no
@@ -16,7 +17,8 @@ const packages: any = {
   'app' : {main : 'main.js', defaultExtension : 'js'},
   'api' : {defaultExtension : 'js'},
   'rxjs' : {defaultExtension : 'js'},
-  'angular2-in-memory-web-api' : {main : 'index.js', defaultExtension : 'js'},
+  'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+  'ngfactory': {main : 'index.js', defaultExtension : 'js'},
 };
 
 const barrels: any = [
@@ -60,7 +62,8 @@ declare var System: any;
 
 // Most environments should use UMD; some (Karma) need the individual index
 // files
-var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
+var setPackageConfig = packIndex;
+// var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
 
 // Add package entries for angular packages
 ngPackageNames.forEach(setPackageConfig);

@@ -36,7 +36,7 @@ src/app/**/*.js
 !src/app/assets/*.js
 src/api/**/*.js
 
-
+aot
 
 #dist
 #

@@ -71,5 +71,6 @@ export class SpeakerService {
       throw new Error('Bad response status: ' + res.status);
     }
     let body = res.json ? res.json() : null;
-    return <T>(body && body.data || {});  }
+    return <T>(body && body.data || {});
+  }
 }

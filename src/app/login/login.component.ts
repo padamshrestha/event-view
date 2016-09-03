@@ -11,7 +11,6 @@ import { ToastService, UserProfileService } from '../core';
   providers: [LoginService]
 })
 export class LoginComponent implements OnDestroy {
-  private redirectTo: any[];
   private loginSub: Subscription;
 
   constructor(

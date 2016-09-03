@@ -10,7 +10,12 @@
     "postinstall": "typings install",
     "tsc": "tsc -p ./src",
     "tsc:w": "tsc -w -p ./src",
-    "typings": "typings"
+    "typings": "typings",
+    "clean": "rm -rf ./src/aot && rm -rf ./dist",
+    "aot": "node_modules/.bin/ngc -p ./src",
+    "rollup": "./node_modules/.bin/rollup -c ./rollup.js",
+    "minify": "./node_modules/.bin/uglifyjs dist/temp.js --compress --mangle --screw-ie8 > dist/bundle.js",
+    "install-application": "npm run clean && npm install && npm run aot && npm run rollup && gulp es5 && npm run minify"
   },
   "private": true,
   "dependencies": {
@@ -30,7 +35,9 @@
     "rxjs": "5.0.0-beta.11",
     "systemjs": "0.19.27",
     "zone.js": "^0.6.17",
-    "angular2-in-memory-web-api": "0.0.18"
+    "angular2-in-memory-web-api": "0.0.18",
+    "rollup-plugin-includepaths": "^0.1.5",
+    "rollup-plugin-node-resolve": "^2.0.0"
   },
   "devDependencies": {
     "concurrently": "^2.2.0",
@@ -48,6 +55,20 @@
     "karma-htmlfile-reporter": "^0.2.2",
     "karma-jasmine": "^0.3.8",
     "protractor": "^3.3.0",
-    "rimraf": "^2.5.2"
+    "rimraf": "^2.5.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-minify": "0.0.11",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglify": "^1.5.3",
+    "rollup": "^0.26.7",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-uglify": "^1.0.1",
+    "systemjs-builder": "^0.15.16",
+    "traceur": "^0.0.91",
+    "uglify-js": "2.7.0"
   }
 }

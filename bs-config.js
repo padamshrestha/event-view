@@ -4,6 +4,7 @@ module.exports = {
   "server": {
     "baseDir": [
       "./src",
+      "./aot",
       "./"
     ]
   }

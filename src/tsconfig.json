@@ -11,6 +11,6 @@
   },
   "angularCompilerOptions": {
     "genDir": "./aot",
-    "debug": true
+    "debug": false
   }
 }

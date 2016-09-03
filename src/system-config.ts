@@ -10,7 +10,7 @@ var map = {
   // our app is within the app folder
   app: 'app',
   'main': 'main.js',
-  'ngfactory': 'ngfactory',
+  'aot': 'aot',
 
   // angular bundles
   '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -42,7 +42,7 @@ var packages = {
   app: {main: 'main.js', defaultExtension: 'js'},
   rxjs: {defaultExtension: 'js'},
   'angular2-in-memory-web-api': {main: './index.js', defaultExtension: 'js'},
-  'ngfactory': {main : 'index.js', defaultExtension : 'js'},
+  'aot': {main : 'index.js', defaultExtension : 'js'},
 };
 
 const barrels: any = [

@@ -4,7 +4,6 @@
 /** Map relative paths to URLs. */
 const map: any = {
   'app' : 'app',
-
   'main': 'main.js',
   '@angular' : 'node_modules/@angular',
   'angular2-in-memory-web-api' : 'node_modules/angular2-in-memory-web-api',
@@ -44,7 +43,6 @@ const ngPackageNames: string[] = [
   'platform-browser',
   'platform-browser-dynamic',
   'router',
-  'router-deprecated',
   'upgrade',
 ];
 
